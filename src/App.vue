@@ -1,23 +1,27 @@
+<style src="./assets/css/common/base.css"></style>
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
+        <Loading :is-loading="iShowLoading"></Loading>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import Loading from './components/common/loading.vue';
+
 export default {
-  name: 'app'
+    name: 'app',
+    components:{
+        Loading
+    },
+    computed:{
+        ...mapState({
+            iShowLoading:state=>state.common.iShowLoading
+        })
+    }
+    
+   
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
