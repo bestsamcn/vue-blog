@@ -2,6 +2,8 @@
 <template>
     <div class="hello">
         <h1 class="font-80"><span class="color-green">B</span>-log</h1>
+        <a href="javascript:;" @click="doClick()">click</a>
+        <router-link :to="{name:'Home'}">Home</router-link>
     </div>
 </template>
 

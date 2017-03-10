@@ -9,8 +9,21 @@ import { sync } from 'vuex-router-sync'
 
 Vue.use(Vuex);
 Vue.config.productionTip = false
-sync(store, router, { moduleName: 'RouteModule' } )
-/* eslint-disable no-new */
+sync(store, router, {
+    moduleName: 'RouteModule'
+})
+
+//路由动画
+router.beforeEach((to, from, next) => {
+    let direction = 'fadeInRight'
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    direction = toDepth >= fromDepth ? 'fadeInLeft' : 'fadeInRight'
+    router.app.pageTransition = direction
+    console.log(router.app.pageTransition)
+    next()
+});
+
 new Vue({
     el: '#app',
     router,

@@ -12,7 +12,7 @@ var _http = function(type, url, params){
     type = type || 'get';
     if (!url) throw new Error('请指定url');
     var obj = {};
-    params = Object.prototype.toString.call(params) === '[object object]' ? params : {};
+    params = Object.prototype.toString.call(params) === '[object Object]' ? params : {};
     if(type === 'get'){
         obj.methods = 'get';
         obj.url = url;
@@ -27,7 +27,6 @@ var _http = function(type, url, params){
     var instance = Axios.create();
     //当创建实例的时候，拦截器放在default无效
     instance.interceptors.request.use(config=>{
-        console.log(store)
         store.dispatch('setShowLoading');
         return config;
     }, error=> {

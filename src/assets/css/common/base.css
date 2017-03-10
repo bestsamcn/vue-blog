@@ -1,46 +1,115 @@
-
-
-.font-12{
+* {
+    color: #333;
+}
+a {
+    text-decoration: none;
+}
+.font-12 {
     font-size: 12px;
 }
-.font-14{
+.font-14 {
     font-size: 14px;
 }
-.font-16{
+.font-16 {
     font-size: 16px;
 }
-.font-18{
+.font-18 {
     font-size: 18px;
 }
-.font-20{
+.font-20 {
     font-size: 20px;
 }
-.font-24{
+.font-24 {
     font-size: 24px;
 }
-.font-28{
+.font-28 {
     font-size: 28px;
 }
-.font-30{
+.font-30 {
     font-size: 30px;
 }
-.font-36{
+.font-36 {
     font-size: 36px;
 }
-.font-40{
+.font-40 {
     font-size: 40px;
 }
-.font-80{
+.font-80 {
     font-size: 80px;
 }
+.color-green {
+    color: #1ABC9C;
+}
 
-.color-green{
-    color:#1ABC9C;
+/* 后退时的状态，从左开始 */
+.fadeInLeft-enter{
+    opacity: 0;
+    transform: translate3d(-20%, 0, 0);
+    -webkit-transform: translate3d(-20%, 0, 0);
+    z-index: 1000;
+}
+.fadeInLeft-enter-active{
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 30ms;
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    z-index: 1000;
+    opacity: 0;
+}
+.fadeInLeft-leave{
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+}
+.fadeInLeft-leave-active{
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    transform: translateX(100%);
+    opacity: .9;
+    -webkit-transform: translateX(100%);
+}
+
+/* 前进时的状态，从右开始 */
+.fadeInRight-enter{
+    opacity: 1;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+}
+.fadeInRight-leave{
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+}
+.fadeInRight-leave-active{
+    -webkit-transform: translateX(0);
+    transform: translate3d(20%, 0, 0);
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transform: translate3d(20%, 0, 0);
+    opacity: 0;
+}
+
+.fadeInRight-enter-active{
+    opacity: 0;
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
 }
 
 
 
-
+.full-view {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+.router-view {
+    position: absolute;
+    top: 0;
+    // padding: 10px;
+    left: 0;
+    padding-top: 50px;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+}
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

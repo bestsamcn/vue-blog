@@ -1,0 +1,21 @@
+{
+  "name": "vue-blog",
+  "description": "A Vue.js project",
+  "main": "",
+  "authors": [
+    "bestsamcn <645298225@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bestsamcn/vue-blog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/assets/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.2"
+  }
+}
