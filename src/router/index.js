@@ -21,18 +21,16 @@ export default new Router({
             path:'/home',
             name:'Home',
             component:Home,
-            children:[
-                {
-                    path:'blog',
-                    name:'Blog',
-                    component:Blog
-                },
-                {
-                    path:'about',
-                    name:'About',
-                    component:About
-                }
-            ]
+        },
+        {
+            path:'/home/blog',
+            name:'Blog',
+            component:Blog
+        },
+        {
+            path:'/home/about',
+            name:'About',
+            component:About
         }
     ]
 });
