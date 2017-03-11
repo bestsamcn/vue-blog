@@ -4,6 +4,10 @@
         <h1 class="font-80"><span class="color-green">B</span>-log</h1>
         <a href="javascript:;" @click="doClick()">click</a>
         <router-link :to="{name:'Home'}">Home</router-link>
+        <a href="javascript:;" @click="testClick()">asdfas</a>
+        <transition :name="testTranstion2">
+            <p v-show="isShow">bbbbbbbbbbb</p>
+        </transition>
     </div>
 </template>
 
@@ -15,6 +19,9 @@ export default {
     data () {
         return {
             msg: 'Welcome to Your Vue.js App',
+            testTranstion1:'fadeInLeft',
+            testTranstion2:'fadeInRight',
+            isShow:false,
             gameParams:{
                 channelId:'58be28f731e3f72717b58da1',
                 pageIndex:1,
@@ -27,6 +34,10 @@ export default {
         doClick(){
             var that = this;
             R.getGameList(that.gameParams).then(res=>console.log(res))
+        },
+        testClick(){
+            this.isShow = !this.isShow;
+
         }
     }
 }

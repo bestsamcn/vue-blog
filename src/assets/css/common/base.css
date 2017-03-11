@@ -44,17 +44,19 @@ a {
 /* 后退时的状态，从左开始 */
 .fadeInLeft-enter{
     opacity: 0;
-    transform: translate3d(-20%, 0, 0);
-    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-100%, 0, 0);
+
     z-index: 1000;
 }
 .fadeInLeft-enter-active{
     transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 30ms;
-    transform: translateX(0%);
-    -webkit-transform: translateX(0%);
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    /* 不需要添加一下代码，会自动设置为正常正常状态 */
+/*    transform: translateX(0%);
+    -webkit-transform: translateX(0%);*/
     z-index: 1000;
-    opacity: 0;
+    opacity: 1;
 }
 .fadeInLeft-leave{
     transform: translateX(0%);
@@ -68,30 +70,32 @@ a {
     -webkit-transform: translateX(100%);
 }
 
-/* 前进时的状态，从右开始 */
+/* 前进时的初始值状态，从右开始 */
 .fadeInRight-enter{
-    opacity: 1;
+    opacity: 0;
     transform: translateX(100%);
     -webkit-transform: translateX(100%);
 }
-.fadeInRight-leave{
-    opacity: 1;
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-}
-.fadeInRight-leave-active{
-    -webkit-transform: translateX(0);
-    transform: translate3d(20%, 0, 0);
-    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    -webkit-transform: translate3d(20%, 0, 0);
-    opacity: 0;
-}
-
+/* 从初始值状态到完成进入状态，不需要，也不能设置translate值，因为默认值就是目的位置，只需要设置过渡到时间即可 */
 .fadeInRight-enter-active{
-    opacity: 0;
     transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
     -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
 }
+/* 离开时的初始值状态 可以设置某些值，例如设置起始位置*/
+.fadeInRight-leave{
+    transform: translateX(-20%);
+    -webkit-transform: translateX(-20%);
+}
+
+/* 从离开初始值状态进入完成离开状态 */
+.fadeInRight-leave-active{
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    opacity: 0;
+}
+
 
 
 
