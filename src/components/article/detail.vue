@@ -1,11 +1,11 @@
-<style src="../../assets/css/blog/index.css"></style>
+<style src="../../assets/css/article/detail.css" scoped></style>
 <template>
-    <div class="blog">
+    <div class="article-detail">
         <router-link :to="{name:'Home'}">Home</router-link>
     </div>
 </template>
 <script>
     export default{
-        
+        name:'article-detail'
     }
 </script>

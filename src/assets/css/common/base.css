@@ -96,7 +96,22 @@ a {
     opacity: 0;
 }
 
-
+/* 同级路由切换 */
+.fade-enter{
+    opacity: 0;
+}
+.fade-enter-active{
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+}
+.fade-leave{
+    opacity: 1;
+}
+.fade-leave-active{
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    opacity: 0;
+}
 
 
 .full-view {

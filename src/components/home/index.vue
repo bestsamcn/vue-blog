@@ -1,8 +1,7 @@
 <style src="../../assets/css/home/index.css" scoped></style>
 <template>
     <div class="home">
-        <router-link :to="{name:'Blog'}">Blog</router-link>
-        <router-link :to="{name:'About'}">About</router-link>
+        <router-link :to="{name:'Article'}">Article</router-link>
     </div>
 </template>
 <script>

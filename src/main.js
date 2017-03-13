@@ -18,7 +18,8 @@ router.beforeEach((to, from, next) => {
     let direction = 'fadeInRight'
     const toDepth = to.path.split('/').length
     const fromDepth = from.path.split('/').length
-    direction = toDepth >= fromDepth ? 'fadeInRight' : 'fadeInLeft'
+    direction = toDepth > fromDepth ? 'fadeInRight' : 'fadeInLeft';
+    toDepth == fromDepth &&  (direction = 'fade');
     router.app.pageTransition = direction
     next()
 });
