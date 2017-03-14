@@ -3,6 +3,7 @@
     <div id="app">
         <Loading :is-loading="iShowLoading"></Loading>
         <Asidebar :is-aside="isAside"></Asidebar>
+        <Navheader></Navheader>
         <transition :name="$router.app.pageTransition">
             <router-view class="router-view"></router-view>
         </transition>
@@ -13,6 +14,7 @@
 import './assets/libs/animate.css/animate.min.css';
 import { mapState } from 'vuex';
 import Loading from './components/common/loading.vue';
+import Navheader from './components/common/header.vue';
 import Asidebar from './components/common/aside.vue';
 
 export default {
@@ -24,7 +26,8 @@ export default {
     },
     components:{
         Loading,
-        Asidebar
+        Asidebar,
+        Navheader
     },
     computed:{
         ...mapState({

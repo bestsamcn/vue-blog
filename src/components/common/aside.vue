@@ -4,6 +4,7 @@
         <router-link :to="{name:'Home'}">首页</router-link>
         <router-link :to="{name:'Article'}">文章</router-link>
         <router-link :to="{name:'About'}">关于</router-link>
+       
     </div>
 </template>
 <script>
@@ -14,11 +15,6 @@
                 default:false,
                 require:true,
                 type:Boolean
-            }
-        },
-        data:()=>{
-            return{
-
             }
         }
     }
