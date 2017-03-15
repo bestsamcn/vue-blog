@@ -2,8 +2,10 @@
 <template>
     <div id="app">
         <Loading :is-loading="iShowLoading"></Loading>
-        <Asidebar :is-aside="isAside"></Asidebar>
         <Navheader></Navheader>
+        <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
+            <Menulist v-show="iShowMenu"></Menulist>
+        </transition>
         <transition :name="$router.app.pageTransition">
             <router-view class="router-view"></router-view>
         </transition>
@@ -12,26 +14,27 @@
 
 <script>
 import './assets/libs/animate.css/animate.min.css';
+import './assets/libs/Font-Awesome-3.2.1/css/font-awesome.min.css';
 import { mapState } from 'vuex';
 import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';
-import Asidebar from './components/common/aside.vue';
+import Menulist from './components/common/menu.vue';
 
 export default {
     name: 'app',
     data(){
         return{
-            isAside:false
         }
     },
     components:{
         Loading,
-        Asidebar,
+        Menulist,
         Navheader
     },
     computed:{
         ...mapState({
-            iShowLoading:state=>state.common.iShowLoading
+            iShowLoading:state=>state.common.iShowLoading,
+            iShowMenu:state=>state.common.iShowMenu
         })
     }
     

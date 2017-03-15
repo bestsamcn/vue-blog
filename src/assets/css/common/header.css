@@ -2,6 +2,7 @@
 	width:100%;
 	position: fixed;
 	left: 0;
+	background:#fff;
 	top: 0;
 	border:1px solid #f6f6f6;
 	display: -webkit-flex;
@@ -10,6 +11,7 @@
 	align-items: center;
 	padding:0 10px;
 	height: 49px;
+	z-index: 1001;
 }
 .header .logo{
 	font-size: 30px;
@@ -17,6 +19,7 @@
 	line-height: 49px;
 	height:49px;
 	flex:1;
+	text-align: left;
 }
 .header .nav-list{
 	overflow: hidden;
@@ -27,7 +30,15 @@
 	align-items: center;
 	flex:6;
 }
+
 .header .nav-list a{
 	margin-left:20px;
 	display: block;
+}
+.header .menu-btn{
+
+}
+.header .menu-btn a{
+	display: block;
+	font-size: 20px;
 }

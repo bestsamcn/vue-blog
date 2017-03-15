@@ -1,5 +1,34 @@
 .home{
     width:100%;
-    height: 100%;
-    background:#eee;
+    height:100%;
+    overflow-x:scroll;
+    text-align: center;
+    margin-top:20px;
+}
+.home .main{
+    display: -webkit-flex;
+    display: flex;
+    justify-content:space-between;
+    max-width:1000px;
+    padding:20px;
+    background:#fff;
+    margin:0 auto;
+    padding-right:320px;
+    position: relative;
+}
+@media (max-width:768px){
+    .home .main{
+        padding-right:20px;
+    }
+}
+.home .main .left-cont{
+    
+}
+.home .main .right-bar{
+    position: absolute;
+    right:20px;
+    top:20px;
+    width:280px;
+    height:300px;
+    background:#f6f6f6;
 }

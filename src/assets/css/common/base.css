@@ -1,10 +1,14 @@
 * {
     color: #333;
     box-sizing: border-box;
+    font-size: 14px;
 }
 html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     margin:0;
     padding:0;
+}
+ul,li{
+    list-style: none;
 }
 a {
     text-decoration: none;
@@ -60,6 +64,33 @@ a {
 .color-gray{
     color:#999;
 }
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+@media (max-width:768px){
+    .sm-show{
+        display: block !important;
+    }
+    .sm-hide{
+        display: none !important;
+    }
+
+}
+@media (min-width:768px){
+    .md-show{
+        display: block !important;
+    }
+    .md-hide{
+        display: none !important;
+    }
+}
+
 
 /* 后退时的状态，从左开始 */
 .fadeInLeft-enter{
@@ -132,24 +163,63 @@ a {
     -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
     opacity: 0;
 }
-
-
-.full-view {
+html, body{
+    height:100%;
     overflow: hidden;
-    position: relative;
-    height: 100%;
+    background:#f6f6f6;
+}
+
+#app {
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    overflow: hidden;
+    height:100%;
 }
 .router-view {
     position: absolute;
-    top: 49px;
+    top: 0;
+    padding-top:49px;
     left: 0;
     height: 100%;
     overflow: auto;
     width: 100%;
+    
 }
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+
+@media screen and (min-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px
+    }
+    ::-webkit-scrollbar-button:vertical {
+        display: none
+    }
+    ::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 10px
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .3)
+    }
+    ::-webkit-scrollbar-thumb:vertical:hover {
+        background-color: rgba(0, 0, 0, .35)
+    }
+    ::-webkit-scrollbar-thumb:vertical:active {
+        background-color: rgba(0, 0, 0, .38)
+    }
+    .padding-left-15-xs {
+        padding-left: 15px
+    }
+    .padding-right-15-xs {
+        padding-right: 15px
+    }
+    .padding-left-0-sm {
+        padding-left: 0
+    }
+    .padding-right-0-sm {
+        padding-right: 0
+    }
 }

@@ -1,11 +1,18 @@
 <style src="../../assets/css/home/index.css" scoped></style>
 <template>
     <div class="home">
-        <router-link :to="{name:'Article'}">Article</router-link>
+        <div class="main">
+            <div class="left-cont">
+                <Articlelist></Articlelist>
+            </div>
+            <div class="right-bar sm-hide">
+        </div>
+        </div>
+        
     </div>
 </template>
 <script>
-
+    import Articlelist from '../article/articleList.vue';
     export default{
         name:'home',
         data:()=>{
@@ -13,6 +20,7 @@
             }
         },
         components:{
+            Articlelist
         }
     }
 

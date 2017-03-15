@@ -1,0 +1,24 @@
+.page{
+    margin:20px auto;
+    width:100%;
+}
+.page .page-wrapper{
+    width:100%;
+    display: -webkit-flex;
+    display: flex;
+    justify-content:center;
+}
+.page .page-wrapper a{
+    width:30px;
+    height:30px;
+    display: block;
+    font-size: 12px;
+    color:#2B4356;
+    line-height: 30px;
+    background:#eee;
+    margin:0 5px;
+}
+.page .page-wrapper a.active{
+    background:#1ABC9C;
+    color:#fff;
+}
