@@ -6,6 +6,7 @@ const Home = resolve=>require(['@/components/home/index.vue'], resolve);
 const About = resolve=>require(['@/components/about/index.vue'], resolve);
 const Article = resolve=>require(['../components/article/index.vue'], resolve);
 const ArticleDetail = resolve=>require(['../components/article/detail.vue'], resolve);
+const Search = resolve=>require(['../components/search/index.vue'], resolve);
 Vue.use(Router)
 
 export default new Router({
@@ -18,17 +19,22 @@ export default new Router({
     		component: Home
     	},
         {
+            path: '/search',
+            name: 'Search',
+            component: Search
+        },
+        {
             path: '/about',
             name: 'About',
             component: About
         },
         {
-            path:'/acticle',
+            path:'/article',
             name:'Article',
             component:Article
         },
         {
-            path:'/acticle/detail',
+            path:'/article/detail',
             name:'ArticleDetail',
             component:ArticleDetail
         }

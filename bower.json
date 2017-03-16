@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "lodash": "^4.17.4"
   }
 }

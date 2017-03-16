@@ -6,29 +6,30 @@
     margin-top:20px;
 }
 .home .main{
+    max-width:1000px;
+    margin:0 auto;
+}
+.home .main .wrapper{
     display: -webkit-flex;
     display: flex;
     justify-content:space-between;
-    max-width:1000px;
+    width:100%;
     padding:20px;
     background:#fff;
-    margin:0 auto;
     padding-right:320px;
     position: relative;
 }
 @media (max-width:768px){
-    .home .main{
+    .home .main .wrapper{
         padding-right:20px;
     }
 }
-.home .main .left-cont{
+.home .main .wrapper .left-cont{
     
 }
-.home .main .right-bar{
+.home .main .wrapper .right-bar{
     position: absolute;
     right:20px;
     top:20px;
     width:280px;
-    height:300px;
-    background:#f6f6f6;
 }

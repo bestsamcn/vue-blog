@@ -1,6 +1,6 @@
 <style src="../../assets/css/article/page.css"></style>
 <template>
-    <div class="page">
+    <div class="page sm-hide">
         <div class="page-wrapper" v-html="pageHtml"></div>
     </div>
 </template>

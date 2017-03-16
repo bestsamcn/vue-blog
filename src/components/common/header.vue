@@ -5,7 +5,8 @@
         <div class="nav-list sm-hide">
         	<router-link :to="{name:'Home'}">Home</router-link>
         	<router-link :to="{name:'Article'}">Article</router-link>
-        	<router-link :to="{name:'About'}">About</router-link>
+            <router-link :to="{name:'About'}">About</router-link>
+        	<router-link :to="{name:'Search'}">Search</router-link>
         </div>
         <div class="menu-btn md-hide">
             <a href="javascript:;" @click="setToggleMenu()" class="icon-reorder"></a>

@@ -17,3 +17,6 @@
     font-size: 14px;
     display: block;
 }
+.menu a:before{
+    margin-right: 5px;
+}

@@ -15,6 +15,7 @@
 <script>
 import './assets/libs/animate.css/animate.min.css';
 import './assets/libs/Font-Awesome-3.2.1/css/font-awesome.min.css';
+import './assets/libs/lodash/dist/lodash.min.js';
 import { mapState } from 'vuex';
 import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';

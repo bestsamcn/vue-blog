@@ -1,0 +1,68 @@
+.article-rank{
+    width:100%;
+}
+.article-rank .tab-list{
+    display: -webkit-flex;
+    display: flex;
+    justify-content:space-between;
+    border-bottom: 1px solid #1abc9c;
+}
+.article-rank .tab-list a{
+    width:22%;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    color:#fff;
+    background:#ebeef2;
+    display:block;
+    color:#2B4356;
+}
+.article-rank .tab-list a.active{
+    background:#1abc9c;
+}
+.article-rank .tab-cont{
+
+}
+.article-rank .tab-cont .popular{
+
+}
+.article-rank .tab-cont .popular a{
+    padding-left:70px;
+    display: block;
+    position: relative;
+    margin-top:10px;
+    width:100%;
+}
+.article-rank .tab-cont .popular a .img{
+    width:60px;
+    height:60px;
+    border:1px solid #f1f1f1;
+    overflow: hidden;
+    position: absolute;
+    left:0;
+    top:0;
+    background:#f1f1f1;
+}
+.article-rank .tab-cont .popular a .img img{
+    width:100%;
+}
+.article-rank .tab-cont .popular a .text{
+
+} 
+.article-rank .tab-cont .popular a .text h4{
+    text-align: left;
+    color:#2B4356;
+    width:100%;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.article-rank .tab-cont .popular a .text p{
+    margin-top:20px;
+    color:#999;
+    text-align: left;
+}
+.article-rank .tab-cont .popular a .text p i{
+    margin-right: 10px;
+    color:#999;
+}

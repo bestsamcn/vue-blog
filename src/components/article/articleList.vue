@@ -1,7 +1,7 @@
 <style src="../../assets/css/article/articleList.css" scoped></style>
 <template>
     <div class="article-list">
-        <div class="item" v-for="item in [1,2,3,4]">
+        <div class="item" @click="goUrl({name:'ArticleDetail'})" v-for="item in articleList">
             <div class="img">
                 <img src="../../assets/img/article-1.jpg">
             </div>
@@ -18,9 +18,10 @@
             <p class="preview">
                 摘要: Examples 关于 CSS 的未知高度水平垂直居中问题的未知高度水平垂直居中问题的未知高度水平垂直居中问题的未知高度水平垂直居中问题的未知高度水平垂直居中问题
             </p>
-            <a class="more" href="">Read More</a>
+            <a  class="more" @click="goUrl({name:'ArticleDetail'})">Read More</a>
         </div>
-        <a href="#/article/2" class="more-btn">More</a>
+        <a v-if="isMore"  href="#/article/2" class="more-btn md-hide">More</a>
+        <Page :total="8" :page-index="3" ></Page>
     </div>
 </template>
 <script>
@@ -34,9 +35,16 @@
             }
         },
         props:{
-            type:Array,
-            default:[],
-            require:false
+            articleList:{
+                type:Array,
+                default:[],
+                require:false 
+            },
+            isMore:{
+                type:Boolean,
+                default:false,
+                require:false
+            }
         },
         components:{
             Page
@@ -44,6 +52,9 @@
         methods:{
             onPageClick(pageIndex){
                 this.pageIndex = pageIndex;
+            },
+            goUrl(routerInfo){
+                this.$router.push(routerInfo);
             }
         }
 
