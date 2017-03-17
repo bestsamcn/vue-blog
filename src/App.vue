@@ -2,6 +2,9 @@
 <template>
     <div id="app">
         <Loading :is-loading="iShowLoading"></Loading>
+        <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <Toast :msg="toastMsg" v-show="iShowToast"></Toast>
+        </transition>
         <Navheader></Navheader>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu"></Menulist>
@@ -20,6 +23,7 @@ import { mapState } from 'vuex';
 import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';
 import Menulist from './components/common/menu.vue';
+import Toast from './components/common/Toast.vue';
 
 export default {
     name: 'app',
@@ -30,12 +34,15 @@ export default {
     components:{
         Loading,
         Menulist,
-        Navheader
+        Navheader,
+        Toast
     },
     computed:{
         ...mapState({
             iShowLoading:state=>state.common.iShowLoading,
-            iShowMenu:state=>state.common.iShowMenu
+            iShowMenu:state=>state.common.iShowMenu,
+            iShowToast:state=>state.common.iShowToast,
+            toastMsg:state=>state.common.toastMsg
         })
     }
     

@@ -65,12 +65,13 @@
     margin-top:20px;
 }
 .article-list .more-btn{
-    width:100%;
+    width:60%;
     height:40px;
     display: block;
     line-height: 40px;
     text-align: center;
-    color:#fff;
-    background:#3599DD;
+    color:#bdc3c7;
+    border-radius: 40px;
+    border:1px solid #bdc3c7;
     margin:30px auto;
 }

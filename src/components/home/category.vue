@@ -1,9 +1,7 @@
 <style src="@/assets/css/home/category.css" scoped></style>
 <template>
     <div class="home-category">
-        <div class="title color-black">
-            分类
-        </div>
+        <slot name="title"></slot>
         <div class="cont">
             <div class="padding-right-10">
                 <a href="#">

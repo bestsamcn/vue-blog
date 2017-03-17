@@ -1,9 +1,7 @@
 <style src="@/assets/css/home/tags.css" scoped></style>
 <template>
-    <div class="tags margin-top-30">
-        <div class="title">
-            标签
-        </div>
+    <div class="tags">
+        <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
                 <a href="#">学习</a>

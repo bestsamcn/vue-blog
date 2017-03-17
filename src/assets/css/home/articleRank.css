@@ -21,10 +21,16 @@
     background:#1abc9c;
 }
 .article-rank .tab-cont{
-
+    position: relative;
+    height:280px;
+    width:100%;
+    overflow: hidden;
 }
 .article-rank .tab-cont .popular{
-
+    position: absolute;
+    left:0;
+    width:100%;
+    top:0;
 }
 .article-rank .tab-cont .popular a{
     padding-left:70px;

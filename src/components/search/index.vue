@@ -12,7 +12,7 @@
             <div class="margin-top-20">
                 <Articlelist :article-list="[1,2,3,4]"></Articlelist>
             </div>
-            <router-link :to="Article"></router-link>
+            <router-link :to="{name:'Article'}"></router-link>
         </div>
     </div>
 </template>

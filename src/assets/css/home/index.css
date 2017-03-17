@@ -27,6 +27,17 @@
 .home .main .wrapper .left-cont{
     
 }
+.home .main .wrapper .left-cont .more-btn{
+    width:60%;
+    height:40px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    color:#bdc3c7;
+    border-radius: 40px;
+    border:1px solid #bdc3c7;
+    margin:30px auto;
+}
 .home .main .wrapper .right-bar{
     position: absolute;
     right:20px;

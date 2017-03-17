@@ -1,2 +1,56 @@
 .about{
+
+}
+.about .main{
+    max-width: 300px;
+    margin:0 auto;
+}
+.about .main .info-box{
+    border-radius: 5px;
+    background:#fff;
+    box-shadow: 0 0 5px #eee;
+    width:100%;
+    margin:0 auto;
+    height:500px;
+    position: relative;
+    overflow: hidden;
+}
+.about .main .info-box .bg{
+    width:100%;
+    height:180px;
+    background:url(../../img/bg.jpg) no-repeat center top;
+    background-size: contain;
+}
+.about .main .info-box .avatar{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 100%;
+    margin-top: -74px;
+    border: 2px solid #fff;
+}
+.about .main .info-box .avatar img{
+    width:100%;
+}
+.about .main .info-box .describe{
+    margin:20px auto;
+}
+.about .main .info-box .footer{
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    text-align: center;
+    height:50px;
+    width:100%;
+    background:#1ABC9C;
+}
+.about .main .info-box .footer a{
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    height:50px;
+    width:100%;
+    display: block;
 }

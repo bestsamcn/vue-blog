@@ -17,6 +17,9 @@
     font-size: 14px;
     display: block;
 }
+.menu a.active{
+    color:#1ABC9C;
+}
 .menu a:before{
     margin-right: 5px;
 }

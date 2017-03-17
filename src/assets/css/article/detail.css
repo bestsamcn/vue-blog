@@ -11,9 +11,13 @@
     width:100%;
 }
 .article-detail .main .title h4{
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
     margin:10px 0;
+    margin-top:0;
+}
+.article-detail .main .title .tags{
+
 }
 .article-detail .main .title .info{
     overflow: hidden;
@@ -33,6 +37,15 @@
     color:#bbb;
     font-size: 12px;
 }
+.article-detail .main .title .info a.icon-heart{
+    color:#E24C3C
+}
+.article-detail .main .title .info a.icon-heart:before{
+    margin-right: 5px;
+}
+.article-detail .main .title .info a.icon-heart-empty:before{
+    margin-right: 5px;
+}
 .article-detail .main .title .info a.active{
      margin-right: 5px;
 }
@@ -51,13 +64,19 @@
 .article-detail .main .img img{
     width:100%;
 }
-.article-detail .main .more-btn{
-    width:100%;
-    height:40px;
-    display: block;
-    line-height: 40px;
-    text-align: center;
-    color:#fff;
-    background:#3599DD;
+
+.article-detail .main .others{
+    display: -webkit-flex;
+    display: flex;
     margin:30px auto; 
+    justify-content:space-between;
+}
+.article-detail .main .others a{
+    width:20%;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 30px;
+    color:#2B4356;
+    border:1px solid #2B4356;
 }

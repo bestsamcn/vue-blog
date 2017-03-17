@@ -1,0 +1,170 @@
+.comment{
+    width:100%;
+}
+.comment .comment-list{
+
+}
+.comment .comment-list .comment-item{
+    width:100%;
+    overflow: hidden;
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding-left:54px;
+    margin:20px auto;
+}
+.comment .comment-list .comment-item .favor{
+    width:44px;
+    height:70px;
+    background:#f1f1f1;
+    position: absolute;
+    left:0;
+    top:0;
+    border-radius: 3px;
+}
+.comment .comment-list .comment-item .favor a{
+    width:100%;
+    height:25px;
+    text-align: center;
+    font-size: 26px;
+    display: block;
+}
+.comment .comment-list .comment-item .favor span{
+    width:100%;
+    height:20px;
+    line-height: 20px;
+    display: block;
+}
+.comment .comment-list .comment-item .favor a.up{
+    line-height:34px;
+}
+.comment .comment-list .comment-item .favor a.down{
+    line-height: 20px;
+}
+.comment .comment-list .comment-item .cont{
+    margin-left:10px;
+    width:100%;
+}
+.comment .comment-list .comment-item .cont .title{
+    color:#95a5a6;
+}
+.comment .comment-list .comment-item .cont .operate{}
+.comment .comment-list .comment-item .cont .operate a{
+    margin-right: 10px;
+}
+.comment .comment-list .comment-item .cont .operate a:before{
+    font-size: 12px;
+    margin-right: 5px;
+}
+.comment .comment-list .comment-item .cont .quote{
+    color:#999;
+    font-size: 12px;
+    text-align: left;
+    text-overflow:ellipsis;
+    margin:5px 0;
+    width:calc(100% - 10px);
+    position: relative;
+    padding-left: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.comment .comment-list .comment-item .cont .quote .text{
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.comment .comment-list .comment-item .cont .quote:before{
+    width:3px;
+    height:100%;
+    content: '';
+    display: block;
+    left:0;
+    top:0;
+    background:#3599DD;
+    position: absolute;
+}
+
+.comment .comment-form{
+    width:100%;
+    margin:20px 0;
+}
+.comment .comment-form li{
+    width:100%;
+    margin:10px auto;
+    vertical-align: top;
+    overflow: hidden;
+}
+.comment .comment-form li input{
+    height:40px;
+    padding:10px;
+    background:#f1f1f1;
+    border:none;
+    width:100%;
+}
+.comment .comment-form li textarea{
+    resize:none;
+    width:100%;
+    height:100px;
+    position: relative;
+    border:1px solid #e4e9ed;
+    padding:10px;
+}
+.comment .comment-form li textarea:focus{
+    outline: 1px solid #3599DD;
+}
+.comment .comment-form li label{
+    display: inline-block;
+    float: left;
+    line-height: 30px;
+}
+.comment .comment-form li label input{
+    display: none;
+}
+.comment .comment-form li label span{
+    font-size: 12px;
+}
+.comment .comment-form li label span:before{
+    font-size: 12px;
+    line-height: 12px;
+    margin-right: 5px;
+    width:14px;
+    height:14px;
+
+}
+.comment .comment-form li label input:checked + span:before{
+    content:'\f046'
+}
+.comment .comment-form li .face{
+    font-size: 12px;
+    color: #3599DD;
+    line-height: 30px;
+    float: left;
+    margin-left: 30px;
+}
+.comment .comment-form li .icon-github-alt:before{
+    margin-right: 5px;
+}
+.comment .comment-form li button{
+    width:50px;
+    height:30px;
+    float: right;
+    outline: none;
+    border-radius: 2px;
+    color:#fff;
+    width:100px;
+    border:none;
+    background:#1ABC9C;
+}
+.comment .more-btn{
+    width:60%;
+    height:40px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    color:#bdc3c7;
+    border-radius: 40px;
+    border:1px solid #bdc3c7;
+    margin:30px auto;
+}

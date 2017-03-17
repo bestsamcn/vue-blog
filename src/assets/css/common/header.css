@@ -29,11 +29,22 @@
 	justify-content: flex-end;
 	align-items: center;
 	flex:6;
+	padding-right: 10px;
 }
 
 .header .nav-list a{
 	margin-left:20px;
 	display: block;
+	position: relative;
+	height:100%;
+	display: block;
+	line-height: 49px;
+	transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+
+}
+.header .nav-list a.active{
+	border-top:3px solid #1ABC9C;
 }
 .header .menu-btn{
 
@@ -42,4 +53,10 @@
 	display: block;
 	font-size: 20px;
 	padding:10px;
+	transition:all cubic-bezier(.36,.66,.04,1) .3s;
+	-webkit-transition:all cubic-bezier(.36,.66,.04,1) .3s;
+}
+.header .menu-btn a.on{
+	transform:rotate(90deg);
+	-webkit-transform:rotate(90deg)
 }

@@ -1,7 +1,25 @@
 <style src="../../assets/css/about/index.css" scoped></style>
 <template>
-    <div class="about">
-        <router-link :to="{name:'Home'}">Home</router-link>
+    <div class="about margin-top-20">
+        <div class="main">
+            <div class="info-box">
+                <div class="bg"></div>
+                <div class="avatar">
+                    <img src="../../assets/img/avatar.png">
+                </div>
+                <div class="describe">
+                    <div class="name color-black font-20">
+                        BestSamCN
+                    </div>
+                    <div class="intr color-gray font-14 margin-top-5">
+                        底层码农
+                    </div>
+                </div>
+                <div class="footer">
+                    <a href="https://github.com/bestsamcn" class="icon-github"></a>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
