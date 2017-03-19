@@ -19,7 +19,7 @@
 import './assets/libs/animate.css/animate.min.css';
 import './assets/libs/Font-Awesome-3.2.1/css/font-awesome.min.css';
 import './assets/libs/lodash/dist/lodash.min.js';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';
 import Menulist from './components/common/menu.vue';
@@ -46,8 +46,11 @@ export default {
         })
     },
     methods:{
+        ...mapActions([
+            'setToast'
+        ]),
         onLogoClick(e){
-            console.log(e);
+            this.setToast(e);
         }
     }
     

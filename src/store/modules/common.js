@@ -24,10 +24,12 @@ const actions = {
     setToggleMenu({commit}){
         commit(types.SET_TOGGLE_MENU);
     },
-    setToast({commit}, msg){
-        commit(types.SET_TOAST, true, msg);
+    setToast({commit}, str){
+        let obj = {msg:str, show:true}
+        commit(types.SET_TOAST, obj);
         setTimeout(()=>{
-            commit(types.SET_TOAST, false, '');
+            obj.show = false;
+            commit(types.SET_TOAST, obj);
         },2000);
     }
 }
@@ -42,10 +44,9 @@ const mutations = {
     [types.SET_TOGGLE_MENU](state){
         state.iShowMenu = !state.iShowMenu;
     },
-    [types.SET_TOAST](state, show, msg){
-        state.toastMsg = msg || '未知错误';
-        state.iShowToast = show;
-        
+    [types.SET_TOAST](state, payload){
+        state.iShowToast = payload.show;
+        state.toastMsg = payload.msg;
     }
 }
 
