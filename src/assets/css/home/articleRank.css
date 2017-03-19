@@ -19,6 +19,7 @@
 }
 .article-rank .tab-list a.active{
     background:#1abc9c;
+    color:#fff;
 }
 .article-rank .tab-cont{
     position: relative;

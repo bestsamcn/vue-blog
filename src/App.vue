@@ -5,7 +5,7 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <Toast :msg="toastMsg" v-show="iShowToast"></Toast>
         </transition>
-        <Navheader></Navheader>
+        <Navheader  @logoClick="onLogoClick($event)"></Navheader>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu"></Menulist>
         </transition>
@@ -44,6 +44,11 @@ export default {
             iShowToast:state=>state.common.iShowToast,
             toastMsg:state=>state.common.toastMsg
         })
+    },
+    methods:{
+        onLogoClick(e){
+            console.log(e);
+        }
     }
     
    

@@ -1,7 +1,7 @@
 <style src="../../assets/css/common/header.css" scoped></style>
 <template>
     <div class="header">
-        <div class="logo color-green">B<span class="color-black font-20">est</span></div>
+        <div class="logo color-green" @click="emitEvent()">B<span class="color-black font-20">est</span></div>
         <div class="nav-list sm-hide">
         	<router-link :to="{name:'Home'}" :class="{'active':routerName==='Home'}">Home</router-link>
         	<router-link :to="{name:'Article'}" :class="{'active':routerName==='Article'}">Article</router-link>
@@ -29,6 +29,9 @@
             ]),
             say(){
                 console.log(this.routerName)
+            },
+            emitEvent(){
+                this.$emit('logoClick','logoclick');
             }
         }
     }

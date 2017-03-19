@@ -8,53 +8,53 @@
             <a href="javascript:;" :class="{'active':(activeIndex === 4)}" @click="navClick(4)">标签</a>
         </div>
         <div class="tab-cont">
-            <transition enter-active-class="animated fadeInLeft" leave-active-class="animated fadeInRight">  
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">  
             <div class="popular" v-show="activeIndex===1">
                 <a href="#" v-for="item in [1,2,3,4]">
                     <div class="img">
                         <img src="" alt="">
                     </div>
                     <div class="text">
-                        <h4>关于this的指向问题关于this的指向问题</h4>
+                        <h4>关阿斯顿飞于this的指向问题关于this的指向问题</h4>
                         <p><i class="icon-calendar"></i>2017.02.03</p>
                     </div>
                 </a>
             </div>
             </transition> 
-            <transition enter-active-class="animated fadeInLeft" leave-active-class="animated fadeInRight"> 
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===2">
                 <a href="#" v-for="item in [1,2,3,4]">
                     <div class="img">
                         <img src="" alt="">
                     </div>
                     <div class="text">
-                        <h4>关于this的指向问题关于this的指向问题</h4>
+                        <h4>关于this的指向问题关于this的指向士大夫问题</h4>
                         <p><i class="icon-calendar"></i>2017.02.03</p>
                     </div>
                 </a>
             </div>
             </transition>
-            <transition enter-active-class="animated fadeInLeft" leave-active-class="animated fadeInRight"> 
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===3">
                 <a href="#" v-for="item in [1,2,3,4]">
                     <div class="img">
                         <img src="" alt="">
                     </div>
                     <div class="text">
-                        <h4>关于this的指向问题关于this的指向问题</h4>
+                        <h4>关于this的指向问大大地题关于this的指向问题</h4>
                         <p><i class="icon-calendar"></i>2017.02.03</p>
                     </div>
                 </a>
             </div>
             </transition>  
-            <transition enter-active-class="animated fadeInLeft" leave-active-class="animated fadeInRight"> 
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===4">
                 <a href="#" v-for="item in [1,2,3,4]">
                     <div class="img">
                         <img src="" alt="">
                     </div>
                     <div class="text">
-                        <h4>关于this的指向问题关于this的指向问题</h4>
+                        <h4>关于this的指向问题关于th搜索is的指向问题</h4>
                         <p><i class="icon-calendar"></i>2017.02.03</p>
                     </div>
                 </a>

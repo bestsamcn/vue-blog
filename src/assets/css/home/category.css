@@ -39,6 +39,9 @@
 .home-category .cont div a span{
     font-size: 12px;
 }
+.home-category .cont div a:hover span{
+    color:#1ABC9C;
+}
 .home-category .cont div a:last-child{
     border-bottom: none;
 }

@@ -9,15 +9,15 @@ const ArticleDetail = resolve=>require(['../components/article/detail.vue'], res
 const Search = resolve=>require(['../components/search/index.vue'], resolve);
 Vue.use(Router)
 
-export default new Router({
+var routerMap = {
     mode: 'history',
     base: __dirname,
-	routes: [
+    routes: [
         {
-    		path: '/',
-    		name: 'Home',
-    		component: Home
-    	},
+            path: '/',
+            name: 'Home',
+            component: Home
+        },
         {
             path: '/search',
             name: 'Search',
@@ -37,6 +37,11 @@ export default new Router({
             path:'/article/detail',
             name:'ArticleDetail',
             component:ArticleDetail
+        },
+        {
+            path:'*',
+            redirect:'/'
         }
     ]
-});
+}
+export default new Router(routerMap);
