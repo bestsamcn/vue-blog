@@ -10,7 +10,7 @@ const Search = resolve=>require(['../components/search/index.vue'], resolve);
 Vue.use(Router)
 
 var routerMap = {
-    mode: 'history',
+    mode: 'hash',
     base: __dirname,
     routes: [
         {

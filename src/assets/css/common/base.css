@@ -204,44 +204,33 @@ button,input,select{
 }
 
 /* 同级路由切换 */
-.fade-enter{
+.fade-enter, .fade-leave{
     opacity: 0;
+
 }
-.fade-enter-active{
-    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+.fade-enter-active, .fade-leave-active{
+    transition: opacity cubic-bezier(0.36, 0.66, 0.04, 1) .3s;
+    -webkit-transition: opacity cubic-bezier(0.36, 0.66, 0.04, 1) .3s;
 }
-.fade-leave{
-    opacity: 1;
-}
-.fade-leave-active{
-    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    opacity: 0;
-}
-html, body{
-    // height:100%;
+
+html, body, #app{
+    width:100%;
+    height:100%;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: hidden;
     background:#f6f6f6;
 }
 
-#app {
-    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    // overflow: hidden;
-    height:100%;
-}
+ 
 .router-view {
     position: absolute;
     top: 0;
-    padding-top:49px;
+    padding-top:69px;
     left: 0;
-    max-height: 100%;
-    overflow: auto;
-    width: 100%;
-    
+    bottom:0;
+    right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 @media screen and (min-width: 768px) {

@@ -36,6 +36,7 @@
     height:20px;
     line-height: 20px;
     display: block;
+    text-align: center;
 }
 .comment .comment-list .comment-item .favor a.up{
     line-height:34px;

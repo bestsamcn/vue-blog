@@ -22,12 +22,15 @@
                 </div>
             </div>
         </div>
+        <Footerbar class="margin-top-20"></Footerbar>
     </div>
+    
 </template>
 <script>
     import { mapActions } from 'vuex';
     import Articlelist from '../article/articleList.vue';
     import Category from './Category.vue';
+    import Footerbar from '@/components/common/footer.vue';
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
     export default{
@@ -45,7 +48,8 @@
             Articlelist,
             Category,
             Articlerank,
-            Tags
+            Tags,
+            Footerbar
         }
     }
 

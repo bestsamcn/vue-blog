@@ -4,7 +4,7 @@
         <div class="logo color-green" @click="emitEvent()">B<span class="color-black font-20">est</span></div>
         <div class="nav-list sm-hide">
         	<router-link :to="{name:'Home'}" :class="{'active':routerName==='Home'}">Home</router-link>
-        	<router-link :to="{name:'Article'}" :class="{'active':routerName==='Article'}">Article</router-link>
+        	<router-link :to="{name:'Article'}" :class="{'active':routerName === 'Article' || routerName === 'ArticleDetail' }">Article</router-link>
             <router-link :to="{name:'About'}" :class="{'active':routerName==='About'}">About</router-link>
         	<router-link :to="{name:'Search'}" :class="{'active':routerName==='Search'}">Search</router-link>
         </div>

@@ -1,6 +1,6 @@
 <style src="../../assets/css/article/detail.css" scoped></style>
 <template>
-    <div class="article-detail margin-top-20">
+    <div class="article-detail">
         <div class="main">
             <div class="title">
                 <h4 class="color-black">css实现ie6以上文字高度未知垂直居中</h4>

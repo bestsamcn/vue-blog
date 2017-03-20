@@ -9,9 +9,13 @@
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu"></Menulist>
         </transition>
-        <transition :name="$router.app.pageTransition">
-            <router-view class="router-view"></router-view>
+        <!-- <transition :name="$router.app.pageTransition"> -->
+        <transition :name="'fade'">
+            <keep-alive>
+                <router-view class="router-view"></router-view>
+            </keep-alive>
         </transition>
+        
     </div>
 </template>
 
@@ -22,6 +26,7 @@ import './assets/libs/lodash/dist/lodash.min.js';
 import { mapState, mapActions } from 'vuex';
 import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';
+import Footerbar from '@/components/common/footer.vue';
 import Menulist from './components/common/menu.vue';
 import Toast from './components/common/Toast.vue';
 
@@ -35,7 +40,8 @@ export default {
         Loading,
         Menulist,
         Navheader,
-        Toast
+        Toast,
+        Footerbar
     },
     computed:{
         ...mapState({

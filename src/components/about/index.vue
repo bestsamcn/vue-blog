@@ -1,6 +1,6 @@
 <style src="../../assets/css/about/index.css" scoped></style>
 <template>
-    <div class="about margin-top-20">
+    <div class="about">
         <div class="main">
             <div class="info-box">
                 <div class="bg"></div>
