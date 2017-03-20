@@ -1,6 +1,6 @@
 <style src="@/assets/css/home/tags.css" scoped></style>
 <template>
-    <div class="tags">
+    <div class="moveup tags">
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">

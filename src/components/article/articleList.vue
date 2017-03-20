@@ -1,7 +1,7 @@
 <style src="../../assets/css/article/articleList.css" scoped></style>
 <template>
     <div class="article-list">
-        <div class="item" @click="goUrl({name:'ArticleDetail'})" v-for="item in articleList">
+        <div class="moveup item" @click="goUrl({name:'ArticleDetail'})" v-for="item in articleList">
             <div class="img">
                 <img src="../../assets/img/article-1.jpg">
             </div>

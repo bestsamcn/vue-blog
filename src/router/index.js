@@ -7,6 +7,8 @@ const About = resolve=>require(['@/components/about/index.vue'], resolve);
 const Article = resolve=>require(['../components/article/index.vue'], resolve);
 const ArticleDetail = resolve=>require(['../components/article/detail.vue'], resolve);
 const Search = resolve=>require(['../components/search/index.vue'], resolve);
+const Admin = resolve=>require(['../components/admin/index.vue'], resolve);
+const Signin = resolve=>require(['../components/admin/signin.vue'], resolve);
 Vue.use(Router)
 
 var routerMap = {
@@ -37,6 +39,18 @@ var routerMap = {
             path:'/article/detail',
             name:'ArticleDetail',
             component:ArticleDetail
+        },
+        {
+            path:'/admin',
+            abstract:true,
+            component:Admin,
+            children:[
+                {
+                    path:'signin',
+                    name:'AdminSigin',
+                    component:Signin
+                }
+            ]
         },
         {
             path:'*',

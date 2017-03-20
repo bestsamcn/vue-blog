@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'rancho';
+  src: url('../../font/Rancho-Regular.ttf');
+}
 * {
     color: #333;
     box-sizing: border-box;
@@ -213,10 +217,11 @@ button,input,select{
     -webkit-transition: opacity cubic-bezier(0.36, 0.66, 0.04, 1) .3s;
 }
 
+
 html, body, #app{
     width:100%;
     height:100%;
-    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     overflow: hidden;
     background:#f6f6f6;
 }
@@ -231,6 +236,35 @@ html, body, #app{
     right: 0;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.moveup{
+    animation:moveup 1s ease-in-out ;
+    -webkit-animation:moveup 1s ease-in-out;
+}
+@keyframes moveup{
+    from{
+        opacity: 0;
+        transform:translate3d(0,10px,0);
+        -webkit-transform:translate3d(0,10px,0);
+    }
+    to{
+        opacity: 1;
+        transform:translate3d(0,0,0);
+        -webkit-transform:translate3d(0,0,0);
+    }
+}
+@-webkit-keyframes moveup{
+    from{
+        opacity: 0.2;
+        transform:translate3d(0,10px,0);
+        -webkit-transform:translate3d(0,10px,0);
+    }
+    to{
+        opacity: 1;
+        transform:translate3d(0,0,0);
+        -webkit-transform:translate3d(0,0,0);
+    }
 }
 
 @media screen and (min-width: 768px) {

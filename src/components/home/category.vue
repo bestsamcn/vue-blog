@@ -1,6 +1,6 @@
 <style src="@/assets/css/home/category.css" scoped></style>
 <template>
-    <div class="home-category">
+    <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
             <div class="padding-right-10">

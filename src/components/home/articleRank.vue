@@ -1,6 +1,6 @@
 <style src="@/assets/css/home/articleRank.css" scoped></style>
 <template>
-    <div class="article-rank margin-top-30">
+    <div class="moveup article-rank margin-top-30">
         <div class="tab-list">
             <a href="javascript:;" :class="{'active':(activeIndex === 1)}" @click="navClick(1)">最火</a>
             <a href="javascript:;" :class="{'active':(activeIndex === 2)}" @click="navClick(2)">最新</a>

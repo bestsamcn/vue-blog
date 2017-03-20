@@ -2,7 +2,7 @@
 <template>
     <div class="search">
         <div class="wrapper">
-            <div class="search-bar sm-100">
+            <div class="moveup search-bar sm-100">
                 <input type="search" placeholder="搜索" v-model="keywords" id="search-bar" class="search-input">
                 <i class="icon-search search-btn" @click="add()"></i>
                 <transition-group class="tips-list" tag="ul" enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
