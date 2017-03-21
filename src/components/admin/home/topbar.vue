@@ -1,7 +1,7 @@
 <style src="@/assets/css/admin/home/topbar.css" scoped></style>
 <template>
     <div class="topbar">
-        <div class="left color-white">
+        <div class="left color-white" @click="setToggleSidebar()">
             B<span>est</span>
         </div>
         <div class="right">
@@ -20,12 +20,18 @@
 </template> 
 <script>
     import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
+    import { mapActions } from 'vuex';
     export default{
         name:'topbar',
         components:{
             Dropdown,
             DropdownMenu,
             DropdownItem
+        },
+        methods:{
+            ...mapActions([
+                'setToggleSidebar'  
+            ])
         }
     }
 </script>  
