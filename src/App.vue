@@ -5,7 +5,7 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <Toast :msg="toastMsg" v-show="iShowToast"></Toast>
         </transition>
-        <Navheader  @logoClick="onLogoClick($event)"></Navheader>
+        <Navheader v-show="routerName && routerName.indexOf('Admin') == -1" @logoClick="onLogoClick($event)"></Navheader>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu"></Menulist>
         </transition>
@@ -48,7 +48,8 @@ export default {
             iShowLoading:state=>state.common.iShowLoading,
             iShowMenu:state=>state.common.iShowMenu,
             iShowToast:state=>state.common.iShowToast,
-            toastMsg:state=>state.common.toastMsg
+            toastMsg:state=>state.common.toastMsg,
+            routerName:state=>state.RouteModule.name
         })
     },
     methods:{

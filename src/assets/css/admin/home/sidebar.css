@@ -1,0 +1,13 @@
+.sidebar{
+    width:250px;
+    position: fixed;
+    left:0;
+    top:49px;
+    z-index: 10;
+    height:100%;
+    background:#fff;
+    box-shadow: 3px 0 5px rgba(0,0,0,.1);
+}
+.sidebar i:before{
+    margin-right: 10px;
+}

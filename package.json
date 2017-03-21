@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "element-ui": "^1.2.5",
     "lodash": "^4.17.4",
     "vue": "^2.2.1",
     "vue-lazyload": "^1.0.0-rc12",

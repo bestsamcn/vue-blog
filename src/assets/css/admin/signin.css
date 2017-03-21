@@ -1,4 +1,4 @@
-.signin {
+.sign {
     background: #18c8f6;
     height: auto;
     height:100%;
@@ -10,7 +10,11 @@
     background-size: cover;
     color: rgba(255,255,255,.95);
 }
-
+.sign-title{
+    font-family: 'rancho',cursive;
+    font-size: 50px;
+    margin-bottom:40px !important;
+}
 
 .signinpanel {
     width: 320px;
@@ -33,6 +37,22 @@
 .signinpanel .form-control {
     display: block;
     margin-top: 15px;
+        display: block;
+    border-color: #cfdadd;
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #cfdadd;
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .signinpanel .uname {
@@ -45,10 +65,33 @@
 
 .signinpanel .btn {
     margin-top: 15px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+        color: #ffffff !important;
+    background-color: #27c24c;
+    border-color: #27c24c;
+    width:100%;
 }
 
 .signinpanel form {
-        padding: 20px;
+    padding: 20px;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -62,12 +105,6 @@
 .signup-footer{border-top: solid 1px rgba(0,0,0,.1);margin:20px 0;padding-top: 15px;}
 
 @media screen and (max-width: 768px) {
-    .signinpanel,
-    .signuppanel {
-        margin: 0 auto;
-        width: 420px!important;
-        padding: 20px;
-    }
     .signinpanel form {
         margin-top: 20px;
     }

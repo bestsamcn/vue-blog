@@ -7,6 +7,7 @@
         	<router-link :to="{name:'Article'}" :class="{'active':routerName === 'Article' || routerName === 'ArticleDetail' }">Article</router-link>
             <router-link :to="{name:'About'}" :class="{'active':routerName==='About'}">About</router-link>
         	<router-link :to="{name:'Search'}" :class="{'active':routerName==='Search'}">Search</router-link>
+            <router-link :to="{name:'AdminSignin'}" :class="{'active':routerName==='AdminSignin'}">signin</router-link>
         </div>
         <div class="menu-btn md-hide">
             <a href="javascript:;" @click="setToggleMenu()" class="icon-reorder" :class="{'on':iShowMenu}"></a>

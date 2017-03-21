@@ -2,13 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //路由懒加载
+//user
 const Home = resolve=>require(['@/components/home/index.vue'], resolve);
 const About = resolve=>require(['@/components/about/index.vue'], resolve);
 const Article = resolve=>require(['../components/article/index.vue'], resolve);
 const ArticleDetail = resolve=>require(['../components/article/detail.vue'], resolve);
 const Search = resolve=>require(['../components/search/index.vue'], resolve);
+
+//admin
 const Admin = resolve=>require(['../components/admin/index.vue'], resolve);
 const Signin = resolve=>require(['../components/admin/signin.vue'], resolve);
+const AdminHome = resolve=>require(['../components/admin/home/index.vue'], resolve);
 Vue.use(Router)
 
 var routerMap = {
@@ -47,8 +51,13 @@ var routerMap = {
             children:[
                 {
                     path:'signin',
-                    name:'AdminSigin',
+                    name:'AdminSignin',
                     component:Signin
+                },
+                {
+                    path:'home',
+                    name:'AdminHome',
+                    component:AdminHome
                 }
             ]
         },
