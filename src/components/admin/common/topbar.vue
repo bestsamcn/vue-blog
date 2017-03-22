@@ -1,4 +1,4 @@
-<style src="@/assets/css/admin/home/topbar.css" scoped></style>
+<style src="@/assets/css/admin/common/topbar.css" scoped></style>
 <template>
     <div class="topbar">
         <div class="left color-white" @click="setToggleSidebar()">

@@ -6,8 +6,10 @@ import App from './App'
 import router from './router'
 import store from './store/index.js'
 import { sync } from 'vuex-router-sync'
+import Filter from '@/utils/filter.js'
 
 Vue.use(Vuex);
+Vue.use(Filter);
 Vue.config.productionTip = false
 sync(store, router, {
     moduleName: 'RouteModule'

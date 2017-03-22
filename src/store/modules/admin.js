@@ -2,11 +2,11 @@ import * as type from '../mutation-types.js';
 
 
 const state={
-    iShowSidebar:false
+    isHideSidebar:true
 }
 
 const getters={
-    iShowSidebar:state=>state.iShowSidebar
+    isHideSidebar:state=>state.isHideSidebar
 }
 
 const actions={
@@ -17,7 +17,7 @@ const actions={
 
 const mutations={
     [type.SET_TOGGLE_SIDEBAR](state){
-        state.iShowSidebar = !state.iShowSidebar;
+        state.isHideSidebar = !state.isHideSidebar;
     }
 }
 

@@ -1,0 +1,70 @@
+.admin-common{
+    padding-left:200px;
+    -webkit-transition:all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+    transition:all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
+}
+
+@media (max-width:414px) {
+    .admin-common{
+        padding-left:0 !important;
+        margin-left:20px;
+    }
+    .admin-common.show-all{
+        margin-left:0;
+    }
+}
+
+.admin-common.show-all{
+    padding-left:0;
+}
+.admin-common .content{
+    padding:20px;
+    height:100%;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    position: relative;
+    padding-top:69px;
+}
+.admin-common .content .mask{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.3);
+    position: absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    z-index: 100;
+}
+
+@media (min-width:768px){
+    .admin-common .content .mask{
+        display: none !important;
+    }
+    .admin-common{
+        padding-left:250px;
+        margin-left:0;
+      
+    }
+    .admin-common.show-all{
+
+    }
+}
+.admin-common .content .content-view{
+    width:100%;
+    height:100%;
+    background:#fff;
+    padding:20px;
+}
+.admin-map{
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    padding-left:15px;
+}
+.admin-map .icon-map-marker{
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+}

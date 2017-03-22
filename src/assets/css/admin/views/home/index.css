@@ -1,0 +1,26 @@
+.admin-home{
+
+}
+.admin-home .preview{
+    display: -webkit-flex;
+    display: flex;
+    margin-top:20px;
+    justify-content:space-between;
+    align-items:center;
+}
+.admin-home .preview .prev-item{
+    width:32%;
+    display: -webkit-flex;
+    display: flex;
+    justify-content:center;
+    height:150px;
+    display: block;
+    align-items:center;
+}
+.admin-home .preview .prev-item h4{
+    color:#fff;
+    font-weight: normal;
+    text-align: center;
+    display: block;
+    margin-top:20px;
+}

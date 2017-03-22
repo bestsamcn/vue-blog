@@ -1,0 +1,45 @@
+.sidebar{
+    width:250px;
+    position: fixed;
+    left:0;
+    top:49px;
+    z-index: 101;
+    height:100%;
+    background:#fff;
+    box-shadow: 3px 0 5px rgba(0,0,0,.1);
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 400ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 400ms;
+}
+@media (max-width:768px){
+    .sidebar{
+        width:200px;
+    }
+}
+.sidebar.hide{
+    transform:translate3d(-110%,0,0);
+    -webkit-transform:translate3d(-110%,0,0);
+}
+.sidebar i:before{
+    margin-right: 10px;
+}
+.sidebar .bottom-btn{
+    position: absolute;
+    width:100%;
+    height:56px;
+    background:#2B4356;
+    color:#fff;
+    display: block;
+    left:0;
+    line-height: 56px;
+    text-align: center;
+    bottom:49px;
+    font-family: "Microsoft Yahei"
+    
+}
+.sidebar .bottom-btn .icon-bold:before{
+    margin-right: 10px;
+    opacity: 0.8;
+}
+.sidebar .bottom-btn span{
+    opacity: 0.8;
+}

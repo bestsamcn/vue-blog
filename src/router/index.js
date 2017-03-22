@@ -11,8 +11,10 @@ const Search = resolve=>require(['../components/search/index.vue'], resolve);
 
 //admin
 const Admin = resolve=>require(['../components/admin/index.vue'], resolve);
+const AdminCommon = resolve=>require(['../components/admin/common/index.vue'], resolve);
 const Signin = resolve=>require(['../components/admin/signin.vue'], resolve);
-const AdminHome = resolve=>require(['../components/admin/home/index.vue'], resolve);
+const AdminHome = resolve=>require(['../components/admin/views/home/index.vue'], resolve);
+const AdminArticle = resolve=>require(['../components/admin/views/article/index.vue'], resolve);
 Vue.use(Router)
 
 var routerMap = {
@@ -49,6 +51,7 @@ var routerMap = {
             abstract:true,
             component:Admin,
             children:[
+
                 {
                     path:'signin',
                     name:'AdminSignin',
@@ -56,8 +59,21 @@ var routerMap = {
                 },
                 {
                     path:'home',
-                    name:'AdminHome',
-                    component:AdminHome
+                    name:'AdminCommon',
+                    abstract:true,
+                    component:AdminCommon,
+                    children:[
+                        {
+                            path:'article',
+                            name:'AdminArticle',
+                            component:AdminArticle
+                        },
+                        {
+                            path:'',
+                            name:'AdminHome',
+                            component:AdminHome
+                        },
+                    ]
                 }
             ]
         },

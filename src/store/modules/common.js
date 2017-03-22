@@ -21,8 +21,8 @@ const actions = {
     setHideLoading({commit}){
         commit(types.SET_HIDE_LOADING);
     },
-    setToggleMenu({commit}){
-        commit(types.SET_TOGGLE_MENU);
+    setToggleMenu({commit},iShow){
+        commit(types.SET_TOGGLE_MENU, iShow);
     },
     setToast({commit}, str){
         let obj = {msg:str, show:true}
@@ -41,7 +41,11 @@ const mutations = {
     [types.SET_HIDE_LOADING](state){
         state.iShowLoading = false;
     },
-    [types.SET_TOGGLE_MENU](state){
+    [types.SET_TOGGLE_MENU](state, iShow){
+        if(!!iShow){
+           state.iShowMenu = iShow;
+           return; 
+        }
         state.iShowMenu = !state.iShowMenu;
     },
     [types.SET_TOAST](state, payload){

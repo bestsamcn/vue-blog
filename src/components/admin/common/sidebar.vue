@@ -1,14 +1,14 @@
-<style src="@/assets/css/admin/home/sidebar.css" scoped></style>
+<style src="@/assets/css/admin/common/sidebar.css" scoped></style>
 <template>
     <div class="sidebar">
-        <Navmenu mode="vertical" default-active="1" menu-trigger="click">
-            <Navmenuitem index="1">
-                <i class="icon-desktop"></i>首页
+        <Navmenu mode="vertical" :router="true" default-active="1" menu-trigger="click">
+            <Navmenuitem index="1" :route="{name:'AdminHome'}">
+                <i class="icon-desktop"></i>主页
             </Navmenuitem>
             <Navsubmenu index="2">
                 <div slot="title"><i class="icon-file-alt"></i>文章</div>
                 <Navmenuitemgroup>
-                    <Navmenuitem index="2-1">
+                    <Navmenuitem index="2-1" :route="{name:'AdminArticle'}">
                         <i class="icon-list-alt"></i>文章列表
                     </Navmenuitem>
                     <Navmenuitem index="2-2">
@@ -42,6 +42,7 @@
                 </Navmenuitemgroup>
             </Navsubmenu>
         </Navmenu>
+        <router-link class="bottom-btn" :to="{name:'Home'}"><i class="icon-bold"><span>返回首页</span></i></router-link>
     </div>
 </template>
 <script>
