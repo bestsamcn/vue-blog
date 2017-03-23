@@ -14,6 +14,8 @@ Vue-Blog 是一个基于vue+express的前后端分离项目
 ```
 git clone https://github.com/bestsamcn/vue-blog.git
 
+cd vue-blog
+
 npm install
 
 npm run dev
