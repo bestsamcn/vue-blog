@@ -4,14 +4,16 @@ const state = {
     iShowLoading:false,
     iShowMenu:false,
     iShowToast:false,
-    toastMsg:'未知错误'
+    toastMsg:'未知错误',
+    isMobile:false
 
 }
 
 const getters = {
     iShowLoading:state=>state.iShowLoading,
     iShowMenu:state=>state.iShowMenu,
-    iShowToast:state=>state.iShowToast
+    iShowToast:state=>state.iShowToast,
+    isMobile:state=>state.iShisMobileowToast
 }
 
 const actions = {
@@ -31,6 +33,9 @@ const actions = {
             obj.show = false;
             commit(types.SET_TOAST, obj);
         },2000);
+    },
+    setMobile({commit}, flag){
+        commit(types.SET_MOBILE, flag);
     }
 }
 
@@ -42,7 +47,7 @@ const mutations = {
         state.iShowLoading = false;
     },
     [types.SET_TOGGLE_MENU](state, iShow){
-        if(!!iShow){
+        if(arguments.length === 2 && typeof arguments[1] !== 'undefined'){
            state.iShowMenu = iShow;
            return; 
         }
@@ -51,6 +56,9 @@ const mutations = {
     [types.SET_TOAST](state, payload){
         state.iShowToast = payload.show;
         state.toastMsg = payload.msg;
+    },
+    [types.SET_MOBILE](state, flag){
+        state.isMobile = flag;
     }
 }
 

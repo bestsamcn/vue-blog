@@ -16,7 +16,11 @@ const actions={
 }
 
 const mutations={
-    [type.SET_TOGGLE_SIDEBAR](state){
+    [type.SET_TOGGLE_SIDEBAR](state, flag){
+        if(arguments.length ===2 && typeof arguments[1] !== 'undefined'){
+            state.isHideSidebar = flag;
+            return;
+        }
         state.isHideSidebar = !state.isHideSidebar;
     }
 }

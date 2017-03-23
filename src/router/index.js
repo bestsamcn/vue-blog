@@ -15,6 +15,7 @@ const AdminCommon = resolve=>require(['../components/admin/common/index.vue'], r
 const Signin = resolve=>require(['../components/admin/signin.vue'], resolve);
 const AdminHome = resolve=>require(['../components/admin/home/index.vue'], resolve);
 const AdminArticle = resolve=>require(['../components/admin/article/index.vue'], resolve);
+const AdminAddArticle = resolve=>require(['../components/admin/article/addArticle.vue'], resolve);
 Vue.use(Router)
 
 var routerMap = {
@@ -70,6 +71,11 @@ var routerMap = {
                             name:'AdminHome',
                             component:AdminHome
                         },
+                        {
+                            path:'addArticle',
+                            name:'AdminAddArticle',
+                            component:AdminAddArticle
+                        }
                     ]
                 }
             ]

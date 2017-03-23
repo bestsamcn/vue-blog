@@ -1,21 +1,21 @@
 <style src="@/assets/css/admin/common/sidebar.css" scoped></style>
 <template>
     <div class="sidebar">
-        <Navmenu mode="vertical" :router="true" default-active="1" menu-trigger="click">
-            <Navmenuitem index="1" :route="{name:'AdminHome'}">
+        <Navmenu mode="vertical" :router="true" :unique-opened="isMobile" default-active="1" menu-trigger="click">
+            <Navmenuitem index="1" @click="menuItemClick('AdminHome')">
                 <i class="icon-desktop"></i>主页
             </Navmenuitem>
             <Navsubmenu index="2">
                 <div slot="title"><i class="icon-file-alt"></i>文章</div>
                 <Navmenuitemgroup>
-                    <Navmenuitem index="2-1" :route="{name:'AdminArticle'}">
+                    <Navmenuitem index="2-1" @click="menuItemClick('AdminArticle')">
                         <i class="icon-list-alt"></i>文章列表
+                    </Navmenuitem>
+                    <Navmenuitem index="2-3" @click="menuItemClick('AdminAddArticle')">
+                        <i class="icon-plus-sign-alt"></i>添加文章
                     </Navmenuitem>
                     <Navmenuitem index="2-2">
                         <i class="icon-comments"></i>文章评论
-                    </Navmenuitem>
-                    <Navmenuitem index="2-3">
-                        <i class="icon-plus-sign-alt"></i>添加文章
                     </Navmenuitem>
                 </Navmenuitemgroup>
             </Navsubmenu>
@@ -47,6 +47,7 @@
 </template>
 <script>
     import { Menu, Submenu, MenuItem, MenuItemGroup } from 'element-ui';
+    import { mapState, mapActions } from 'vuex';
     export default{
         name:'sidebar',
         components:{
@@ -54,6 +55,25 @@
             Navsubmenu:Submenu,
             Navmenuitem:MenuItem,
             Navmenuitemgroup:MenuItemGroup
+        },
+        computed:{
+            ...mapState({
+                isMobile:state=>state.common.isMobile,
+            })
+        },
+        methods:{
+            ...mapActions([
+                'setToggleSidebar'
+            ]),
+            menuItemClick(routerName){
+                this.isMobile && this.setToggleSidebar(false);
+                this.$router.push({name:routerName});
+            }
+        },
+        data(){
+            return{
+                uniqueOpen:false
+            }
         }
     }
 </script>

@@ -7,6 +7,7 @@ import router from './router'
 import store from './store/index.js'
 import { sync } from 'vuex-router-sync'
 import Filter from '@/utils/filter.js'
+import Utils from '@/utils/index.js'
 
 Vue.use(Vuex);
 Vue.use(Filter);
@@ -26,11 +27,14 @@ router.beforeEach((to, from, next) => {
     next()
 });
 
+store.dispatch('setMobile', Utils.isMobile());
+
 //title
-router.afterEach((to, from, next)=>{
+router.beforeEach((to, from, next)=>{
     document.title = to.name;
     next();
 });
+
 
 new Vue({
     el: '#app',
