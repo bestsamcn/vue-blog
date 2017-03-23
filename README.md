@@ -21,10 +21,10 @@ npm install
 npm run dev
 ```
 ## 图片
-![图片1](https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/1.png =150x)
-![图片2](https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/2.png =150x)
-![图片4](https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/4.png =150x)
-![图片5](https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/5.png =150x)
+<img src="https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/1.png" width="150">
+<img src="https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/2.png" width="150">
+<img src="https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/4.png" width="150">
+<img src="https://raw.githubusercontent.com/bestsamcn/vue-blog/master/picture/5.png" width="150">
 
 ## 预览
 - 项目目前只是完成前台大部分功能，后台开发待续...
