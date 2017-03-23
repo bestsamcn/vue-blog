@@ -1,20 +1,27 @@
-# vue-blog
+# Vue-Blog 个人博客项目
 
-## Build Setup
+## 简介
+Vue-Blog 是一个基于vue+express的前后端分离项目
+- 前端使用了vue2全家桶完成，包括了vue + vue-router + axios + vuex + element-ui(后台使用);
+- 后端接口利用 express + mongodb + redis 开发
 
-``` bash
-# install dependencies
+## 环境
+- node v4.4.5
+- npm  v4.3.0
+- vue  v2.3.1
+
+## 开发
+```
+git clone https://github.com/bestsamcn/vue-blog.git
+
 npm install
 
-# serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 预览
+项目目前只是完成前台大部分功能，后台开发待续...
+[请点击我](https://bestsamcn.github.io/)预览
 
+## 后续
+给个星星呗...
