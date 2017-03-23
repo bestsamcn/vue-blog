@@ -1,4 +1,4 @@
-<style src="@/assets/css/admin/views/article/articleList.css" scoped></style>
+<style src="@/assets/css/admin/article/articleList.css" scoped></style>
 <template>
     <div class="admin-article-list">
         <Etable :data="articleList" border style="width:100%;">

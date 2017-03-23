@@ -26,6 +26,12 @@ router.beforeEach((to, from, next) => {
     next()
 });
 
+//title
+router.afterEach((to, from, next)=>{
+    document.title = to.name;
+    next();
+});
+
 new Vue({
     el: '#app',
     router,

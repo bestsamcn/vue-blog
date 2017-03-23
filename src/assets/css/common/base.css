@@ -6,6 +6,8 @@
     // color: #333;
     box-sizing: border-box;
     font-size: 14px;
+    -webkit-overflow-scrolling:touch !important;  
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0.1) !important;
 }
 html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     margin:0;
@@ -225,6 +227,7 @@ button,input,select{
 /* 同级路由切换 */
 .fade-enter, .fade-leave{
     opacity: 0;
+
 
 }
 .fade-enter-active, .fade-leave-active{

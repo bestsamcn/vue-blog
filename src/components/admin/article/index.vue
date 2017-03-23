@@ -1,4 +1,4 @@
-<style src="@/assets/css/admin/views/article/index.css" scoped></style>
+<style src="@/assets/css/admin/article/index.css" scoped></style>
 <template>
     <div class="admin-article">
         <div class="admin-map">
