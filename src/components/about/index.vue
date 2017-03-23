@@ -12,7 +12,7 @@
                         BestSamCN
                     </div>
                     <div class="intr color-gray font-14 margin-top-5">
-                        底层码农
+                        一条有梦想的咸鱼
                     </div>
                 </div>
                 <div class="footer">
