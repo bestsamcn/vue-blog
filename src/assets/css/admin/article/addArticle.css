@@ -1,3 +1,19 @@
 .add-article{
-    
+
+}
+
+.add-article .marked textarea:focus{
+   ouline:none;
+}
+.add-article .highlight{
+    width:100%;
+    margin-top:30px;
+
+}
+.add-article .highlight .editor{
+    z-index: 10077;
+    position: relative;
+}
+.add-article .highlight > span{
+    font-family: "Microsoft Yahei";
 }

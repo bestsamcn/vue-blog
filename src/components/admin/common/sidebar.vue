@@ -74,6 +74,9 @@
             return{
                 uniqueOpen:false
             }
+        },
+        created(){
+             this.isMobile && this.setToggleSidebar(false);
         }
     }
 </script>

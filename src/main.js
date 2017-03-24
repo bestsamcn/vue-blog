@@ -8,9 +8,11 @@ import store from './store/index.js'
 import { sync } from 'vuex-router-sync'
 import Filter from '@/utils/filter.js'
 import Utils from '@/utils/index.js'
+import VueSimplemde from 'vue-simplemde'
 
 Vue.use(Vuex);
 Vue.use(Filter);
+Vue.use(VueSimplemde);
 Vue.config.productionTip = false
 sync(store, router, {
     moduleName: 'RouteModule'

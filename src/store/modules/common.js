@@ -13,7 +13,7 @@ const getters = {
     iShowLoading:state=>state.iShowLoading,
     iShowMenu:state=>state.iShowMenu,
     iShowToast:state=>state.iShowToast,
-    isMobile:state=>state.iShisMobileowToast
+    isMobile:state=>state.isMobile
 }
 
 const actions = {

@@ -22,7 +22,7 @@
 		    saythis(){
 		        console.log(this.msg)
 		    }
-		}
+        }
     }
 
 
