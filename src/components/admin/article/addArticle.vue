@@ -11,7 +11,7 @@
         </div>
         
         <div class="highlight">
-            <Markdowneditor class="editor"  :configs="configs" v-model="highlightHtml"></Markdowneditor>
+            <Markdowneditor class="editor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
         </div>
         <div class="btn text-right margin-top-20">
             <Ebutton type="info" size="large">提交</Ebutton>
@@ -24,7 +24,7 @@
     import SimpleMDE from 'simplemde';
     import { Select, Option, Button } from 'element-ui';
     import { mapState } from 'vuex';
-    import 'github-markdown-css'
+    import 'github-markdown-css';
     export default{
         name:'addArticle',
         data(){
