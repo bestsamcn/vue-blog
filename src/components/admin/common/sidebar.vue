@@ -14,33 +14,23 @@
                     <Navmenuitem index="2-3" @click="menuItemClick('AdminAddArticle')">
                         <i class="icon-plus-sign-alt"></i>添加文章
                     </Navmenuitem>
-                    <Navmenuitem index="2-2">
+                    <Navmenuitem index="2-2" @click="menuItemClick('AdminArticleComment')">
                         <i class="icon-comments"></i>文章评论
                     </Navmenuitem>
                 </Navmenuitemgroup>
             </Navsubmenu>
             <Navsubmenu index="3">
-                <div slot="title"><i class="icon-tags"></i>标签</div>
+                <div slot="title"><i class="icon-plus-sign-alt"></i>标签归类</div>
                 <Navmenuitemgroup>
-                    <Navmenuitem index="3-1">
-                        <i class="icon-list-alt"></i>标签列表
+                    <Navmenuitem index="3-1" @click="menuItemClick('AdminTag')">
+                        <i class="icon-tags"></i>标签列表
                     </Navmenuitem>
-                    <Navmenuitem index="3-2">
-                        <i class="icon-plus-sign-alt"></i>添加标签
+                    <Navmenuitem index="3-2" @click="menuItemClick('AdminCategory')">
+                        <i class="icon-paste"></i>分类列表
                     </Navmenuitem>
                 </Navmenuitemgroup>
             </Navsubmenu>
-            <Navsubmenu index="4">
-                <div slot="title"><i class="icon-paste"></i>分类</div>
-                <Navmenuitemgroup>
-                    <Navmenuitem index="4-1">
-                        <i class="icon-list-alt"></i>分类列表
-                    </Navmenuitem>
-                    <Navmenuitem index="4-2">
-                        <i class="icon-plus-sign-alt"></i>添加分类
-                    </Navmenuitem>
-                </Navmenuitemgroup>
-            </Navsubmenu>
+            <Navmenuitem index="4" @click="menuItemClick('AdminMessage')">留言列表</Navmenuitem>
         </Navmenu>
         <router-link class="bottom-btn" :to="{name:'Home'}"><i class="icon-bold"><span>返回首页</span></i></router-link>
     </div>

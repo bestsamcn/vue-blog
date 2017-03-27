@@ -1,4 +1,4 @@
-<style src="@/assets/css/admin/article/addArticle.css" scoped></style>
+<style src="@/assets/css/admin/article/addArticle.css"></style>
 <template>
     <div class="add-article">
         <div class="info">
@@ -11,7 +11,7 @@
         </div>
         
         <div class="highlight">
-            <Markdowneditor class="editor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
+            <Markdowneditor :class="{'editor': 1}" ref="Markdowneditor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
         </div>
         <div class="btn text-right margin-top-20">
             <Ebutton type="info" size="large">提交</Ebutton>
@@ -21,7 +21,6 @@
 </template>
 <script>
     import { markdownEditor } from 'vue-simplemde'
-    import SimpleMDE from 'simplemde';
     import { Select, Option, Button } from 'element-ui';
     import { mapState } from 'vuex';
     import 'github-markdown-css';
@@ -39,7 +38,9 @@
                     }
                 },
                 tagChooseList:[],
-                cateChooseList:[]
+                cateChooseList:[],
+                isEditorFullscreen:false,
+                editor:null
             }
         },
         components:{
@@ -52,13 +53,13 @@
             ...mapState({
                 tagList:state=>state.admin.tagList,
                 categoryList:state=>state.admin.categoryList
-            })
+            }),
+            isFullscreen(){
+                return this.editor.isFullscreenActive();
+            }
         },
-        methods:{
-
-        },
-        mouted(){
-            this.simplemde.togglePreview()
+        mounted(){
+            this.editor = this.$refs.Markdowneditor.simplemde
         }
     }
 </script>

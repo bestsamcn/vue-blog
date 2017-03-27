@@ -19,21 +19,12 @@ sync(store, router, {
 })
 
 //路由动画
-router.beforeEach((to, from, next) => {
-    let direction = 'fadeInRight'
-    const toDepth = to.path.split('/').length
-    const fromDepth = from.path.split('/').length
-    direction = toDepth > fromDepth ? 'fadeInRight' : 'fadeInLeft';
-    toDepth == fromDepth &&  (direction = 'fade');
-    router.app.pageTransition = direction
-    next()
-});
 
 store.dispatch('setMobile', Utils.isMobile());
 
 //title
 router.beforeEach((to, from, next)=>{
-    document.title = to.name;
+    document.title = to.meta.title;
     next();
 });
 

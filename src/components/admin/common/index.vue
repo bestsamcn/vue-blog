@@ -7,9 +7,20 @@
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <div v-show="!isHideSidebar" class="mask" @click="setToggleSidebar()"></div>
             </transition>
+             <div class="admin-map">
+                <i class="icon-map-marker"></i>
+                <Breadcrumb class="map-list" separator="/">
+                    <BreadcrumbItem>管理</BreadcrumbItem>
+                    <BreadcrumbItem v-if="routerName.indexOf('Article') !== -1">文章</BreadcrumbItem>
+                    <BreadcrumbItem v-if="routerName !== 'AdminArticle' ">{{ title }}</BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <transition name="fade">
                 <keep-alive>
-                     <router-view class="content-view"></router-view>
+
+                     <router-view class="content-view">
+                        
+                     </router-view>
                  </keep-alive>
             </transition>
         </div>
@@ -19,11 +30,14 @@
     import Sidebar from '@/components/admin/common/sidebar';
     import Topbar from '@/components/admin/common/topbar';
     import { mapState, mapActions } from 'vuex';
+    import { Breadcrumb, BreadcrumbItem } from 'element-ui';
     export default{
         name:'adminCommon',
         components:{
             Sidebar,
-            Topbar
+            Topbar,
+            Breadcrumb,
+            BreadcrumbItem
         },
         methods:{
             ...mapActions([
@@ -32,7 +46,9 @@
         },
         computed:{
             ...mapState({
-                isHideSidebar:state=>state.admin.isHideSidebar
+                isHideSidebar:state=>state.admin.isHideSidebar,
+                title:state=>state.RouteModule.meta.title,
+                routerName:state=>state.RouteModule.name
             })
         },
         created(){

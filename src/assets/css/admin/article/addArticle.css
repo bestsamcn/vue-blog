@@ -17,10 +17,41 @@ h1,h2,h3,h4,h5,h6,p,span,pre,code{
     margin-top:30px;
 
 }
-.add-article .highlight .editor{
+.add-article .highlight .is-fullscreen{
     z-index: 10077;
     position: relative;
 }
+
 .add-article .highlight > span{
     font-family: "Microsoft Yahei";
+}
+.editor-toolbar.fullscreen{
+    width: 100%;
+    height: 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    z-index: 1000 !important;
+}
+.CodeMirror-fullscreen{
+    background: #fff;
+    position: fixed!important;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    z-index: 1000 !important;
+}
+.btn span{
+    color:#fff !important;
 }

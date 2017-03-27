@@ -1,6 +1,5 @@
 .admin-view{
     position: fixed;
-    z-index: 1002;
     left:0;
     top:0;
     bottom:0;
@@ -9,4 +8,7 @@
     background:#f6f6f6;
     height:100%;
     padding-top:49px;
+}
+.el-button--info span, .el-button--danger span, .el-button--warning span{
+    color:#fff !important;
 }

@@ -23,7 +23,7 @@
     overflow-y:scroll;
     overflow-x:hidden;
     position: relative;
-    padding-top:69px;
+    // padding-top:69px;
 }
 .admin-common .content .mask{
     width:100%;
@@ -55,14 +55,18 @@
     height:calc(100% - 40px);
     left:20px;
     top:20px;
+    overflow-y: scroll;
     position: absolute;
     background:#fff;
     padding:20px;
+    padding-top:60px;
 }
 .admin-map{
     display: -webkit-flex;
     display: flex;
     position: relative;
+    z-index: 10;
+    margin:20px;
     padding-left:15px;
 }
 .admin-map .icon-map-marker{

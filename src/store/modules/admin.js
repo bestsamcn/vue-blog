@@ -79,6 +79,77 @@ const state={
             value:'10',
             label:'电影'
         }
+    ],
+    messageList:[
+        {
+            id:1,
+            date:1490601608593,
+            name:'sam',
+            email:'12452342@qq.com',
+            text:'好无聊的课,顺便过来踩踩...',
+            ip:'192.168.1.1'
+        },
+        {
+            id:2,
+            date:1490601608593,
+            name:'sam',
+            email:'12452342@qq.com',
+            text:'好无聊的课,顺便过来踩踩...',
+            ip:'192.168.1.1'
+        },
+        {
+            id:3,
+            date:1490601608593,
+            name:'sam',
+            email:'12452342@qq.com',
+            text:'好无聊的课,顺便过来踩踩...',
+            ip:'192.168.1.1'
+        },
+        {
+            id:4,
+            date:1490601608593,
+            name:'sam',
+            email:'12452342@qq.com',
+            text:'好无聊的课,顺便过来踩踩...',
+            ip:'192.168.1.1'
+        }
+    ],
+    commentList:[
+        {
+            id:1,
+            article:1,
+            date:1490166061472,
+            ip:'192.168.0.1',
+            fromUser:'best',
+            parentComment:null,
+            content:'贱人就是矫情有木有。。。',
+        },
+        {
+            id:2,
+            article:1,
+            date:1490166061472,
+            ip:'192.168.0.1',
+            fromUser:'lala',
+            parentComment:null,
+            content:'我向你飞，雨温柔的吹',
+        },
+        {
+            id:3,
+            article:1,
+            date:1490166061472,
+            ip:'192.168.0.1',
+            fromUser:'lala',
+            parentComment:{
+                id:2,
+                article:1,
+                date:1490166061472,
+                ip:'192.168.0.1',
+                fromUser:'lala',
+                parentComment:null,
+                content:'我向你飞，雨温柔的吹',
+            },
+            content:'我向你飞，雨温柔的吹',
+        }
     ]
 }
 
