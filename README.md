@@ -1,8 +1,8 @@
 # Vue-Blog 个人博客项目
 
 ## 简介
-Vue-Blog 是一个基于vue+express的前后端分离的响应式web项目,
-- 前端使用了vue2全家桶完成，包括了vue + vue-router + axios + vuex + element-ui(后台使用);
+Vue-Blog 是一个基于``vue+express``的前后端分离的响应式web项目,
+- 前端使用了vue2全家桶完成，包括了``vue + vue-router + axios + vuex + element-ui``(后台使用);
 - 后端接口利用 express + mongodb + redis 开发
 
 ## 环境
@@ -11,6 +11,7 @@ Vue-Blog 是一个基于vue+express的前后端分离的响应式web项目,
 - vue  v2.3.1
 
 ## 开发
+因为自定义了element-ui主题，先要把根目录的theme文件夹，复制到``/node_modules/element-ui/lib``下
 ```
 git clone https://github.com/bestsamcn/vue-blog.git
 
