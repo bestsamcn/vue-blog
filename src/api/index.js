@@ -5,4 +5,4 @@ import $http from './service.js';
  * @param  {string} channelId  隶属渠道的id
  * @return {object}       返回结果 
  */
-export const getGameList = (params)=>$http('get', '/game/getGameList', params);
+export const getGameList = (params)=>$http('get', '/admin/createAdmin', params);
