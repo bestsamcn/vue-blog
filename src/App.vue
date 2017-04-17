@@ -60,11 +60,6 @@ export default {
         onLogoClick(e){
             this.setToast(e);
         }
-    },
-    created(){
-        getGameList({aaa:'adsfasdf'}).then(res=>{
-            console.log(res, '接口测试')
-        })
     }
     
    

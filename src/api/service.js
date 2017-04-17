@@ -14,11 +14,11 @@ var _http = function(type, url, params){
     var obj = {};
     params = Object.prototype.toString.call(params) === '[object Object]' ? params : {};
     if(type === 'get'){
-        obj.methods = 'get';
+        obj.method = 'get';
         obj.url = url;
         obj.params = params;
     }else if(type === 'post'){
-        obj.methods = 'post';
+        obj.method = 'post';
         obj.url = url;
         obj.data = params;
     }else{
