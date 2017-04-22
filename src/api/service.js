@@ -6,7 +6,7 @@ import * as config from './config.js';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Axios.defaults.withCredentials = true;
-// Axios.defaults.headers.cookie = 'NODESESSIONID=s%3AzbgJ3R5J-hvXdslTlBul3-9ugDrdDwB7.5FKtWoBM01wuvlmoRGaAkS2KIdIkq6m2CdZRqDxh5%2B8';
+Axios.defaults.headers['x-access-token'] = localStorage && JSON.parse(localStorage['token']).token || null;
 
 var _http = function(type, url, params){
     type = type || 'get';

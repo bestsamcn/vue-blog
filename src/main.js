@@ -21,6 +21,7 @@ sync(store, router, {
 //路由动画
 
 store.dispatch('setMobile', Utils.isMobile());
+store.dispatch('setToken', localStorage['token'] && JSON.parse(localStorage['token']).token || null);
 
 //title
 router.beforeEach((to, from, next)=>{

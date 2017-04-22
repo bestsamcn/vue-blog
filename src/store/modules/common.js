@@ -5,7 +5,8 @@ const state = {
     iShowMenu:false,
     iShowToast:false,
     toastMsg:'未知错误',
-    isMobile:false
+    isMobile:false,
+    token:''
 
 }
 
@@ -13,7 +14,8 @@ const getters = {
     iShowLoading:state=>state.iShowLoading,
     iShowMenu:state=>state.iShowMenu,
     iShowToast:state=>state.iShowToast,
-    isMobile:state=>state.isMobile
+    isMobile:state=>state.isMobile,
+    token:state=>state.token
 }
 
 const actions = {
@@ -36,6 +38,9 @@ const actions = {
     },
     setMobile({commit}, flag){
         commit(types.SET_MOBILE, flag);
+    },
+    setToken({commit}, token){
+        commit(types.SET_TOKEN, token);
     }
 }
 
@@ -59,6 +64,9 @@ const mutations = {
     },
     [types.SET_MOBILE](state, flag){
         state.isMobile = flag;
+    },
+    [types.SET_TOKEN](state, token){
+        state.token = token;
     }
 }
 

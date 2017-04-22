@@ -38,13 +38,16 @@
                     this.setToast('密码不能少于6位');
                     return;
                 }
-                API.createAdmin({account:that.account, password:that.password}).then(res=>{
+                API.adminLogin({account:that.account, password:that.password}).then(res=>{
 
                     if(res.status !== 200 || res.data.retCode !==0){
-                        that.setToast(res.msg || '创建失败');
+                        that.setToast(res.data.msg || '登录失败');
                         return;
                     }
-                    that.setToast(res.msg || '创建成功')
+                    that.setToast(res.data.msg || '登录成功');
+                    var token = {token:res.data.token, expires:res.data.expires};
+                    window.localStorage && (localStorage['token'] = JSON.stringify(token));
+                    that.setToken(res.data.token);
                 }).catch(err=>{
                     that.setToast('异常');
                 });
@@ -54,7 +57,8 @@
                 console.log('alert is close');
             },
             ...mapActions([
-                'setToast'
+                'setToast',
+                'setToken'
             ])
         }
     }
