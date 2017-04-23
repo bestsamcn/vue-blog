@@ -7,6 +7,7 @@
                 <input type="text" class="form-control uname" v-model="account" name="account" placeholder="用户名" />
                 <input type="password" class="form-control pword m-b" v-model="password" name="password" placeholder="密码" />
                 <button class="btn btn-success full-width btn-block m-b" @click.prevent="signClick()">登录</button>
+                <button class="btn btn-success full-width btn-block m-b" @click.prevent="signoutClick()">登录</button>
             </form>
         </div>
     </div>
@@ -52,13 +53,26 @@
                     that.setToast('异常');
                 });
             },
+            signoutClick(){
+                var that = this;
+                API.adminLogout().then(res=>{
+                    if(res.status !== 200 || res.data.retCode !==0){
+                        that.setToast(res.data.msg || '退出成功');
+                        return;
+                    }
+                    that.setToast(res.data.msg || '退出成功');
+                    if(localStorage.token) delete localStorage.token;
+                    that.delToken();
+                })
+            },
             onAlertClose(){
                 this.iShowMsg = false;
                 console.log('alert is close');
             },
             ...mapActions([
                 'setToast',
-                'setToken'
+                'setToken',
+                'delToken'
             ])
         }
     }

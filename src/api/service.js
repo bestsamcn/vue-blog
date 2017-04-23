@@ -6,8 +6,7 @@ import * as config from './config.js';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Axios.defaults.withCredentials = true;
-Axios.defaults.headers['x-access-token'] = localStorage && JSON.parse(localStorage['token']).token || null;
-
+Axios.defaults.headers['x-access-token'] = store.state.common.token || null;
 var _http = function(type, url, params){
     type = type || 'get';
     if (!url) throw new Error('请指定url');

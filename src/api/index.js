@@ -7,3 +7,4 @@ import $http from './service.js';
  */
 export const createAdmin = (params)=>$http('post', '/admin/createAdmin', params);
 export const adminLogin = (params)=>$http('post', '/admin/adminLogin', params);
+export const adminLogout = (params)=>$http('get', '/admin/adminLogout', params);

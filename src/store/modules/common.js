@@ -41,6 +41,9 @@ const actions = {
     },
     setToken({commit}, token){
         commit(types.SET_TOKEN, token);
+    },
+    delToken({commit}){
+        commit(types.SET_TOKEN);
     }
 }
 
@@ -67,6 +70,9 @@ const mutations = {
     },
     [types.SET_TOKEN](state, token){
         state.token = token;
+    },
+    [types.DEL_TOKEN](state){
+        state.token = null;
     }
 }
 
