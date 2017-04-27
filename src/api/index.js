@@ -5,6 +5,6 @@ import $http from './service.js';
  * @param  {string} channelId  隶属渠道的id
  * @return {object}       返回结果 
  */
-export const createAdmin = (params)=>$http('post', '/admin/createAdmin', params);
-export const adminLogin = (params)=>$http('post', '/admin/adminLogin', params);
-export const adminLogout = (params)=>$http('get', '/admin/adminLogout', params);
+export const create = (params)=>$http('post', '/admin/create', params);
+export const login = (params)=>$http('post', '/admin/login', params);
+export const logout = (params)=>$http('get', '/admin/logout', params);

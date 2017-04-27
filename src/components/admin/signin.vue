@@ -39,7 +39,7 @@
                     this.setToast('密码不能少于6位');
                     return;
                 }
-                API.adminLogin({account:that.account, password:that.password}).then(res=>{
+                API.login({account:that.account, password:that.password}).then(res=>{
 
                     if(res.status !== 200 || res.data.retCode !==0){
                         that.setToast(res.data.msg || '登录失败');
@@ -55,7 +55,7 @@
             },
             signoutClick(){
                 var that = this;
-                API.adminLogout().then(res=>{
+                API.logout().then(res=>{
                     if(res.status !== 200 || res.data.retCode !==0){
                         that.setToast(res.data.msg || '退出成功');
                         return;

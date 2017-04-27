@@ -72,7 +72,7 @@ const mutations = {
         state.token = token;
     },
     [types.DEL_TOKEN](state){
-        state.token = null;
+        state.token = '';
     }
 }
 

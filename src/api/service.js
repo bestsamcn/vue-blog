@@ -6,7 +6,6 @@ import * as config from './config.js';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Axios.defaults.withCredentials = true;
-Axios.defaults.headers['x-access-token'] = store.state.common.token || null;
 var _http = function(type, url, params){
     type = type || 'get';
     if (!url) throw new Error('请指定url');
@@ -26,6 +25,8 @@ var _http = function(type, url, params){
     var instance = Axios.create();
     //当创建实例的时候，拦截器放在default无效
     instance.interceptors.request.use(config=>{
+        //不能使用null，否则会将token的值变成'null'
+        config.headers['x-access-token'] = store.state.common.token || '';
         store.dispatch('setShowLoading');
         return config;
     }, error=> {
