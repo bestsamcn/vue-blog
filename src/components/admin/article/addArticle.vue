@@ -16,6 +16,7 @@
         <div class="btn text-right margin-top-20">
             <Ebutton type="info" size="large">提交</Ebutton>
             <Ebutton type="danger" size="large">清空</Ebutton>
+            <Ebutton type="danger" size="large" @click="getParseContent()">查看</Ebutton>
         </div>
     </div>
 </template>
@@ -58,8 +59,13 @@
                 return this.editor.isFullscreenActive();
             }
         },
+        methods:{
+            getParseContent(){
+                console.log(this.editor.markdown(this.highlightHtml))
+            }
+        },
         mounted(){
-            this.editor = this.$refs.Markdowneditor.simplemde
+            this.editor = this.$refs.Markdowneditor.simplemde;
         }
     }
 </script>

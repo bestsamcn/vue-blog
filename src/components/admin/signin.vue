@@ -49,6 +49,7 @@
                     var token = {token:res.data.token, expires:res.data.expires};
                     window.localStorage && (localStorage['token'] = JSON.stringify(token));
                     that.setToken(res.data.token);
+                    that.$router.push({name:'AdminHome'});
                 }).catch(err=>{
                     that.setToast('异常');
                 });
