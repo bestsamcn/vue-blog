@@ -7,3 +7,10 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const DEL_TOKEN = 'DEL_TOKEN';
 
 export const SET_TOGGLE_SIDEBAR = 'SET_TOGGLE_SIDEBAR';
+
+
+//标签
+export const GET_TAG_LIST = 'GET_TAG_LIST';
+export const DEL_TAG = 'DEL_TAG';
+export const ADD_TAG = 'ADD_TAG';
+export const EDIT_TAG = 'EDIT_TAG';

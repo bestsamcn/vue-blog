@@ -40,31 +40,20 @@
                     return;
                 }
                 API.login({account:that.account, password:that.password}).then(res=>{
-
-                    if(res.status !== 200 || res.data.retCode !==0){
-                        that.setToast(res.data.msg || '登录失败');
-                        return;
-                    }
-                    that.setToast(res.data.msg || '登录成功');
-                    var token = {token:res.data.token, expires:res.data.expires};
+                    that.setToast(res.msg || '登录成功');
+                    var token = {token:res.token, expires:res.expires};
                     window.localStorage && (localStorage['token'] = JSON.stringify(token));
-                    that.setToken(res.data.token);
+                    that.setToken(res.token);
                     that.$router.push({name:'AdminHome'});
-                }).catch(err=>{
-                    that.setToast('异常');
-                });
+                })
             },
             signoutClick(){
                 var that = this;
                 API.logout().then(res=>{
-                    if(res.status !== 200 || res.data.retCode !==0){
-                        that.setToast(res.data.msg || '退出成功');
-                        return;
-                    }
-                    that.setToast(res.data.msg || '退出成功');
+                    that.setToast(res.msg || '退出成功');
                     if(localStorage.token) delete localStorage.token;
                     that.delToken();
-                })
+                });
             },
             onAlertClose(){
                 this.iShowMsg = false;

@@ -1,85 +1,10 @@
 import * as type from '../mutation-types.js';
-
+import * as API from '../../api/index.js';
 
 const state={
     isHideSidebar:true,
-    categoryList:[
-        {
-            value:'javascript',
-            label:'javascript'
-        },
-        {
-            value:'label5',
-            label:'label5'
-        },
-        {
-            value:'css3',
-            label:'css3'
-        },
-        {
-            value:'node',
-            label:'node'
-        },
-        {
-            value:'redis',
-            label:'redis'
-        },
-        {
-            value:'angular',
-            label:'angular'
-        },
-        {
-            value:'vue',
-            label:'vue'
-        },
-        {
-            value:'mongodb',
-            label:'mongodb'
-        },
-
-    ],
-    tagList:[
-        {
-            value:'1',
-            label:'前端'
-        },
-        {
-            value:'2',
-            label:'移动端'
-        },
-        {
-            value:'3',
-            label:'响应式'
-        },
-        {
-            value:'4',
-            label:'混合开发'
-        },
-        {
-            value:'5',
-            label:'后端'
-        },
-        {
-            value:'6',
-            label:'运维'
-        },
-        {
-            value:'7',
-            label:'生活'
-        },
-        {
-            value:'8',
-            label:'职场'
-        },
-        {
-            value:'9',
-            label:'音乐'
-        },
-        {
-            value:'10',
-            label:'电影'
-        }
-    ],
+    categoryList:[],
+    tagList:[],
     messageList:[
         {
             id:1,
@@ -162,6 +87,24 @@ const getters={
 const actions={
     setToggleSidebar({commit}){
         commit(type.SET_TOGGLE_SIDEBAR);
+    },
+    getTagList({commit}, tagList){
+        API.getTagList().then(res=>{
+            commit(type.GET_TAG_LIST, res.data);
+        });
+    },
+    addTag({commit}, tag){
+        API.addTag(tag).then(function(res){
+            commit(type.ADD_TAG, res.data);
+        });
+    },
+    delTag({commit}, tagid){
+        API.delTag({id:tagid}).then(res=>{
+            commit(type.DEL_TAG, tagid);
+        });
+    },
+    editTag({commit}, tagObj){
+        commit(type.EDIT_TAG, tagObj);
     }
 }
 
@@ -172,6 +115,27 @@ const mutations={
             return;
         }
         state.isHideSidebar = !state.isHideSidebar;
+    },
+    [type.GET_TAG_LIST](state, tagList){
+        state.tagList = tagList;
+    },
+    [type.ADD_TAG](state, tag){
+        state.tagList.unshift(tag);
+    },
+    [type.DEL_TAG](state, tagid){
+        for(var i=0; i<state.tagList.length; i++){
+            if(state.tagList[i]._id == tagid){
+                state.tagList.splice(i, 1);
+                break;
+            }
+        }
+    },
+    [type.EDIT_TAG](state, tagObj){
+        state.forEach(item=>{
+            if(item._id == tagObj.id){
+                item._id == tagObj.name;
+            }
+        });
     }
 }
 

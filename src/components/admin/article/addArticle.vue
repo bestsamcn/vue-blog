@@ -3,13 +3,18 @@
     <div class="add-article">
         <div class="info">
             <Eselect v-model="tagChooseList" :multiple-limit="3" size="large" multiple placeholder="标签列表">
-                <Eoption v-for="tag in tagList" :label="tag.label" :value="tag.label" :key="tag.value"></Eoption>
+                <Eoption v-for="tag in tagList" :label="tag.name" :value="tag._id" :key="tag.value"></Eoption>
             </Eselect>
             <Eselect v-model="cateChooseList" :multiple-limit="3" size="large" multiple placeholder="分类列表">
                 <Eoption v-for="cate in categoryList" :label="cate.label" :value="cate.label" :key="cate.value"></Eoption>
             </Eselect>
         </div>
-        
+        <div class="margin-top-20">
+            <Einput v-model="title" placeholder="请输入标题"></Einput>
+        </div>
+        <div class="margin-top-20">
+            <Einput v-model="previewText" placeholder="请输入导读"></Einput>
+        </div>
         <div class="highlight">
             <Markdowneditor :class="{'editor': 1}" ref="Markdowneditor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
         </div>
@@ -22,7 +27,7 @@
 </template>
 <script>
     import { markdownEditor } from 'vue-simplemde'
-    import { Select, Option, Button } from 'element-ui';
+    import { Select, Option, Button, Input } from 'element-ui';
     import { mapState } from 'vuex';
     import 'github-markdown-css';
     export default{
@@ -38,6 +43,8 @@
                         highlightingTheme: 'atom-one-dark' 
                     }
                 },
+                title:'',
+                previewText:'',
                 tagChooseList:[],
                 cateChooseList:[],
                 isEditorFullscreen:false,
@@ -48,7 +55,8 @@
             Markdowneditor:markdownEditor,
             Eselect:Select,
             Eoption:Option,
-            Ebutton:Button
+            Ebutton:Button,
+            Einput:Input
         },
         computed:{
             ...mapState({

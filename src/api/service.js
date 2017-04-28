@@ -2,11 +2,12 @@ import Vue from 'vue';
 import store from '../store/index.js';
 import Axios from 'axios';
 import * as config from './config.js';
+import MSG from './message.js';
 
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Axios.defaults.withCredentials = true;
-var _http = function(type, url, params){
+var _http = function(type, url, params, isToast){
     type = type || 'get';
     if (!url) throw new Error('请指定url');
     var obj = {};
@@ -40,6 +41,28 @@ var _http = function(type, url, params){
         store.dispatch('setHideLoading');
         return Promise.reject(error);
     });
-    return instance.request(obj);
+
+    var __promise = new Promise((resolve, reject)=>{
+        instance.request(obj).then(res=>{
+            if(res.status == 200 && res.data.retCode !==0){
+                for(var i in MSG){
+                    if(i == res.data.retCode){
+                        isToast && store.dispatch('setToast', MSG[i]);
+                        break;
+                    }
+                }
+                return false;
+            }
+            return resolve(res.data);
+        }, err=>{
+            isToast && store.dispatch('setToast', '异常');
+            console.log(err, '请求失败');
+        }).catch(e=>{
+            isToast && store.dispatch('setToast', '异常');
+            console.log(e, '请求失败');
+        });
+    });
+    return __promise;
 }
+
 export default _http;
