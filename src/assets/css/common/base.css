@@ -3,7 +3,7 @@
   src: url('../../font/Rancho-Regular.ttf');
 }
 * {
-    // color: #333;
+    /*color: #333;*/
     box-sizing: border-box;
     font-size: 14px;
     -webkit-overflow-scrolling:touch !important;  

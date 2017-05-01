@@ -14,6 +14,7 @@ import About from '@/components/about/index.vue'
 import Article from '@/components/article/index.vue'
 import ArticleDetail from '@/components/article/detail.vue'
 import Search from '@/components/search/index.vue'
+import Message from '@/components/message/index.vue'
 
 //admin
 // const Admin = resolve=>require(['../components/admin/index.vue'], resolve);
@@ -83,6 +84,14 @@ var routerMap = {
                 title:'文章详情'
             },
             component:ArticleDetail
+        },
+        {
+            path:'/message',
+            name:'Message',
+            meta:{
+                title:'留言'
+            },
+            component:Message
         },
         {
             path:'/admin',
