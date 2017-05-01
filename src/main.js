@@ -23,6 +23,7 @@ store.dispatch('setMobile', Utils.isMobile());
 //全局数据初始化
 store.dispatch('setToken', localStorage['token'] && JSON.parse(localStorage['token']).token);
 store.dispatch('getTagList');
+store.dispatch('getCategoryList');
 
 //title
 router.beforeEach((to, from, next)=>{

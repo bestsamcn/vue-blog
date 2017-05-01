@@ -5,40 +5,6 @@ const state={
     isHideSidebar:true,
     categoryList:[],
     tagList:[],
-    messageList:[
-        {
-            id:1,
-            date:1490601608593,
-            name:'sam',
-            email:'12452342@qq.com',
-            text:'好无聊的课,顺便过来踩踩...',
-            ip:'192.168.1.1'
-        },
-        {
-            id:2,
-            date:1490601608593,
-            name:'sam',
-            email:'12452342@qq.com',
-            text:'好无聊的课,顺便过来踩踩...',
-            ip:'192.168.1.1'
-        },
-        {
-            id:3,
-            date:1490601608593,
-            name:'sam',
-            email:'12452342@qq.com',
-            text:'好无聊的课,顺便过来踩踩...',
-            ip:'192.168.1.1'
-        },
-        {
-            id:4,
-            date:1490601608593,
-            name:'sam',
-            email:'12452342@qq.com',
-            text:'好无聊的课,顺便过来踩踩...',
-            ip:'192.168.1.1'
-        }
-    ],
     commentList:[
         {
             id:1,
@@ -81,7 +47,8 @@ const state={
 const getters={
     isHideSidebar:state=>state.isHideSidebar,
     categoryList:state=>state.categoryList,
-    tagList:state=>state.tagList
+    tagList:state=>state.tagList,
+    categoryList:state=>state.categoryList
 }
 
 const actions={
@@ -104,7 +71,33 @@ const actions={
         });
     },
     editTag({commit}, tagObj){
-        commit(type.EDIT_TAG, tagObj);
+        tagObj.id = tagObj._id;
+        delete tagObj._id;
+        API.editTag(tagObj).then(res=>{
+            commit(type.EDIT_TAG, tagObj);
+        });
+    },
+    getCategoryList({commit}){
+        API.getCategoryList().then(res=>{
+            commit(type.GET_CATEGORY_LIST, res.data);
+        });
+    },
+    addCategory({commit}, item){
+        API.addCategory(item).then(function(res){
+            commit(type.ADD_CATEGORY, res.data);
+        });
+    },
+    delCategory({commit}, cateid){
+        API.delCategory({id:cateid}).then(res=>{
+            commit(type.DEL_CATEGORY, cateid);
+        });
+    },
+    editCategory({commit}, cateObj){
+        cateObj.id = cateObj._id;
+        delete cateObj._id;
+        API.editCategory(cateObj).then(res=>{
+            commit(type.EDIT_CATEGORY, cateObj);
+        });
     }
 }
 
@@ -131,9 +124,29 @@ const mutations={
         }
     },
     [type.EDIT_TAG](state, tagObj){
-        state.forEach(item=>{
+        state.tagList.forEach(item=>{
             if(item._id == tagObj.id){
-                item._id == tagObj.name;
+                item.name = tagObj.name;
+            }
+        });
+    },[type.GET_CATEGORY_LIST](state, categoryList){
+        state.categoryList = categoryList;
+    },
+    [type.ADD_CATEGORY](state, cate){
+        state.categoryList.unshift(cate);
+    },
+    [type.DEL_CATEGORY](state, tagid){
+        for(var i=0; i<state.categoryList.length; i++){
+            if(state.categoryList[i]._id == tagid){
+                state.categoryList.splice(i, 1);
+                break;
+            }
+        }
+    },
+    [type.EDIT_CATEGORY](state, cateObj){
+        state.categoryList.forEach(item=>{
+            if(item._id == cateObj.id){
+                item.name = cateObj.name;
             }
         });
     }

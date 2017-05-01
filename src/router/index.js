@@ -35,6 +35,7 @@ import AdminAddArticle from '@/components/admin/article/addArticle.vue'
 import AdminTag from '@/components/admin/tag/index.vue'
 import AdminCate from '@/components/admin/category/index.vue'
 import AdminMsg from '@/components/admin/message/index.vue'
+import AdminMsgDetail from '@/components/admin/message/detail.vue'
 import AdminComment from '@/components/admin/article/articleComment.vue'
 
 Vue.use(Router)
@@ -146,6 +147,14 @@ var routerMap = {
                                title:'留言'
                             },
                             component:AdminMsg
+                        },
+                        {
+                            path:'adminMessageDetail/:id',
+                            name:'AdminMessageDetail',
+                            meta:{
+                               title:'留言详情'
+                            },
+                            component:AdminMsgDetail
                         },
                         {
                             path:'adminComment',

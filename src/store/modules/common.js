@@ -6,7 +6,8 @@ const state = {
     iShowToast:false,
     toastMsg:'未知错误',
     isMobile:false,
-    token:''
+    token:'',
+    isLogin:false,
 
 }
 
@@ -15,7 +16,8 @@ const getters = {
     iShowMenu:state=>state.iShowMenu,
     iShowToast:state=>state.iShowToast,
     isMobile:state=>state.isMobile,
-    token:state=>state.token
+    token:state=>state.token,
+    isLogin:state=>state.isLogin
 }
 
 const actions = {
@@ -44,6 +46,9 @@ const actions = {
     },
     delToken({commit}){
         commit(types.SET_TOKEN);
+    },
+    setLogin({commit}, isLogin){
+        commit(types.SET_LOGIN, isLogin);
     }
 }
 
@@ -70,9 +75,14 @@ const mutations = {
     },
     [types.SET_TOKEN](state, token){
         state.token = token;
+        state.isLogin = true;
     },
     [types.DEL_TOKEN](state){
         state.token = '';
+        state.isLogin = false;
+    },
+    [types.SET_LOGIN](state){
+        state.isLogin = isLogin;
     }
 }
 

@@ -14,7 +14,7 @@
 </template>
 <script>
     import { Message } from 'element-ui';
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
     import * as API from '@/api/index.js';
     export default{
         name:'signin',
@@ -27,6 +27,12 @@
                 account:'',
                 password:''
             }
+        },
+        computed:{
+            ...mapState({
+                isLogin:state=>state.common.isLogin,
+                token:state=>state.common.token
+            })
         },
         methods:{
             signClick(){
@@ -43,6 +49,7 @@
                     that.setToast(res.msg || '登录成功');
                     var token = {token:res.token, expires:res.expires};
                     window.localStorage && (localStorage['token'] = JSON.stringify(token));
+                    window.localStorage && (localStorage['isLogin'] = true);
                     that.setToken(res.token);
                     that.$router.push({name:'AdminHome'});
                 })
@@ -52,6 +59,7 @@
                 API.logout().then(res=>{
                     that.setToast(res.msg || '退出成功');
                     if(localStorage.token) delete localStorage.token;
+                    localStorage['isLogin'] && delete localStorage.isLogin;
                     that.delToken();
                 });
             },
@@ -64,6 +72,11 @@
                 'setToken',
                 'delToken'
             ])
+        },
+        mounted(){
+            if(this.isLogin && !!this.token){
+                this.$router.push({name:'AdminHome'});
+            }
         }
     }
 </script>

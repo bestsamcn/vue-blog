@@ -1,13 +1,13 @@
-<style src="@/assets/css/admin/category/index.css" scoped></style>
+<style src="@/assets/css/admin/tag/index.css" scoped></style>
 <template>
-    <div class="admin-category">
-        <Etable border :data="cateList" border>
-            <Etableculume label="类名" prop="label"></Etableculume>
-            <Etableculume label="值" prop="value"></Etableculume>
+    <div class="admin-tag">
+        <Etable :data="categoryList" border>
+            <Etableculume label="分类名" prop="name"></Etableculume>
+            <Etableculume label="值" prop="_id"></Etableculume>
             <Etableculume label="操作" fixed="right">
-                <template scope="scope">
-                    <Ebutton type="info">编辑</Ebutton>
-                    <Ebutton type="danger">删除</Ebutton>
+                <template scope="scope" class="text-right">
+                    <Ebutton type="info" @click="showEditModal(true, scope.row)">编辑</Ebutton>
+                    <Ebutton type="danger" @click="delCategory(scope.row._id)">删除</Ebutton>
                 </template>
             </Etableculume>
         </Etable>
@@ -16,22 +16,33 @@
         </div>
         <Edialog title="添加分类" v-model="isShowDialog" :modal="false">
             <Eform>
-                <Eformitem label="类名">
-                    <Einput :v-model="form.cateName" autoComplete="off"></Einput>
+                <Eformitem label="分类名">
+                    <Einput v-model="form.categoryName" autoComplete="off"></Einput>
                 </Eformitem>
             </Eform>
             <div class="text-right" slot="footer">
                 <Ebutton type="warning" size="large" @click="showDialog(false)">取消</Ebutton>
-                <Ebutton type="info" size="large">确定</Ebutton>
+                <Ebutton type="info" size="large" @click="__addCategory()">确定</Ebutton>
+            </div>
+        </Edialog>
+        <Edialog title="编辑分类" v-model="isEditModal" :modal="false">
+            <Eform>
+                <Eformitem label="分类名">
+                    <Einput v-model="form.category.name" autoComplete="off"></Einput>
+                </Eformitem>
+            </Eform>
+            <div class="text-right" slot="footer">
+                <Ebutton type="warning" size="large" @click="showEditModal(false)">取消</Ebutton>
+                <Ebutton type="info" size="large" @click="__editCategory()">更新</Ebutton>
             </div>
         </Edialog>
     </div>
 </template>
 <script>
     import { Table, TableColumn, Button, Dialog, Form, FormItem, Input, Tag } from 'element-ui';
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
     export default{
-        name:'adminCategory',
+        name:'adminTag',
         components:{
             Etable:Table,
             Etableculume:TableColumn,
@@ -43,23 +54,51 @@
         },
         data(){
             return{
-                form:{
-                    cateName:''
-                },
-                isShowDialog:false
+               isShowDialog:false,
+               isEditModal:false,
+               form:{
+                    categoryName:'',
+                    category:{}
+               }
             }
         },
         computed:{
             ...mapState({
-                cateList:state=>state.admin.categoryList
+                categoryList:state=>state.admin.categoryList
             })
         },
         methods:{
+            ...mapActions([
+                'delCategory',
+                'addCategory',
+                'editCategory',
+                'setToast'
+            ]),
             showDialog(b){
                 this.isShowDialog = !!b;
             },
-            addTag(){
-
+            __addCategory(){
+                var that = this;
+                if(!this.form.categoryName){
+                    this.setToast('分类名不能为空');
+                    return;
+                }
+                this.addCategory({name:this.form.categoryName}).then(()=>{
+                    this.form.categoryName = '';
+                    this.isShowDialog = false;
+                });
+            },
+            showEditModal(isShow, item){
+                this.isEditModal = isShow;
+                if(isShow) this.form.category = JSON.parse(JSON.stringify(item));
+                if(!isShow) this.form.category = {};
+            },
+            __editCategory(){
+                var that = this;
+                if(!that.form.category) return;
+                this.editCategory(that.form.category).then(res=>{
+                    this.isEditModal = false;
+                });
             }
         }
     }
