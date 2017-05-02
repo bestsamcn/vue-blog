@@ -5,7 +5,8 @@ import * as config from './config.js';
 import MSG from './message.js';
 
 Axios.defaults.baseURL = config.ROOT_API;
-Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+Axios.defaults.headers.get['Content-Type'] = 'text/plain;charset=UTF-8';
 Axios.defaults.withCredentials = true;
 var _http = function(type, url, params, isToast){
     type = type || 'get';

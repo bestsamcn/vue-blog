@@ -2,22 +2,34 @@
 <template>
     <div class="admin-article-list">
         <Etable :data="articleList" border style="width:100%;">
-            <Etablecolumn prop="date" label="日期">
+            <Etablecolumn prop="createTime" label="日期">
                 <template scope="scope">
-                    {{ scope.row.date | dateFormat('yyyy-MM-dd') }}
+                    {{ scope.row.createTime | dateFormat('yyyy-MM-dd') }}
                 </template>
             </Etablecolumn>
-            <Etablecolumn prop="title" label="标题"></Etablecolumn>
-            <Etablecolumn prop="author" label="作者" width="80"></Etablecolumn>
-            <Etablecolumn prop="remask" label="摘要"></Etablecolumn>
-            <Etablecolumn prop="tags" label="标签" width="250">
+            <Etablecolumn prop="title" label="标题">
                 <template scope="scope">
-                    <Etag v-for="tag in scope.row.tags" :key="tag.id" class="margin-0-5">{{ tag }}</Etag>
+                    {{scope.row.title | textEllipsis(30,true)}}
+                </template>
+            </Etablecolumn>
+            <Etablecolumn prop="creator" label="作者" width="80">
+                <template scope="scope">
+                    {{scope.row.creator || 'Best'}} 
+                </template>
+            </Etablecolumn>
+            <Etablecolumn prop="previewText" label="摘要">
+                <template scope="scope">
+                    {{scope.row.previewText | textEllipsis(30,true)}}
+                </template>
+            </Etablecolumn>
+            <Etablecolumn prop="tag" label="标签" width="250">
+                <template scope="scope">
+                    <Etag v-for="item in scope.row.tag" :key="item._id" class="margin-0-5">{{ item.name }}</Etag>
                 </template>
             </Etablecolumn>
             <Etablecolumn prop="category" label="归类"  width="180">
                 <template scope="scope">
-                    <Etag v-for="cate in scope.row.category" :key="cate.id" class="margin-0-5">{{ cate }}</Etag>
+                    <Etag v-for="item in scope.row.category" :key="item._id" class="margin-0-5">{{ item.name }}</Etag>
                 </template>
             </Etablecolumn>
             <Etablecolumn fixed="right" label="操作" >
@@ -32,58 +44,18 @@
 </template>
 <script>
     import { Table, TableColumn, Button, Tag } from 'element-ui';
+    import * as API from '@/api/index.js';
     export default{
         name:'adminArticleList',
         data(){
             return{
-                articleList:[
-                    {
-                        id:1,
-                        date:1490166061472,
-                        category:['javascript','html5'],
-                        tags:['前端','效果','动画'],
-                        title:'无缝轮播图效果',
-                        author:'sam',
-                        like:123,
-                        remask:'教你如何使用原生js写一个无缝轮播图',
-                        thumbnail:'XSJjxajsdo232.png',
-                        picture:'lkasdflj23sfjas.png',
-                        comments:[
-                            {
-                                id:1,
-                                date:1490166061472,
-                                ip:'192.168.0.1',
-                                fromUser:'best',
-                                parentComment:null,
-                                content:'贱人就是矫情有木有。。。',
-                            },
-                            {
-                                id:2,
-                                date:1490166061472,
-                                ip:'192.168.0.1',
-                                fromUser:'lala',
-                                parentComment:null,
-                                content:'我向你飞，雨温柔的吹',
-                            },
-                            {
-                                id:3,
-                                date:1490166061472,
-                                ip:'192.168.0.1',
-                                fromUser:'lala',
-                                parentComment:{
-                                    id:2,
-                                    date:1490166061472,
-                                    ip:'192.168.0.1',
-                                    fromUser:'lala',
-                                    parentComment:null,
-                                    content:'我向你飞，雨温柔的吹',
-                                },
-                                content:'我向你飞，雨温柔的吹',
-                            }
-                        ]
-                    }
-                ],
-                operateWidth:0
+                articleList:[],
+                operateWidth:0,
+                pageIndex:1,
+                pageSize:10,
+                isMore:true,
+                total:0,
+                keyword:''
             }
         },
         components:{
@@ -91,6 +63,23 @@
             Etablecolumn:TableColumn,
             Ebutton:Button,
             Etag:Tag
+        },
+        methods:{
+            getArticleList(){
+                var that = this;
+                if(!this.isMore) return;
+                var obj = {
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize,
+                    keyword:this.keyword
+                }
+                API.getArticleList(obj).then(res=>{
+                    this.articleList = res.data;
+                    if(res.data.length < this.pageSize){
+                        this.isMore = false;
+                    }
+                });
+            }
         },
         created(){
             let type = "orientationchange" in window ? "orientationchange" : "resize";
@@ -102,6 +91,10 @@
                     this.operateWidth = 220;
                 }
             })
+        },
+        mounted(){
+            this.keyword='居中'
+            this.getArticleList();
         }
     }
 </script>

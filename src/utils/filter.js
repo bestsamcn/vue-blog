@@ -74,6 +74,16 @@ Filter.install = Vue=>{
         else if(_s>=1) res=parseInt(_s) +'秒前';
         else res='刚刚';
         return res;
+    });
+
+    /**
+     * 只显示指定字数，isPoint为真时，剩余以。。。代替,否则直接截取。
+     */
+    Vue.filter('textEllipsis', (str, len, isPoint)=>{
+        isPoint = isPoint || false;
+        if(!str) return;
+        if(str.length <= len) return str;
+        return (isPoint ? str.substring(0, len)+'...' : str.substring(0, len));
     })
 }
 

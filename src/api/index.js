@@ -5,6 +5,8 @@ import $http from './service.js';
  * @param  {string} channelId  隶属渠道的id
  * @return {object}       返回结果 
  */
+
+//权限
 export const create = (params)=>$http('post', '/admin/create', params);
 export const login = (params)=>$http('post', '/admin/login', params, true);
 export const logout = (params)=>$http('get', '/admin/logout', params);
@@ -26,3 +28,8 @@ export const addMessage = (params)=>$http('post', '/message/add', params, true);
 export const delMessage = (params)=>$http('get', '/message/delete', params, true);
 export const getMessageDetail = (params)=>$http('get', '/message/getDetail', params, true);
 export const getMessageList = (params)=>$http('get', '/message/getList', params);
+
+
+//文章
+export const addArticle = (params)=>$http('post', '/article/add', params, true);
+export const getArticleList = (params)=>$http('get', '/article/getList', params, true);
