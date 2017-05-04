@@ -14,7 +14,7 @@ html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     padding:0;
 }
 ul,li{
-    list-style: none;
+    // list-style: none;
 }
 a {
     text-decoration: none;

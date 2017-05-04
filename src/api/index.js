@@ -32,4 +32,7 @@ export const getMessageList = (params)=>$http('get', '/message/getList', params)
 
 //文章
 export const addArticle = (params)=>$http('post', '/article/add', params, true);
+export const delArticle = (params)=>$http('get', '/article/delete', params, true);
+export const editArticle = (params)=>$http('post', '/article/edit', params, true);
 export const getArticleList = (params)=>$http('get', '/article/getList', params, true);
+export const getArticleDetail = (params)=>$http('get', '/article/getDetail', params, true);

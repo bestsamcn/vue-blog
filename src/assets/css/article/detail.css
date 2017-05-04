@@ -51,10 +51,13 @@
 }
 .article-detail .main .preview{
     text-align: left;
-    color:#999;
+    color: #999;
     line-height: 22px;
-    margin-top:10px;
-
+    margin-top: 10px;
+    background: #F6F8FA;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
 }
 .article-detail .main .img{
     width:100%;
@@ -79,4 +82,7 @@
     border-radius: 30px;
     color:#2B4356;
     border:1px solid #2B4356;
+}
+.article-detail .main .content{
+    font-size: 16px;
 }

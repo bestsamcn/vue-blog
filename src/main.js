@@ -26,10 +26,10 @@ store.dispatch('getTagList');
 store.dispatch('getCategoryList');
 
 //title
-router.beforeEach((to, from, next)=>{
-    document.title = to.meta.title;
-    next();
-});
+// router.afterEach((to, from, next)=>{
+//     document.title = to.meta.title;
+//     next();
+// });
 
 
 new Vue({

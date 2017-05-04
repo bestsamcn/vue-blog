@@ -4,22 +4,20 @@
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
-                <a href="#">学习</a>
-                <a href="#">工作</a>
-                <a href="#">游戏</a>
-                <a href="#">思考</a>
-                <a href="#">吐槽</a>
-                <a href="#">不好意思</a>
-                <a href="#">我是辣鸡</a>
-                <a href="#">一起飞</a>
-                <a href="#">好好学习</a>
-                <a href="#">牛逼</a>
+                <a href="#" v-for="item in tagList">{{item.name}}</a>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import { mapState } from 'vuex';
     export default{
-        name:'tags'
+        name:'tags',
+        computed:{
+            ...mapState({
+                tagList:state=>state.admin.tagList
+            })
+            
+        }
     }
 </script>

@@ -65,7 +65,6 @@
             },
             onAlertClose(){
                 this.iShowMsg = false;
-                console.log('alert is close');
             },
             ...mapActions([
                 'setToast',

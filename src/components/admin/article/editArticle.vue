@@ -2,10 +2,10 @@
 <template>
     <div class="add-article">
         <div class="info">
-            <Eselect v-model="tagChooseList"  size="large"  placeholder="标签列表">
+            <Eselect v-model="tagChoose"  size="large"  placeholder="标签列表">
                 <Eoption v-for="tag in tagList" :label="tag.name" :value="tag._id" :key="tag._id"></Eoption>
             </Eselect>
-            <Eselect v-model="cateChooseList"  size="large"  placeholder="分类列表">
+            <Eselect v-model="cateChoose"  size="large"  placeholder="分类列表">
                 <Eoption v-for="cate in categoryList" :label="cate.name" :value="cate._id" :key="cate._id"></Eoption>
             </Eselect>
         </div>
@@ -33,7 +33,7 @@
     import '@/assets/css/common/github-markdown.css';
     import xss from 'xss';
     export default{
-        name:'addArticle',
+        name:'editArticle',
         data(){
             return{
                 highlightHtml:'',
@@ -47,8 +47,8 @@
                 },
                 title:'',
                 previewText:'',
-                tagChooseList:[],
-                cateChooseList:[],
+                tagChoose:'',
+                cateChoose:'',
                 isEditorFullscreen:false,
                 editor:null
             }
@@ -69,6 +69,12 @@
                 return this.editor.isFullscreenActive();
             }
         },
+        watch:{
+            '$route':'getArticle'
+        },
+        created(){
+            this.getArticle();
+        },
         methods:{
             ...mapActions([
                 'setToast'
@@ -80,10 +86,10 @@
                 if(!this.title){
                     return this.setToast('请添加标题');
                 }
-                if(!this.tagChooseList.length){
+                if(!this.tagChoose){
                     return this.setToast('请添加标签');
                 }
-                if(!this.cateChooseList.length){
+                if(!this.cateChoose){
                     return this.setToast('请添加分类');
                 }
                 if(!this.previewText){
@@ -94,20 +100,34 @@
                 }
                 var that = this;
                 var obj = {
+                    id:this.$route.params.id,
                     title:that.title,
-                    tag:that.tagChooseList.toString(),
-                    category:that.cateChooseList.toString(),
+                    tag:that.tagChoose,
+                    category:that.cateChoose,
                     previewText:that.previewText,
-                    // content:xss(that.highlightHtml)
+                    // content:that.highlightHtml
                     content:that.editor.markdown(that.highlightHtml)
                 }
-                console.log(that.editor.markdown(that.highlightHtml))
-                API.addArticle(obj).then(res=>{
+                API.editArticle(obj).then(res=>{
                     this.title = '';
-                    this.tagChooseList = [];
-                    this.cateChooseList = [];
+                    this.tagChoose = '';
+                    this.cateChoose = '';
                     this.previewText = '';
-                    this.highlightHtml = '';  
+                    this.highlightHtml = ''; 
+                    this.$router.push({name:'AdminArticle'});
+                });
+            },
+            getArticle(){
+                if(!this.$route.params.id){
+                    this.$router.push({name:'AdminArticle'});
+                    return;
+                }
+                API.getArticleDetail({id:this.$route.params.id}).then(res=>{
+                    this.title = res.data.title;
+                    this.tagChoose = res.data.tag._id;
+                    this.cateChoose = res.data.category._id;
+                    this.previewText = res.data.previewText;
+                    this.highlightHtml = res.data.content;
                 });
             }
         },

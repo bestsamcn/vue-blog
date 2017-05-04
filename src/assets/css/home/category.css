@@ -23,26 +23,31 @@
 .home-category .cont{
     display: -webkit-flex;
     display: flex;
+    flex-wrap:wrap;
     justify-content:space-between;
 }
-.home-category .cont div{
-    width:50%;
-}
-.home-category .cont div a{
+.home-category .cont a{
     padding:10px 0;
     border-bottom:1px solid #f1f1f1;
     display: -webkit-flex;
     display: flex;
+    width:calc(50% - 10px);
     align-items:center;
     color:#2B4356;
     justify-content:space-between;
 }
-.home-category .cont div a span{
+.home-category .cont a:nth-child(odd){
+    margin-right:10px;
+}
+.home-category .cont a:nth-child(even){
+    margin-left:10px;
+}
+.home-category .conta span{
     font-size: 12px;
 }
-.home-category .cont div a:hover span{
+.home-category .cont a:hover span{
     color:#1ABC9C;
 }
-.home-category .cont div a:last-child{
+.home-category .cont a:last-child{
     border-bottom: none;
 }

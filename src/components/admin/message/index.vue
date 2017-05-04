@@ -64,7 +64,6 @@
         mounted(){
             var that = this;
             API.getMessageList(that.params).then(res=>{
-                console.log(res)
                 that.messageList = res.data;
                 that.total = res.total;
             })

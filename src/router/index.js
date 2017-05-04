@@ -33,6 +33,7 @@ import Signin from '@/components/admin/signin.vue'
 import AdminHome from '@/components/admin/home/index.vue'
 import AdminArticle from '@/components/admin/article/index.vue'
 import AdminAddArticle from '@/components/admin/article/addArticle.vue'
+import AdminEditArticle from '@/components/admin/article/editArticle.vue'
 import AdminTag from '@/components/admin/tag/index.vue'
 import AdminCate from '@/components/admin/category/index.vue'
 import AdminMsg from '@/components/admin/message/index.vue'
@@ -78,7 +79,7 @@ var routerMap = {
             component:Article
         },
         {
-            path:'/article/detail',
+            path:'/article/detail/:id',
             name:'ArticleDetail',
             meta:{
                 title:'文章详情'
@@ -132,6 +133,14 @@ var routerMap = {
                                 title:'添加文章'
                             },
                             component:AdminAddArticle
+                        },
+                        {
+                            path:'editArticle/:id',
+                            name:'AdminEditArticle',
+                            meta:{
+                                title:'编辑文章'
+                            },
+                            component:AdminEditArticle
                         },
                         {
                             path:'adminTag',

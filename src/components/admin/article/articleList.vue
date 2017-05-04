@@ -22,21 +22,15 @@
                     {{scope.row.previewText | textEllipsis(30,true)}}
                 </template>
             </Etablecolumn>
-            <Etablecolumn prop="tag" label="标签" width="250">
-                <template scope="scope">
-                    <Etag v-for="item in scope.row.tag" :key="item._id" class="margin-0-5">{{ item.name }}</Etag>
-                </template>
+            <Etablecolumn prop="tag.name" label="标签" width="100">
             </Etablecolumn>
-            <Etablecolumn prop="category" label="归类"  width="180">
-                <template scope="scope">
-                    <Etag v-for="item in scope.row.category" :key="item._id" class="margin-0-5">{{ item.name }}</Etag>
-                </template>
+            <Etablecolumn prop="category.name" label="归类"  width="100">
             </Etablecolumn>
             <Etablecolumn fixed="right" label="操作" >
                 <template scope="scope">
-                    <Ebutton type="info" size="small">查看</Ebutton>
-                    <Ebutton size="small">编辑</Ebutton>
-                    <Ebutton type="danger" size="small">删除</Ebutton>
+                    <Ebutton type="info" size="small" @click="goState('ArticleDetail', scope.row._id)">查看</Ebutton>
+                    <Ebutton size="small" @click="goState('AdminEditArticle', scope.row._id)">编辑</Ebutton>
+                    <Ebutton type="danger" size="small" @click="delArticle(scope.row)">删除</Ebutton>
                   </template>
             </Etablecolumn>
         </Etable>
@@ -79,6 +73,16 @@
                         this.isMore = false;
                     }
                 });
+            },
+            delArticle(item){
+                if(!item._id || item._id.length !== 24) return;
+                API.delArticle({id:item._id}).then(res=>{
+                    this.articleList.splice(this.articleList.indexOf(item), 1);
+                });
+            },
+            goState(name, _id){
+                if(!_id) return;
+                this.$router.push({name:name, params:{id:_id}});
             }
         },
         created(){
@@ -93,7 +97,6 @@
             })
         },
         mounted(){
-            this.keyword='居中'
             this.getArticleList();
         }
     }
