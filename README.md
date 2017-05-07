@@ -3,7 +3,7 @@
 ## 简介
 Vue-Blog 是一个基于``vue+express``的前后端分离的响应式web项目,
 - 前端使用了vue2全家桶完成，包括了``vue + vue-router + axios + vuex + element-ui``(后台使用);
-- 后端接口利用 express + mongodb + redis 开发
+- 后端接口利用 express + mongodb + redis 开发，后端地址[请点我](https://github.com/bestsamcn/node-blog)
 
 ## 环境
 - node v4.4.5
