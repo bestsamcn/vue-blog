@@ -114,7 +114,8 @@ var routerMap = {
                             path:'/',
                             name:'AdminHome',
                             meta:{
-                                title:'预览'
+                                title:'预览',
+                                auth:true
                             },
                             component:AdminHome
                         },
@@ -122,7 +123,8 @@ var routerMap = {
                             path:'article',
                             name:'AdminArticle',
                             meta:{
-                               title:'文章'
+                               title:'文章',
+                               auth:true
                             },
                             component:AdminArticle
                         },
@@ -130,7 +132,8 @@ var routerMap = {
                             path:'addArticle',
                             name:'AdminAddArticle',
                             meta:{
-                                title:'添加文章'
+                                title:'添加文章',
+                                auth:true
                             },
                             component:AdminAddArticle
                         },
@@ -138,7 +141,8 @@ var routerMap = {
                             path:'editArticle/:id',
                             name:'AdminEditArticle',
                             meta:{
-                                title:'编辑文章'
+                                title:'编辑文章',
+                                auth:true
                             },
                             component:AdminEditArticle
                         },
@@ -146,7 +150,8 @@ var routerMap = {
                             path:'adminTag',
                             name:'AdminTag',
                             meta:{
-                                title:'标签'
+                                title:'标签',
+                                auth:true
                             },
                             component:AdminTag
                         },
@@ -154,7 +159,8 @@ var routerMap = {
                             path:'adminCategory',
                             name:'AdminCategory',
                             meta:{
-                                title:'分类'
+                                title:'分类',
+                                auth:true
                             },
                             component:AdminCate
                         },
@@ -162,7 +168,8 @@ var routerMap = {
                             path:'adminMessage',
                             name:'AdminMessage',
                             meta:{
-                               title:'留言'
+                               title:'留言',
+                               auth:true
                             },
                             component:AdminMsg
                         },
@@ -170,7 +177,8 @@ var routerMap = {
                             path:'adminMessageDetail/:id',
                             name:'AdminMessageDetail',
                             meta:{
-                               title:'留言详情'
+                               title:'留言详情',
+                               auth:true
                             },
                             component:AdminMsgDetail
                         },
@@ -178,7 +186,8 @@ var routerMap = {
                             path:'adminComment',
                             name:'AdminArticleComment',
                             meta:{
-                               title:'评论' 
+                               title:'评论',
+                               auth:true
                             },
                             component:AdminComment
                         }

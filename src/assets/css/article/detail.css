@@ -37,7 +37,7 @@
     color:#bbb;
     font-size: 12px;
 }
-.article-detail .main .title .info a.icon-heart{
+.article-detail .main .title .info a.icon-heart.active{
     color:#E24C3C
 }
 .article-detail .main .title .info a.icon-heart:before{
@@ -82,6 +82,10 @@
     border-radius: 30px;
     color:#2B4356;
     border:1px solid #2B4356;
+}
+.article-detail .main .others a.is-liked{
+    background: #2B4356;
+    color:#fff;
 }
 .article-detail .main .content{
     font-size: 16px;

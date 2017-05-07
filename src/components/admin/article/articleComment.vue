@@ -10,7 +10,7 @@
             <Etablecolumn prop="article" label="文章"></Etablecolumn>
             <Etablecolumn prop="anchor" label="锚点">
                 <template scope="scope">
-                    <router-link class="color-black" :to="{name:'ArticleDetail'}">锚点</router-link>
+                    <router-link class="color-black" :to="{name:'ArticleDetail',params:{id:12313}}">锚点</router-link>
                 </template>
             </Etablecolumn>
             <Etablecolumn prop="fromUser" label="来自"></Etablecolumn>

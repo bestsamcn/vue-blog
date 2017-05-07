@@ -5,7 +5,9 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import store from './store/index.js'
-import { sync } from 'vuex-router-sync'
+import {
+    sync
+} from 'vuex-router-sync'
 import Filter from '@/utils/filter.js'
 import Utils from '@/utils/index.js'
 import VueSimplemde from 'vue-simplemde'
@@ -30,6 +32,26 @@ store.dispatch('getCategoryList');
 //     document.title = to.meta.title;
 //     next();
 // });
+//路由权限
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.auth)) {
+        if (!store.state.common.isLogin) {
+            return next({
+                path: '/admin/sigin',
+                query: {
+                    redirect: to.fullPath
+                }
+            });
+        }
+    }else{
+        if (to.path.indexOf('signin') !== -1 && store.state.common.isLogin) {
+            return next({
+                name: 'AdminHome'
+            });
+        }
+    }
+    next();
+});
 
 
 new Vue({

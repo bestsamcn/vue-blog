@@ -8,7 +8,7 @@
             <router-link :to="{name:'About'}" :class="{'active':routerName==='About'}">关于</router-link>
             <router-link :to="{name:'Search'}" :class="{'active':routerName==='Search'}">搜索</router-link>
         	<router-link :to="{name:'Message'}" :class="{'active':routerName==='Message'}">留言</router-link>
-            <router-link :to="{name:'AdminSignin'}" :class="{'active':routerName==='AdminSignin'}">登录</router-link>
+            <router-link :to="{name:'AdminSignin'}" :class="{'active':routerName==='AdminSignin'}">{{isLogin ? '管理' : '登录'}}</router-link>
         </div>
         <div class="menu-btn md-hide">
             <a href="javascript:;" @click="setToggleMenu()" class="icon-reorder" :class="{'on':iShowMenu}"></a>
@@ -22,7 +22,8 @@
         computed:{
             ...mapState({
                 iShowMenu:state=>state.common.iShowMenu,
-                routerName:state=>state.RouteModule.name
+                routerName:state=>state.RouteModule.name,
+                isLogin:state=>state.common.isLogin
             })
         },
         methods:{

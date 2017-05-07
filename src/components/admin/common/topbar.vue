@@ -5,12 +5,12 @@
             B<span>est</span>
         </div>
         <div class="right">
-            <Dropdown  trigger="click">
+            <Dropdown  trigger="click" @command="handleCommand">
                 <div class="avatar">
                     <img src="../../../assets/img/avatar.png">
                 </div>
-                <DropdownMenu>
-                    <DropdownItem>
+                <DropdownMenu slot="dropdown">
+                    <DropdownItem command="logout">
                         退出
                     </DropdownItem>                    
                 </DropdownMenu>
@@ -21,6 +21,7 @@
 <script>
     import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
     import { mapActions } from 'vuex';
+    import * as API from '@/api/index.js';
     export default{
         name:'topbar',
         components:{
@@ -30,8 +31,21 @@
         },
         methods:{
             ...mapActions([
-                'setToggleSidebar'  
-            ])
+                'setToggleSidebar',
+                'setToast',
+                'delToken'  
+            ]),
+            handleCommand(cmd){
+                var that = this;
+                if(cmd !== 'logout') return;
+                API.logout().then(res=>{
+                    that.setToast(res.msg || '退出成功');
+                    if(localStorage.token) delete localStorage.token;
+                    localStorage['isLogin'] && delete localStorage.isLogin;
+                    that.delToken();
+                    this.$router.push({name:'Home'});
+                });
+            }
         }
     }
 </script>  

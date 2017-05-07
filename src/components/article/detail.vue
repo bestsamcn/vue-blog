@@ -8,12 +8,12 @@
                     <span class="icon-calendar">{{article.createTime | dateFormat('yyyy-MM-dd')}}</span>
                     <span class="icon-map-marker">{{article.category.name}}</span>
                     <span class="icon-eye-open">{{article.readNum}} Views</span>
-                    <a href="javascript:;" @click="linkClick()" class="icon-heart">{{article.likeNum}}</a>
+                    <span class="icon-tag">{{article.tag.name}}</span>
+                    <a href="javascript:;" @click="likeClick()" class="icon-heart" :class="{'active':isLiked}">{{article.likeNum}}</a>
                 </div>
-                <Tags class="margin-bottom-30"></Tags>
             </div>
             <div class="img">
-                <img src="../../assets/img/article-1.jpg">
+                <img v-if="false" src="../../assets/img/article-1.jpg">
             </div>
             <p class="preview">
                 导读：{{article.previewText}}
@@ -22,9 +22,9 @@
             </div>
             <div class="others">
                 <a href="javascript:;" @click="goBack()" >返回</a>
-                <a href="javascript:;" @click="goBack()" >前篇</a>
-                <a href="javascript:;" @click="goBack()" >后篇</a>
-                <a href="javascript:;" @click="goBack()" >点赞</a>
+                <router-link v-if="prevID" :to="{name:'ArticleDetail', params:{id:prevID}}">前篇</router-link>
+                <router-link v-if="nextID" :to="{name:'ArticleDetail', params:{id:nextID}}">后篇</router-link>
+                <a href="javascript:;" @click="likeClick()" :class="{'is-liked':isLiked}">点赞</a>
             </div>
             <Comment class="margin-top-30">
                 
@@ -39,13 +39,18 @@
     import * as API from '@/api/index.js';
     import '@/assets/css/common/github-markdown.css';
     import '@/assets/css/common/atom-one-dark.css';
+    import $$ from '@/utils/index.js';
+    import { mapActions } from 'vuex';
     export default{
         name:'article-detail',
         data(){
             return{
                 article:{},
                 parseHtml:'',
-                editor:null
+                editor:null,
+                prevID:'',
+                nextID:'',
+                isLiked:false
             }
         },
         components:{
@@ -56,14 +61,31 @@
             '$route':'getDetail'
         },
         methods:{
+            ...mapActions([
+                'setToast'
+            ]),
             goBack(){
                 this.$router.go(-1);
             },
             getDetail(){
                 if(!this.$route.params.id) return;
                 API.getArticleDetail({id:this.$route.params.id}).then(res=>{
-                    console.log(res)
-                    this.article = res.data;
+                    this.article = res.data.curr;
+                    this.prevID = res.data.prev && res.data.prev._id || '';
+                    this.nextID = res.data.next && res.data.next._id || '';
+                    if($$.getCookie(this.article._id)){
+                        this.isLiked = true;
+                    }
+                });
+            },
+            likeClick(){
+                if($$.getCookie(this.article._id)){
+                    this.setToast('已经点赞过啦');
+                    return;
+                }
+                API.likeArticle({id:this.article._id}).then(res=>{
+                    $$.setCookie(this.article._id, true, 7);
+                    this.article.likeNum = this.article.likeNum+1;
                 });
             }
         },
@@ -71,6 +93,7 @@
             this.getDetail();
         },
         mounted(){
+
         }
     }
 </script>

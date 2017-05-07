@@ -45,7 +45,7 @@ const actions = {
         commit(types.SET_TOKEN, token);
     },
     delToken({commit}){
-        commit(types.SET_TOKEN);
+        commit(types.DEL_TOKEN);
     },
     setLogin({commit}, isLogin){
         commit(types.SET_LOGIN, isLogin);
@@ -75,7 +75,7 @@ const mutations = {
     },
     [types.SET_TOKEN](state, token){
         state.token = token;
-        state.isLogin = true;
+        !!state.token && (state.isLogin = true);
     },
     [types.DEL_TOKEN](state){
         state.token = '';

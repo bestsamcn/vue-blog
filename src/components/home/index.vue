@@ -4,7 +4,7 @@
         <div class="main">
             <div class="wrapper">
                 <div class="left-cont">
-                    <Articlelist :article-list="[1,2,3,4]"></Articlelist>
+                    <Articlelist :article-list="articleList"></Articlelist>
                     <a href="javascript:;" @click="setToast('asdfas')" class="more-btn">更多</a>
                 </div>
                 <div class="right-bar sm-hide">
@@ -33,10 +33,12 @@
     import Footerbar from '@/components/common/footer.vue';
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
+    import * as API from '@/api/index.js';
     export default{
         name:'home',
         data:()=>{
             return{
+                articleList:[]
             }
         },
         methods:{
@@ -50,6 +52,11 @@
             Articlerank,
             Tags,
             Footerbar
+        },
+        mounted(){
+            API.getArticleList({pageSize:5, pageIndex:1}).then(res=>{
+                this.articleList = res.data;
+            })
         }
     }
 

@@ -7,7 +7,6 @@
                 <input type="text" class="form-control uname" v-model="account" name="account" placeholder="用户名" />
                 <input type="password" class="form-control pword m-b" v-model="password" name="password" placeholder="密码" />
                 <button class="btn btn-success full-width btn-block m-b" @click.prevent="signClick()">登录</button>
-                <button class="btn btn-success full-width btn-block m-b" @click.prevent="signoutClick()">登录</button>
             </form>
         </div>
     </div>
@@ -53,15 +52,6 @@
                     that.setToken(res.token);
                     that.$router.push({name:'AdminHome'});
                 })
-            },
-            signoutClick(){
-                var that = this;
-                API.logout().then(res=>{
-                    that.setToast(res.msg || '退出成功');
-                    if(localStorage.token) delete localStorage.token;
-                    localStorage['isLogin'] && delete localStorage.isLogin;
-                    that.delToken();
-                });
             },
             onAlertClose(){
                 this.iShowMsg = false;

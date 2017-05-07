@@ -36,3 +36,4 @@ export const delArticle = (params)=>$http('get', '/article/delete', params, true
 export const editArticle = (params)=>$http('post', '/article/edit', params, true);
 export const getArticleList = (params)=>$http('get', '/article/getList', params, true);
 export const getArticleDetail = (params)=>$http('get', '/article/getDetail', params, true);
+export const likeArticle = (params)=>$http('post', '/article/like', params);
