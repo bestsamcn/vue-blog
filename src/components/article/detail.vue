@@ -26,8 +26,7 @@
                 <router-link v-if="nextID" :to="{name:'ArticleDetail', params:{id:nextID}}">后篇</router-link>
                 <a href="javascript:;" @click="likeClick()" :class="{'is-liked':isLiked}">点赞</a>
             </div>
-            <Comment class="margin-top-30">
-                
+            <Comment class="margin-top-30" :article="article._id">
             </Comment>
         </div>
     </div>
@@ -85,6 +84,7 @@
                 }
                 API.likeArticle({id:this.article._id}).then(res=>{
                     $$.setCookie(this.article._id, true, 7);
+                    this.isLiked = true;
                     this.article.likeNum = this.article.likeNum+1;
                 });
             }

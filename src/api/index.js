@@ -37,3 +37,8 @@ export const editArticle = (params)=>$http('post', '/article/edit', params, true
 export const getArticleList = (params)=>$http('get', '/article/getList', params, true);
 export const getArticleDetail = (params)=>$http('get', '/article/getDetail', params, true);
 export const likeArticle = (params)=>$http('post', '/article/like', params);
+
+//评论
+export const addComment = (params)=>$http('post', '/comment/add', params, true);
+export const getCommentList = (params)=>$http('get', '/comment/getList', params, true);
+export const setCommentLike = (params)=>$http('post', '/comment/like', params, true);
