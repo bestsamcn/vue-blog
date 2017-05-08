@@ -24,6 +24,7 @@
         </form>
         <div class="comment-list">
             <div class="comment-item" v-for="item in commentList" :key="item._id">
+                <a :name="item._id"></a>
                 <div class="favor">
                     <a href="javascript:;" @click="likeClick(1, item)" class="icon-sort-up up"></a>
                     <span>{{item.likeNum}}</span>
@@ -44,8 +45,8 @@
                     </div>
                 </div>
             </div>
-            <a  href="#/article/2" class="more-btn md-hide">More</a>
         </div>
+        <a href="javascript:;" v-if="isMore" @click="getList(false)" class="more-btn md-hide">More</a>
     </div>
 </template>
 <script>
@@ -70,8 +71,12 @@
                 pageIndex:1,
                 pageSize:5,
                 commentList:[],
-                reply:null
+                reply:null,
+                isMore:true
             }
+        },
+        watch:{
+            '$route':'refreshList'
         },
         methods:{
             ...mapActions([
@@ -96,7 +101,7 @@
                 if(!!this.reply){
                     obj.parentComment = this.reply._id;
                     var reg ='@'+this.reply.createLog.createName+': ';
-                    obj.content= obj.content.replace(reg, '');
+                    obj.content = obj.content.replace(reg, '');
                 }
                 API.addComment(obj).then(res=>{
                     this.isSaveInfo && this.saveInfo(this);
@@ -105,6 +110,11 @@
                     this.reply = null;
                     this.commentList.unshift(res.data);
                 });
+            },
+            refreshList(){
+                this.pageIndex = 1;
+                this.isMore = true;
+                this.getList(true);
             },
             saveInfo(_this){
                 if(!_this.name){
@@ -120,14 +130,21 @@
                 window.localStorage['__isSaveInfo__'] = true;
                 _this.isSaveInfo = true;
             },
-            getList(){
+            getList(isRefresh){
+                if(!this.isMore) return;
                 var obj = {
                     pageIndex:this.pageIndex,
                     pageSize:this.pageSize,
                     id:this.article
                 }
                 API.getCommentList(obj).then(res=>{
-                    this.commentList = res.data;
+                    isRefresh ? (this.commentList = res.data) : (this.commentList = this.commentList.concat(res.data));
+                    if(res.data.length < this.pageSize){
+                        this.isMore = false;
+                        return;
+                    }
+                    this.pageIndex++;
+                    this.isMore = true;
                 });
             },
             likeClick(isLike, item){
@@ -153,7 +170,7 @@
             this.name = window.localStorage['__postName__'] || '';
             this.email = window.localStorage['__email__'] || '';
             this.isSaveInfo = window.localStorage['__isSaveInfo__'] || false;
-            this.getList();
+            this.refreshList();
         },
         mounted(){
             this.name = window.localStorage['__postName__'] || '';

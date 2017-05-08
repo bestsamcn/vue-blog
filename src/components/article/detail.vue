@@ -26,7 +26,7 @@
                 <router-link v-if="nextID" :to="{name:'ArticleDetail', params:{id:nextID}}">后篇</router-link>
                 <a href="javascript:;" @click="likeClick()" :class="{'is-liked':isLiked}">点赞</a>
             </div>
-            <Comment class="margin-top-30" :article="article._id">
+            <Comment class="margin-top-30" :article="$route.params.id">
             </Comment>
         </div>
     </div>
@@ -68,6 +68,7 @@
             },
             getDetail(){
                 if(!this.$route.params.id) return;
+                this.isLiked = false;
                 API.getArticleDetail({id:this.$route.params.id}).then(res=>{
                     this.article = res.data.curr;
                     this.prevID = res.data.prev && res.data.prev._id || '';
@@ -93,7 +94,9 @@
             this.getDetail();
         },
         mounted(){
-
+            this.$nextTick(()=>{
+                this.getDetail();
+            })
         }
     }
 </script>

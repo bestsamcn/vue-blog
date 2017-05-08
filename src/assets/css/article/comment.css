@@ -162,7 +162,7 @@
 .comment .more-btn{
     width:60%;
     height:40px;
-    display: block;
+    display: block !important;
     line-height: 40px;
     text-align: center;
     color:#bdc3c7;
