@@ -2,27 +2,58 @@
 <template>
     <div class="article">
         <div class="main">
-            <Articlelist :article-list="[1,2,3,4,5,6]" :is-more="true"></Articlelist>
+            <Articlelist @loadMore="getList(false)" :article-list="articleList" :is-more="isMore"></Articlelist>
         </div>
     </div>
 </template>
 <script>
     import Articlelist from './articleList.vue';
+    import * as API from '@/api/index.js';
     export default{
         name:'home',
         data:()=>{
 		    return{
-		        msg:'asdfasdf'
+                articleList:[],
+                pageIndex:1,
+                pageSize:5,
+                isMore:true
 		    }
 		},
         components:{
             Articlelist
         },
+        watch:{
+            // '$route':'getList(true)'
+        },
 		methods:{
-		    saythis(){
-		        console.log(this.msg)
-		    }
+		    getList(isRefresh){
+                if(!this.isMore) return;
+                var obj = {
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
+                }
+                API.getArticleList(obj).then(res=>{
+                    isRefresh ? (this.articleList = res.data ) : (this.articleList = this.articleList.concat(res.data));
+                    if(res.data.length < this.pageSize){
+                        this.isMore = false;
+                    }else{
+                        this.pageIndex++;
+                        this.isMore = true;
+                    }
+                });
+		    },
+            refreshList(){
+                this.pageIndex = 1;
+                this.isMore = true;
+                this.getList(true);
+            }
+        },
+        created(){
+            this.getList(false);
+        },
+        mounted(){
         }
+
     }
 
 

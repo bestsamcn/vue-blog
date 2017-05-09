@@ -5,7 +5,7 @@
             <div class="wrapper">
                 <div class="left-cont">
                     <Articlelist :article-list="articleList"></Articlelist>
-                    <a href="javascript:;" @click="setToast('asdfas')" class="more-btn">更多</a>
+                    <router-link :to="{name:'Article'}" class="more-btn">更多</router-link>
                 </div>
                 <div class="right-bar sm-hide">
                     <Category>
@@ -13,7 +13,7 @@
                             分类
                         </div>
                     </Category>
-                    <Articlerank></Articlerank>
+                    <Articlerank :latest-list="articleList"></Articlerank>
                     <Tags class="margin-top-30">
                         <div slot="title" class="title">
                             标签

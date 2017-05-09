@@ -11,7 +11,7 @@
                     <span class="icon-calendar">{{item.createTime | dateFormat('yyyy-MM-dd')}}</span>
                     <span class="icon-comment">{{item.commentNum || 0}} Comments</span>
                     <span class="icon-eye-open">{{item.readNum}} Views</span>
-                    <span class="icon-tag">{{item.tag.name}}</span>
+                    <span class="icon-tag">{{item.tag && item.tag.name}}</span>
                     <a href="javascript:;" class="icon-heart-empty">{{item.likeNum}}</a>
                 </div>
             </div>
@@ -20,8 +20,8 @@
             </p>
             <a  class="more" @click="goUrl({name:'ArticleDetail', params:{id:item._id}})">Read More</a>
         </div>
-        <!-- <a v-if="isMore"  href="javascript:;" class="more-btn md-hide">More</a> -->
-        <a v-if="isMore"  href="javascript:;" class="more-btn md-hide">No More</a>
+        <a v-if="isMore" @click="moreEvent()"  href="javascript:;" class="more-btn">More</a>
+        <!-- <a v-if="isMore"  href="javascript:;" class="more-btn md-hide">No More</a> -->
     </div>
 </template>
 <script>
@@ -50,8 +50,8 @@
             Page
         },
         methods:{
-            onPageClick(pageIndex){
-                this.pageIndex = pageIndex;
+            moreEvent(){
+                this.$emit('loadMore')
             },
             goUrl(routerInfo){
                 this.$router.push(routerInfo);

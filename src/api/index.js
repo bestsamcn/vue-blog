@@ -42,3 +42,4 @@ export const likeArticle = (params)=>$http('post', '/article/like', params);
 export const addComment = (params)=>$http('post', '/comment/add', params, true);
 export const getCommentList = (params)=>$http('get', '/comment/getList', params, true);
 export const setCommentLike = (params)=>$http('post', '/comment/like', params, true);
+export const delComment = (params)=>$http('get', '/comment/delete', params, true);

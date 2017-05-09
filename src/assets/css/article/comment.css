@@ -170,3 +170,11 @@
     border:1px solid #bdc3c7;
     margin:30px auto;
 }
+#reply-name{
+    padding:5px 10px;
+    position: absolute;
+    left:0;
+    font-size: 14px;
+    top:4px;
+    z-index: 2;
+}

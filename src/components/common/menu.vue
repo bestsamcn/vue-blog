@@ -6,7 +6,7 @@
         <!-- <a class="icon-th-list" @click="goAndHideMenu('Category')" :class="{'active':routerName==='Category'}">分类</a> -->
         <a class="icon-leaf" @click="goAndHideMenu('About')" :class="{'active':routerName==='About'}">关于</a>
         <a class="icon-search" @click="goAndHideMenu('Search')" :class="{'active':routerName==='Search'}">搜索</a>
-        <a class="icon-user" @click="goAndHideMenu('AdminSignin')" :class="{'active':routerName==='AdminSignin'}">登录</a>
+        <a class="icon-user" @click="goAndHideMenu('AdminSignin')" :class="{'active':routerName==='AdminSignin'}">{{isLogin ? '管理' :'登录'}}</a>
     </div>
 </template>
 <script>
@@ -15,7 +15,8 @@
         name:'menu',
         computed:{
             ...mapState({
-                routerName:state=>state.RouteModule.name
+                routerName:state=>state.RouteModule.name,
+                isLogin:state=>state.common.isLogin
             })
         },
         methods:{

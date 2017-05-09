@@ -6,9 +6,9 @@
                 <h4 class="color-black">{{ article.title }}</h4>
                 <div class="info margin-top-10">
                     <span class="icon-calendar">{{article.createTime | dateFormat('yyyy-MM-dd')}}</span>
-                    <span class="icon-map-marker">{{article.category.name}}</span>
+                    <span class="icon-map-marker">{{article.category && article.category.name}}</span>
                     <span class="icon-eye-open">{{article.readNum}} Views</span>
-                    <span class="icon-tag">{{article.tag.name}}</span>
+                    <span class="icon-tag">{{article.tag && article.tag.name}}</span>
                     <a href="javascript:;" @click="likeClick()" class="icon-heart" :class="{'active':isLiked}">{{article.likeNum}}</a>
                 </div>
             </div>

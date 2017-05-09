@@ -1,7 +1,7 @@
 <style src="@/assets/css/article/comment.css"></style>
 <template>
     <div class="comment">
-        <form class="comment-form">
+        <div class="comment-form">
             <ul>
                 <li>
                     <input type="text" v-model="name" placeholder="你的昵称">
@@ -9,8 +9,10 @@
                 <li>
                     <input type="text" v-model="email" placeholder="你的邮箱">
                 </li>
-                <li>
-                    <textarea placeholder="回复内容" v-model="content" cols="30" rows="10"></textarea>
+                <li style="position:relative">
+                    <span v-if="reply" id="reply-name">@{{reply.createLog.createName+': '}}</span>
+                    <textarea placeholder="回复内容" @keyup.8="backSpace()" :style="{textIndent:replyOffsetWidth+'px'}" v-model="content" cols="30" rows="10">
+                    </textarea>
                 </li>
                 <li>
                     <label>
@@ -21,7 +23,7 @@
                     <button @click.stop="postClick()" class="sub-btn">提交</button>
                 </li>
             </ul>
-        </form>
+        </div>
         <div class="comment-list">
             <div class="comment-item" v-for="item in commentList" :key="item._id">
                 <a :name="item._id"></a>
@@ -46,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <p class="text-center margin-top-10 color-gray" v-if="!commentList.length">还没有评论，争做评论第一人...</p>
         <a href="javascript:;" v-if="isMore" @click="getList(false)" class="more-btn md-hide">More</a>
     </div>
 </template>
@@ -72,7 +75,9 @@
                 pageSize:5,
                 commentList:[],
                 reply:null,
-                isMore:true
+                isMore:true,
+                replyOffsetWidth:0,
+                backSpaceTimes:0
             }
         },
         watch:{
@@ -100,8 +105,6 @@
                 }
                 if(!!this.reply){
                     obj.parentComment = this.reply._id;
-                    var reg ='@'+this.reply.createLog.createName+': ';
-                    obj.content = obj.content.replace(reg, '');
                 }
                 API.addComment(obj).then(res=>{
                     this.isSaveInfo && this.saveInfo(this);
@@ -109,6 +112,7 @@
                     this.parentComment = '';
                     this.reply = null;
                     this.commentList.unshift(res.data);
+                    this.replyOffsetWidth = 0;
                 });
             },
             refreshList(){
@@ -162,8 +166,24 @@
                 });
             },
             replyClick(item){
-                this.content = '@'+item.createLog.createName+': ';
+                // this.content = '@'+item.createLog.createName+': ';
                 this.reply = item;
+                setTimeout(()=>{
+                    var replyName = document.getElementById('reply-name');
+                    this.replyOffsetWidth = replyName.offsetWidth-10;
+                });
+            },
+            backSpace(){
+                if(this.content.replace(/^\s+|\s+$/,'').length == 0){
+                    this.backSpaceTimes++;
+                }else{
+                    this.backSpaceTimes = 0;
+                }
+                if(this.backSpaceTimes >=3){
+                    this.reply = null;
+                    this.backSpaceTimes = 0;
+                    this.replyOffsetWidth = 0;
+                }
             }
         },
         created(){

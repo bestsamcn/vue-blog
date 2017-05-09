@@ -3,25 +3,9 @@
     <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
-            <a href="#">
-                <span class="name">Javascript</span>
-                <span class="number">(123)</span>
-            </a>
-            <a href="#">
-                <span class="name">Css</span>
-                <span class="number">(123)</span>
-            </a>
-            <a href="#">
-                <span class="name">Html5</span>
-                <span class="number">(123)</span>
-            </a>
-            <a href="#">
-                <span class="name">Angular</span>
-                <span class="number">(123)</span>
-            </a>
-            <a href="#">
-                <span class="name">Vue</span>
-                <span class="number">(123)</span>
+            <a href="#" v-for="item in categorylist" :key="item._id">
+                <span class="name">{{item.name}}</span>
+                <span class="number">({{item.totalArticle || 0}})</span>
             </a>
         </div>
     </div>

@@ -34,6 +34,7 @@
                   </template>
             </Etablecolumn>
         </Etable>
+        
     </div>
 </template>
 <script>
