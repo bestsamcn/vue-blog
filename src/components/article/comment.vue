@@ -116,6 +116,7 @@
                 });
             },
             refreshList(){
+                if(this.$route.name !== 'ArticleDetail') return;
                 this.pageIndex = 1;
                 this.isMore = true;
                 this.getList(true);

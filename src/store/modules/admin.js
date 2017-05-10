@@ -5,50 +5,15 @@ const state={
     isHideSidebar:true,
     categoryList:[],
     tagList:[],
-    commentList:[
-        {
-            id:1,
-            article:1,
-            date:1490166061472,
-            ip:'192.168.0.1',
-            fromUser:'best',
-            parentComment:null,
-            content:'贱人就是矫情有木有。。。',
-        },
-        {
-            id:2,
-            article:1,
-            date:1490166061472,
-            ip:'192.168.0.1',
-            fromUser:'lala',
-            parentComment:null,
-            content:'我向你飞，雨温柔的吹',
-        },
-        {
-            id:3,
-            article:1,
-            date:1490166061472,
-            ip:'192.168.0.1',
-            fromUser:'lala',
-            parentComment:{
-                id:2,
-                article:1,
-                date:1490166061472,
-                ip:'192.168.0.1',
-                fromUser:'lala',
-                parentComment:null,
-                content:'我向你飞，雨温柔的吹',
-            },
-            content:'我向你飞，雨温柔的吹',
-        }
-    ]
+    isAddArticle:false
 }
 
 const getters={
     isHideSidebar:state=>state.isHideSidebar,
     categoryList:state=>state.categoryList,
     tagList:state=>state.tagList,
-    categoryList:state=>state.categoryList
+    categoryList:state=>state.categoryList,
+    isAddArticle:state=>state.isAddArticle
 }
 
 const actions={
@@ -98,6 +63,9 @@ const actions={
         API.editCategory(cateObj).then(res=>{
             commit(type.EDIT_CATEGORY, cateObj);
         });
+    },
+    setArticleState({commit}, isNew){
+        commit(type.SET_ARTICLE_STATE, isNew);
     }
 }
 
@@ -149,6 +117,9 @@ const mutations={
                 item.name = cateObj.name;
             }
         });
+    },
+    [type.SET_ARTICLE_STATE](state, isNew){
+        state.isAddArticle = isNew || false;
     }
 }
 

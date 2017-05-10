@@ -10,7 +10,7 @@
         <div class="tab-cont">
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">  
             <div class="popular" v-show="activeIndex===1">
-                <a href="#" v-for="item in hotList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in hotList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img src="../../assets/img/article-1.jpg">
@@ -20,12 +20,12 @@
                         <h4>{{item.title}}</h4>
                         <p><i class="icon-calendar"></i>{{item.createTime | dateFormat('yyyy-MM-dd')}}</p>
                     </div>
-                </a>
+                </router-link>
             </div>
             </transition> 
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===2">
-                <a href="#" v-for="item in latestList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in latestList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img src="../../assets/img/article-1.jpg">
@@ -35,12 +35,12 @@
                         <h4>{{item.title}}</h4>
                         <p><i class="icon-calendar"></i>{{item.createTime | dateFormat('yyyy-MM-dd')}}</p>
                     </div>
-                </a>
+                </router-link>
             </div>
             </transition>
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===3">
-                <a href="#" v-for="item in commentList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in commentList" :key="item._id">
                     <div class="img">
                         <div class="img-box name">
                             <span>{{item.createLog.createName | textEllipsis(3,true)}}</span>
@@ -50,20 +50,22 @@
                         <h4>RE:{{item.parentComent ? item.parentComment.content : item.article.title}}</h4>
                         <p><i class="icon-calendar"></i>{{item.createTime | dateFormat('yyyy-MM-dd')}}</p>
                     </div>
-                </a>
+                </router-link>
             </div>
             </transition>  
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===4">
-                <a href="#" v-for="item in [1,2,3,4]">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in readNumList" :key="item._id">
                     <div class="img">
-                        <img src="" alt="">
+                        <div class="img-box">
+                            <img src="../../assets/img/article-1.jpg">
+                        </div>
                     </div>
                     <div class="text">
-                        <h4>关于this的指向问题关于th搜索is的指向问题</h4>
-                        <p><i class="icon-calendar"></i>2017.02.03</p>
+                        <h4>{{item.title}}</h4>
+                        <p><i class="icon-calendar"></i>{{item.createTime | dateFormat('yyyy-MM-dd')}}</p>
                     </div>
-                </a>
+                </router-link>
             </div>
             </transition>  
         </div>
@@ -87,16 +89,20 @@
                 pageSize:4,
                 hotList:[],
                 commentList:[],
-                likestList:[]
+                likestList:[],
+                readNumList:[]
+
             }
         },
         methods:{
             navClick(i){
                 this.activeIndex = i;
             },
-            getHotList(type){
+            getHotList(){
                 var obj = {
-                    type:1
+                    type:1,
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
                 }
                 API.getArticleList(obj).then(res=>{
                     this.hotList = res.data;
@@ -104,17 +110,28 @@
             },
             getLatestComent(){
                 var obj = {
-                    pageIndex:1,
-                    pageSize:4
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
                 }
                 API.getCommentList(obj).then(res=>{
                     this.commentList = res.data;
                 });
+            },
+            getReadNumAritlce(){
+                var obj = {
+                    type:2,
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
+                }
+                API.getArticleList(obj).then(res=>{
+                    this.readNumList = res.data;
+                });
             }
         },
         created(){
-            this.getHotList(1);
+            this.getHotList();
             this.getLatestComent();
+            this.getReadNumAritlce();
         }
     }
 </script>

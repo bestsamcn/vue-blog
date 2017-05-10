@@ -34,12 +34,16 @@
                   </template>
             </Etablecolumn>
         </Etable>
-        
+        <div class="text-center margin-top-20">
+            <Epagination @size-change="handleSizeChange" @current-change="getArticleList" :current-page.sync="pageIndex" :page-size="pageSize" layout="prev, pager, next, jumper" :total="total">
+            </Epagination>
+        </div>
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag } from 'element-ui';
+    import { Table, TableColumn, Button, Tag, Pagination } from 'element-ui';
     import * as API from '@/api/index.js';
+    import { mapState, mapActions } from 'vuex';
     export default{
         name:'adminArticleList',
         data(){
@@ -47,7 +51,7 @@
                 articleList:[],
                 operateWidth:0,
                 pageIndex:1,
-                pageSize:10,
+                pageSize:5,
                 isMore:true,
                 total:0,
                 keyword:''
@@ -57,22 +61,32 @@
             Etable:Table,
             Etablecolumn:TableColumn,
             Ebutton:Button,
-            Etag:Tag
+            Etag:Tag,
+            Epagination:Pagination
+        },
+        computed:{
+            ...mapState({
+                isAddArticle:state=>state.admin.isAddArticle
+            })
+        },
+        watch:{
+            '$route':'refresh'
         },
         methods:{
-            getArticleList(){
+            ...mapActions([
+                'setArticleState'
+            ]),
+            getArticleList(_pageIndex){
+                _pageIndex = _pageIndex || this.pageIndex;
                 var that = this;
-                if(!this.isMore) return;
                 var obj = {
-                    pageIndex:this.pageIndex,
+                    pageIndex:_pageIndex,
                     pageSize:this.pageSize,
                     keyword:this.keyword
                 }
                 API.getArticleList(obj).then(res=>{
                     this.articleList = res.data;
-                    if(res.data.length < this.pageSize){
-                        this.isMore = false;
-                    }
+                    this.total = res.total;
                 });
             },
             delArticle(item){
@@ -84,6 +98,16 @@
             goState(name, _id){
                 if(!_id) return;
                 this.$router.push({name:name, params:{id:_id}});
+            },
+            handleSizeChange(){
+
+            },
+            refresh(){
+                if(this.isAddArticle){
+                    this.pageIndex = 1;
+                    this.getArticleList();
+                    this.setArticleState(false);
+                }
             }
         },
         created(){
@@ -95,7 +119,7 @@
                 }else{
                     this.operateWidth = 220;
                 }
-            })
+            });
         },
         mounted(){
             this.getArticleList();

@@ -18,7 +18,7 @@
             <p class="preview">
                 摘要: {{item.previewText}}
             </p>
-            <a  class="more" @click="goUrl({name:'ArticleDetail', params:{id:item._id}})">Read More</a>
+            <a href="javascript:;" class="more" @click="goUrl({name:'ArticleDetail', params:{id:item._id}})">Read More</a>
         </div>
         <a v-if="isMore" @click="moreEvent()"  href="javascript:;" class="more-btn">More</a>
         <!-- <a v-if="isMore"  href="javascript:;" class="more-btn md-hide">No More</a> -->

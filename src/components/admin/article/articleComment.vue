@@ -78,6 +78,9 @@
             }
         },
         created(){
+            
+        },
+        mounted(){
             this.getList();
         }
 

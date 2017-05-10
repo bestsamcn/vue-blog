@@ -6,6 +6,7 @@ export const SET_MOBILE = 'SET_MOBILE';
 export const SET_TOKEN = 'SET_TOKEN';
 export const DEL_TOKEN = 'DEL_TOKEN';
 export const SET_LOGIN = 'SET_LOGIN';
+export const SET_ARTICLE_STATE = 'SET_ARTICLE_STATE';
 
 export const SET_TOGGLE_SIDEBAR = 'SET_TOGGLE_SIDEBAR';
 

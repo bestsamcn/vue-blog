@@ -271,6 +271,13 @@
 .markdown-body h6 {
   margin-top: 0;
   margin-bottom: 0;
+  padding-bottom:10px ;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3{
+   border-bottom: 1px solid #eee;
+
 }
 
 .markdown-body h1 {
@@ -420,8 +427,9 @@
 .markdown-body dl,
 .markdown-body table,
 .markdown-body pre {
-  margin-top: 0;
+  margin-top: 16px;
   margin-bottom: 16px;
+
 }
 
 .markdown-body hr {

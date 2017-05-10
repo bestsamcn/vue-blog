@@ -71,12 +71,14 @@
         },
         methods:{
             ...mapActions([
-                'setToast'
+                'setToast',
+                'setArticleState'
             ]),
             getParseContent(){
                 console.log(this.editor.markdown(this.highlightHtml))
             },
             postArticle(){
+
                 if(!this.title){
                     return this.setToast('请添加标题');
                 }
@@ -107,7 +109,8 @@
                     this.tagChooseList = [];
                     this.cateChooseList = [];
                     this.previewText = '';
-                    this.highlightHtml = '';  
+                    this.highlightHtml = '';
+                    this.setArticleState(true); 
                 });
             }
         },
