@@ -2,7 +2,7 @@
 <template>
     <div class="article">
         <div class="main">
-            <Articlelist @loadMore="getList(false)" :article-list="articleList" :is-more="isMore"></Articlelist>
+            <Articlelist @onLoadMore="getList(false)" :article-list="articleList" :is-more="isMore"></Articlelist>
         </div>
     </div>
 </template>

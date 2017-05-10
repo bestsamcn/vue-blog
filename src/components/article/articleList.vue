@@ -21,7 +21,7 @@
             <a href="javascript:;" class="more" @click="goUrl({name:'ArticleDetail', params:{id:item._id}})">Read More</a>
         </div>
         <a v-if="isMore" @click="moreEvent()"  href="javascript:;" class="more-btn">More</a>
-        <!-- <a v-if="isMore"  href="javascript:;" class="more-btn md-hide">No More</a> -->
+        <p class="text-center color-gray padding-20-0" v-if="!isMore">没有更多了</p>
     </div>
 </template>
 <script>
@@ -51,7 +51,7 @@
         },
         methods:{
             moreEvent(){
-                this.$emit('loadMore')
+                this.$emit('onLoadMore')
             },
             goUrl(routerInfo){
                 this.$router.push(routerInfo);

@@ -11,7 +11,7 @@
                 </li>
                 <li style="position:relative">
                     <span v-if="reply" id="reply-name">@{{reply.createLog.createName+': '}}</span>
-                    <textarea placeholder="回复内容" @keyup.8="backSpace()" :style="{textIndent:replyOffsetWidth+'px'}" v-model="content" cols="30" rows="10">
+                    <textarea placeholder="回复内容" @keyup.8="backSpace()" id="message-content" :style="{textIndent:replyOffsetWidth+'px'}" v-model="content" cols="30" rows="10">
                     </textarea>
                 </li>
                 <li>
@@ -96,6 +96,11 @@
                     this.setToast('请先填写邮箱');
                     return;
                 }
+                if(!this.content.replace(/^\s+|\s+$/,'')){
+                    this.setToast('填写内容');
+                    this.content = '';
+                    return;
+                }
                 var obj = {
                     article:this.article,
                     name:this.name,
@@ -171,7 +176,10 @@
                 this.reply = item;
                 setTimeout(()=>{
                     var replyName = document.getElementById('reply-name');
+                    var messageContent = document.getElementById('message-content');
                     this.replyOffsetWidth = replyName.offsetWidth-10;
+                    messageContent.blur();
+                    messageContent.focus();
                 });
             },
             backSpace(){

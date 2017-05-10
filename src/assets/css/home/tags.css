@@ -31,7 +31,16 @@
     margin-left:-10px;
     justify-content:flex-start;
 }
-.tags .cont a{
+.tags .cont .tag-item{
+    margin-left:10px;
+    margin-top:10px;
+    cursor: pointer;
+}
+.tags .cont .tag-item input{
+    display: none;
+}
+.tags .cont .tag-item span{
+    border-bottom: 1px solid #d9d9d9;
     display: block;
     padding:5px 8px;
     border-radius: 3px;
@@ -39,7 +48,9 @@
     background:#e7e7e7;
     color:#2B4356;
     font-size: 12px;
-    margin-left:10px;
-    margin-top:10px;
-    border-bottom: 1px solid #d9d9d9;
+}
+.tags .cont .tag-item input:checked + span{
+    background: #20A0FF;
+    border-bottom: 1px solid #1D8CE0;
+    color:#fff;
 }
