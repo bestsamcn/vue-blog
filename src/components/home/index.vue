@@ -4,8 +4,8 @@
         <div class="main">
             <div class="wrapper">
                 <div class="left-cont">
-                    <Articlelist :article-list="articleList"></Articlelist>
-                    <router-link :to="{name:'Article'}" class="more-btn">更多</router-link>
+                    <Articlelist :is-show-more="false" :is-more="false" :article-list="articleList"></Articlelist>
+                    <router-link v-if="isMore" :to="{name:'Article'}" class="more-btn">更多</router-link>
                 </div>
                 <div class="right-bar sm-hide">
                     <Category>
@@ -38,7 +38,10 @@
         name:'home',
         data:()=>{
             return{
-                articleList:[]
+                articleList:[],
+                pageIndex:1,
+                pageSize:5,
+                isMore:true
             }
         },
         methods:{
@@ -54,7 +57,8 @@
             Footerbar
         },
         mounted(){
-            API.getArticleList({pageSize:5, pageIndex:1}).then(res=>{
+            API.getArticleList({pageSize:this.pageSize, pageIndex:this.pageIndex}).then(res=>{
+                if(res.data.length < this.pageSize) this.isMore = false;
                 this.articleList = res.data;
             })
         }

@@ -78,7 +78,7 @@
                 }
                 API.getArticleList(obj).then(res=>{
                     isRefresh ? (this.articleList = res.data) : (this.articleList = this.articleList.concat(res.data));
-                    if(res.data < this.pageSize){
+                    if(res.data.length < this.pageSize){
                         this.isMore = false;
                     }else{
                         this.pageIndex++;

@@ -20,8 +20,8 @@
             </p>
             <a href="javascript:;" class="more" @click="goUrl({name:'ArticleDetail', params:{id:item._id}})">Read More</a>
         </div>
-        <a v-if="isMore" @click="moreEvent()"  href="javascript:;" class="more-btn">More</a>
-        <p class="text-center color-gray padding-20-0" v-if="!isMore">没有更多了</p>
+        <a v-if="(isShowMore && isMore)" @click="moreEvent()"  href="javascript:;" class="more-btn">More</a>
+        <p class="text-center color-gray padding-20-0" v-if="(isShowMore && !isMore)">没有更多了</p>
     </div>
 </template>
 <script>
@@ -31,7 +31,7 @@
         data(){
             return {
                 pageIndex:4,
-                total:8
+                total:8,
             }
         },
         props:{
@@ -43,6 +43,11 @@
             isMore:{
                 type:Boolean,
                 default:false,
+                require:false
+            },
+            isShowMore:{
+                type:Boolean,
+                default:true,
                 require:false
             }
         },
