@@ -5,7 +5,7 @@
             <a href="javascript:;" :class="{'active':(activeIndex === 1)}" @click="navClick(1)">最火</a>
             <a href="javascript:;" :class="{'active':(activeIndex === 2)}" @click="navClick(2)">最新</a>
             <a href="javascript:;" :class="{'active':(activeIndex === 3)}" @click="navClick(3)">评论</a>
-            <a href="javascript:;" :class="{'active':(activeIndex === 4)}" @click="navClick(4)">标签</a>
+            <a href="javascript:;" :class="{'active':(activeIndex === 4)}" @click="navClick(4)">阅读</a>
         </div>
         <div class="tab-cont">
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">  

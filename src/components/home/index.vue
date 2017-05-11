@@ -14,7 +14,7 @@
                         </div>
                     </Category>
                     <Articlerank :latest-list="articleList"></Articlerank>
-                    <Tags :is-show-reset="false" :is-click="false" class="margin-top-30">
+                    <Tags :is-show-reset="false" :is-disabled="true" class="margin-top-30">
                         <div slot="title" class="title">
                             标签
                         </div>

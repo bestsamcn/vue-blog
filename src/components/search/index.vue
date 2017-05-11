@@ -9,7 +9,7 @@
                     <li v-show="isDirty" v-for="item in list" :key="item">我是样板{{item}}</li>
                 </transition-group>
  -->            </div>
-            <Tags @onTagClick="tagClick" @onResetClick="resetTag()"></Tags>
+            <Tags @onTagClick="tagClick" :is-disabled="false" @onResetClick="resetTag"></Tags>
             <div class="margin-top-20">
                 <Articlelist @onLoadMore="getSearchList(false)" :is-more="isMore" :article-list="articleList"></Articlelist>
             </div>

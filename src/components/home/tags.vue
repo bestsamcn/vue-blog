@@ -8,8 +8,8 @@
                     <input type="radio" name="tag" checked>
                     <span>重置</span>
                 </label>
-                <label class="tag-item" @change.stop="onTagClick()" v-for="item in tagList">
-                    <input type="radio" name="tag" :value="item._id" v-model="tagValue">
+                <label class="tag-item" @change.stop="tagClick(item._id)" v-for="item in tagList">
+                    <input type="radio" :disabled="isDisabled" name="tag" :value="item._id">
                     <span>{{item.name}}</span>
                 </label>
             </div>
@@ -31,7 +31,7 @@
                 default:'',
                 require:false
             },
-            isClick:{
+            isDisabled:{
                 type:Boolean,
                 default:true,
                 require:false
@@ -39,7 +39,6 @@
         },
         data(){
             return{
-                // tagValue:''
             }
         },
         computed:{
@@ -48,13 +47,12 @@
             })
         },
         methods:{
-            onTagClick(){
-                if(!this.isClick) return;
-                this.$emit('onTagClick', this.tagValue);
+            tagClick(tag){
+                if(this.isDisabled) return;
+                this.$emit('onTagClick', tag);
             },
             resetTag(){
-                this.tagValue = '';
-                this.$emit('onResetClick');
+                this.$emit('onResetClick','');
             }
         }
     }
