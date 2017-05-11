@@ -1,6 +1,10 @@
 <style src="@/assets/css/admin/article/articleComment.css"></style>
 <template>
     <div class="article-commment">
+        <div class="margin-bottom-20">
+            <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
+            <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
+        </div>
         <Etable border :data="commentList">
             <Etablecolumn prop="createLog.createTime" label="时间">
                 <template scope="scope">
@@ -28,7 +32,7 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag, Pagination } from 'element-ui';
+    import { Table, TableColumn, Button, Tag, Pagination, Input } from 'element-ui';
     import { mapState } from 'vuex';
     import * as API from '@/api/index.js';
     export default{
@@ -38,7 +42,8 @@
                 commentList:[],
                 pageIndex:1,
                 pageSize:10,
-                total:0
+                total:0,
+                keyword:''
 
             }
         },
@@ -47,6 +52,7 @@
             Etablecolumn:TableColumn,
             Ebutton:Button,
             Etag:Tag,
+            Einput:Input,
             Epagination:Pagination
         },
         computed:{
@@ -58,7 +64,8 @@
                 _pageIndex = _pageIndex || this.pageIndex;
                 var obj = {
                     pageIndex:_pageIndex,
-                    pageSize:this.pageSize
+                    pageSize:this.pageSize,
+                    keyword:this.keyword
                 }
                 API.getCommentList(obj).then(res=>{
                     this.commentList = res.data;
@@ -72,6 +79,15 @@
                 API.delComment({id:item._id}).then(res=>{
                     this.commentList.splice(this.commentList.indexOf(item),1);
                 });
+            },
+            searchClick(){
+                this.pageIndex = 1;
+                this.getList();
+            },
+            reset(){
+                this.pageIndex = 1;
+                this.keyword = '';
+                this.getList();
             },
             handleSizeChange(){
 

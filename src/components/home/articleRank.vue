@@ -10,7 +10,7 @@
         <div class="tab-cont">
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">  
             <div class="popular" v-show="activeIndex===1">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in hotList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="hotList.length" v-for="item in hotList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img src="../../assets/img/article-1.jpg">
@@ -25,7 +25,7 @@
             </transition> 
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===2">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in latestList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="latestList.length" v-for="item in latestList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img src="../../assets/img/article-1.jpg">
@@ -40,7 +40,7 @@
             </transition>
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===3">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in commentList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="commentList.length" v-for="item in commentList" :key="item._id">
                     <div class="img">
                         <div class="img-box name">
                             <span>{{item.createLog.createName | textEllipsis(3,true)}}</span>
@@ -55,7 +55,7 @@
             </transition>  
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
             <div class="popular" v-show="activeIndex===4">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-for="item in readNumList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="readNumList.length" v-for="item in readNumList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img src="../../assets/img/article-1.jpg">

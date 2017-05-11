@@ -4,7 +4,7 @@
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
-                <label class="tag-item" @change.stop="resetTag()">
+                <label v-if="isShowReset" class="tag-item" @change.stop="resetTag()">
                     <input type="radio" name="tag" checked>
                     <span>重置</span>
                 </label>
@@ -20,9 +20,26 @@
     import { mapState } from 'vuex';
     export default{
         name:'tags',
+        props:{
+            isShowReset:{
+                type:Boolean,
+                default:true,
+                require:false
+            },
+            tagValue:{
+                type:String,
+                default:'',
+                require:false
+            },
+            isClick:{
+                type:Boolean,
+                default:true,
+                require:false
+            }
+        },
         data(){
             return{
-                tagValue:''
+                // tagValue:''
             }
         },
         computed:{
@@ -32,6 +49,7 @@
         },
         methods:{
             onTagClick(){
+                if(!this.isClick) return;
                 this.$emit('onTagClick', this.tagValue);
             },
             resetTag(){

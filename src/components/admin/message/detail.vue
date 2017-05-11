@@ -24,6 +24,7 @@
 		methods:{
 			getDetail(){
 				var that = this;
+				if(this.$route.name !== 'AdminMessageDetail') return;
 				API.getMessageDetail({id:that.$route.params.id}).then(res=>{
 					that.message = res.data;
 				});

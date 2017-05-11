@@ -31,6 +31,7 @@
                 </Navmenuitemgroup>
             </Navsubmenu>
             <Navmenuitem index="4" @click="menuItemClick('AdminMessage')">留言列表</Navmenuitem>
+            <Navmenuitem index="5" @click="menuItemClick('AdminCount')">访问记录</Navmenuitem>
         </Navmenu>
         <router-link class="bottom-btn" :to="{name:'Home'}"><i class="icon-bold"><span>返回首页</span></i></router-link>
     </div>

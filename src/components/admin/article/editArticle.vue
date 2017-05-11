@@ -80,6 +80,7 @@
                 'setToast'
             ]),
             getParseContent(){
+                console.log(this.highlightHtml)
                 console.log(this.editor.markdown(this.highlightHtml))
             },
             postArticle(){
@@ -105,7 +106,7 @@
                     tag:that.tagChoose,
                     category:that.cateChoose,
                     previewText:that.previewText,
-                    // content:that.highlightHtml
+                    codeContent:that.highlightHtml,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.editArticle(obj).then(res=>{
@@ -118,16 +119,17 @@
                 });
             },
             getArticle(){
+                if(this.$route.name !== 'AdminEditArticle') return;
                 if(!this.$route.params.id){
                     this.$router.push({name:'AdminArticle'});
                     return;
                 }
                 API.getArticleDetail({id:this.$route.params.id}).then(res=>{
-                    this.title = res.data.title;
-                    this.tagChoose = res.data.tag._id;
-                    this.cateChoose = res.data.category._id;
-                    this.previewText = res.data.previewText;
-                    this.highlightHtml = res.data.content;
+                    this.title = res.data.curr.title;
+                    this.tagChoose = res.data.curr.tag._id;
+                    this.cateChoose = res.data.curr.category._id;
+                    this.previewText = res.data.curr.previewText;
+                    this.highlightHtml = res.data.curr.codeContent;
                 });
             }
         },

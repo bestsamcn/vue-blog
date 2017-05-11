@@ -39,6 +39,7 @@ import AdminCate from '@/components/admin/category/index.vue'
 import AdminMsg from '@/components/admin/message/index.vue'
 import AdminMsgDetail from '@/components/admin/message/detail.vue'
 import AdminComment from '@/components/admin/article/articleComment.vue'
+import AdminCount from '@/components/admin/count/index.vue'
 
 Vue.use(Router)
 
@@ -181,6 +182,15 @@ var routerMap = {
                                auth:true
                             },
                             component:AdminMsgDetail
+                        },
+                        {
+                            path:'adminCount',
+                            name:'AdminCount',
+                            meta:{
+                               title:'访问记录',
+                               auth:true
+                            },
+                            component:AdminCount
                         },
                         {
                             path:'adminComment',

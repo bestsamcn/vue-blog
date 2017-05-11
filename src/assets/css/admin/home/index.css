@@ -15,6 +15,7 @@
     height:150px;
     display: block;
     align-items:center;
+    cursor: pointer;
 }
 .admin-home .preview .prev-item h4{
     color:#fff;

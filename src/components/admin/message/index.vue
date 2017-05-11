@@ -1,6 +1,13 @@
 <style src="@/assets/css/admin/message/index.css" scoped></style>
 <template>
     <div class="admin-message">
+        <div class="margin-bottom-20">
+        <EradioGroup v-model="type" @change="getList()">
+            <EradioButton label="3">全部</EradioButton>
+            <EradioButton label="2">未读</EradioButton>
+            <EradioButton label="1">已读</EradioButton>
+        </EradioGroup>
+        </div>
         <Etable :data="messageList" border>
             <Etablecolumn prop="name" label="姓名"></Etablecolumn>
             <Etablecolumn prop="email" label="邮箱"></Etablecolumn>
@@ -29,7 +36,7 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag, Pagination } from 'element-ui';
+    import { Table, TableColumn, Button, Tag, Pagination, RadioGroup, RadioButton } from 'element-ui';
     import { mapState } from 'vuex';
     import * as API from '@/api/index.js';
     export default{
@@ -37,9 +44,10 @@
         data(){
             return{
                 pageIndex:1,
-                pageSize:10,
+                pageSize:5,
                 total:0,
-                messageList:[]
+                messageList:[],
+                type:2
             }
         },
         components:{
@@ -47,7 +55,9 @@
             Etablecolumn:TableColumn,
             Ebutton:Button,
             Etag:Tag,
-            Epagination:Pagination
+            Epagination:Pagination,
+            EradioGroup:RadioGroup,
+            EradioButton:RadioButton
         },
         computed:{
             ...mapState({
@@ -73,7 +83,8 @@
                 _pageIndex = _pageIndex || this.pageIndex;
                 var obj = {
                     pageIndex:_pageIndex,
-                    pageSize:this.pageSize
+                    pageSize:this.pageSize,
+                    type:this.type
                 }
                 API.getMessageList(obj).then(res=>{
                     this.messageList = res.data;

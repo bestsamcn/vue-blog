@@ -1,6 +1,16 @@
 <style src="@/assets/css/admin/article/articleList.css" scoped></style>
 <template>
     <div class="admin-article-list">
+        <div class="margin-bottom-20">
+            <!-- <EradioGroup v-model="type" @change="searchClick">
+                <EradioButton label="0">全部</EradioButton>
+                <EradioButton label="1">评论</EradioButton>
+                <EradioButton label="2">浏览</EradioButton>
+            </EradioGroup> -->
+            <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
+            <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
+        </div>
+        <Tags class="margin-bottom-20" @onTagClick="tagClick" :tag-value="tag" :is-show-reset="false" @onResetClick="reset()"></Tags>
         <Etable :data="articleList" border style="width:100%;">
             <Etablecolumn prop="createTime" label="日期">
                 <template scope="scope">
@@ -41,8 +51,9 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag, Pagination } from 'element-ui';
+    import { Table, Select, Option, TableColumn, Button, Tag, RadioGroup, RadioButton, Pagination, Input } from 'element-ui';
     import * as API from '@/api/index.js';
+    import Tags from '@/components/home/tags.vue';
     import { mapState, mapActions } from 'vuex';
     export default{
         name:'adminArticleList',
@@ -54,19 +65,30 @@
                 pageSize:5,
                 isMore:true,
                 total:0,
-                keyword:''
+                keyword:'',
+                type:0,
+                tag:'',
+                category:''
             }
         },
         components:{
             Etable:Table,
+            Eselect:Select,
             Etablecolumn:TableColumn,
             Ebutton:Button,
             Etag:Tag,
-            Epagination:Pagination
+            Eoption:Option,
+            EradioGroup:RadioGroup,
+            EradioButton:RadioButton,
+            Epagination:Pagination,
+            Einput:Input,
+            Tags:Tags
         },
         computed:{
             ...mapState({
-                isAddArticle:state=>state.admin.isAddArticle
+                isAddArticle:state=>state.admin.isAddArticle,
+                tagList:state=>state.admin.tagList,
+                categoryList:state=>state.admin.categoryList
             })
         },
         watch:{
@@ -82,7 +104,10 @@
                 var obj = {
                     pageIndex:_pageIndex,
                     pageSize:this.pageSize,
-                    keyword:this.keyword
+                    keyword:this.keyword,
+                    // type:this.type,
+                    category:this.category,
+                    tag:this.tag
                 }
                 API.getArticleList(obj).then(res=>{
                     this.articleList = res.data;
@@ -99,12 +124,33 @@
                 if(!_id) return;
                 this.$router.push({name:name, params:{id:_id}});
             },
+            searchClick(){
+                this.pageIndex = 1;
+                this.getArticleList();
+            },
             handleSizeChange(){
 
+            },
+            tagClick(tag_id){
+                this.tag = tag_id;
+                this.pageIndex = 1;
+                this.getArticleList();
+                
+            },
+            reset(){
+                this.pageIndex = 1;
+                this.keyword = '';
+                this.tag = '';
+                this.category = '';
+                this.getArticleList();
+                this.setArticleState(false);
             },
             refresh(){
                 if(this.isAddArticle){
                     this.pageIndex = 1;
+                    this.keyword = '';
+                    this.tag = '';
+                    this.category = '';
                     this.getArticleList();
                     this.setArticleState(false);
                 }

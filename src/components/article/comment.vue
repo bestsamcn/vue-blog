@@ -11,7 +11,7 @@
                 </li>
                 <li style="position:relative">
                     <span v-if="reply" id="reply-name">@{{reply.createLog.createName+': '}}</span>
-                    <textarea placeholder="回复内容" @keyup.8="backSpace()" id="message-content" :style="{textIndent:replyOffsetWidth+'px'}" @keydown.enter="postClick()" v-model="content" cols="30" rows="10">
+                    <textarea :placeholder="replyOffsetWidth ? '' : '回复内容'" @keyup.8="backSpace()" id="message-content" :style="{textIndent:replyOffsetWidth+'px'}" @keydown.enter="postClick()" v-model="content" cols="30" rows="10">
                     </textarea>
                 </li>
                 <li>
@@ -178,8 +178,8 @@
                     var replyName = document.getElementById('reply-name');
                     var messageContent = document.getElementById('message-content');
                     this.replyOffsetWidth = replyName.offsetWidth-10;
-                    messageContent.blur();
-                    messageContent.focus();
+                    messageContent && messageContent.blur();
+                    messageContent && messageContent.focus();
                 });
             },
             backSpace(){

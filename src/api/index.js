@@ -10,6 +10,9 @@ import $http from './service.js';
 export const create = (params)=>$http('post', '/admin/create', params);
 export const login = (params)=>$http('post', '/admin/login', params, true);
 export const logout = (params)=>$http('get', '/admin/logout', params);
+export const getPreviewTotal = (params)=>$http('get', '/admin/getPreviewTotal', params);
+export const delAccess = (params)=>$http('get', '/admin/delAccess', params);
+export const getAccessList = (params)=>$http('get', '/admin/getAccessList', params);
 
 //标签
 export const getTagList = (params)=>$http('get', '/tag/getList', params);

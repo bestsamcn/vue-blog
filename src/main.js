@@ -26,7 +26,6 @@ store.dispatch('setMobile', Utils.isMobile());
 store.dispatch('setToken', localStorage['token'] && JSON.parse(localStorage['token']).token);
 store.dispatch('getTagList');
 store.dispatch('getCategoryList');
-
 //title
 // router.afterEach((to, from, next)=>{
 //     document.title = to.meta.title;

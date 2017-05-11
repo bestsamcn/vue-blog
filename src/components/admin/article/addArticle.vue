@@ -75,6 +75,7 @@
                 'setArticleState'
             ]),
             getParseContent(){
+                console.log(this.highlightHtml)
                 console.log(this.editor.markdown(this.highlightHtml))
             },
             postArticle(){
@@ -100,10 +101,9 @@
                     tag:that.tagChooseList.toString(),
                     category:that.cateChooseList.toString(),
                     previewText:that.previewText,
-                    // content:xss(that.highlightHtml)
+                    codeContent:that.highlightHtml,
                     content:that.editor.markdown(that.highlightHtml)
                 }
-                console.log(that.editor.markdown(that.highlightHtml))
                 API.addArticle(obj).then(res=>{
                     this.title = '';
                     this.tagChooseList = [];
