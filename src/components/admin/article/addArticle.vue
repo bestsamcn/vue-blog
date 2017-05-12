@@ -43,7 +43,8 @@
                     renderingConfig: {
                         codeSyntaxHighlighting: true, // 开启代码高亮
                         highlightingTheme: 'atom-one-dark' 
-                    }
+                    },
+                    toolbar: ["bold", "italic", "heading", "|", "code", "quote", "unordered-list", "ordered-list", "|", "link", "image", "preview", "|", "side-by-side", "fullscreen", "guide"]
                 },
                 title:'',
                 previewText:'',

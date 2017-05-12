@@ -10,7 +10,7 @@
             <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
             <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
         </div>
-        <Tags class="margin-bottom-20" @onTagClick="tagClick" :tag-value="tag" :is-show-reset="false" @onResetClick="reset()"></Tags>
+        <Tags class="margin-bottom-20" :is-disabled="false" @onTagClick="tagClick" :tag-value="tag" :is-show-reset="false" @onResetClick="reset()"></Tags>
         <Etable :data="articleList" border style="width:100%;">
             <Etablecolumn prop="createTime" label="日期">
                 <template scope="scope">
