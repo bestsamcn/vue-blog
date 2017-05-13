@@ -7,7 +7,6 @@ import $http from './service.js';
  */
 
 //权限
-export const create = (params)=>$http('post', '/admin/create', params);
 export const login = (params)=>$http('post', '/admin/login', params, true);
 export const logout = (params)=>$http('get', '/admin/logout', params);
 export const getPreviewTotal = (params)=>$http('get', '/admin/getPreviewTotal', params);
