@@ -145,12 +145,13 @@
                 cm.setValue(tempValue);
                 Axios.post(`${CONFIG.ROOT_API}/article/addPoster`, formData, {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
+                        'withCredentials':true,
+                        'Content-Type': false,
                         'x-access-token':that.token
                     }
                 }).then(res=>{
                     that.isUploading = false;
-                    var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.','gm');
+                    var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
                     cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
                 });
             }

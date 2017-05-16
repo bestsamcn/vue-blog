@@ -47,7 +47,7 @@ var _http = function(type, url, params, isToast){
     var __promise = new Promise((resolve, reject)=>{
         instance.request(obj).then(res=>{
             if(res.status == 200 && res.data.retCode !==0){
-                if(res.data.retCode === 10006){
+                if(res.data.retCode === 10006 || res.data.retCode === 10003){
                     store.dispatch('delToken');
                 }
                 for(var i in MSG){
