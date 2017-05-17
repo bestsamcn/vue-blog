@@ -83,8 +83,9 @@
                     this.setToast('标签名不能为空');
                     return;
                 }
-                this.addTag({name:this.form.tagName}).then(()=>{
+                this.addTag({name:this.form.tagName}).then((res)=>{
                     this.form.tagName = '';
+                    this.tagList.push(res.data);
                     this.isShowDialog = false;
                 });
             },

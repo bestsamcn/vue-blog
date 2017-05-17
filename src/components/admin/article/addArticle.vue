@@ -147,12 +147,21 @@
                         'withCredentials':true,
                         'Content-Type': false,
                         'x-access-token':that.token
-                    }
+                    },
+                    timeout:100000
                 }).then(res=>{
                     that.isUploading = false;
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
                     cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
                     e.target.value='';
+                }, err=>{
+                    that.setToast('异常');
+                    e.target.value='';
+                    that.isUploading = false;
+                }).catch(e=>{
+                    that.setToast('异常');
+                    e.target.value='';
+                    that.isUploading = false;
                 });
             }
         },

@@ -83,8 +83,9 @@
                     this.setToast('分类名不能为空');
                     return;
                 }
-                this.addCategory({name:this.form.categoryName}).then(()=>{
+                this.addCategory({name:this.form.categoryName}).then((res)=>{
                     this.form.categoryName = '';
+                    this.categoryList.push(data);
                     this.isShowDialog = false;
                 });
             },
