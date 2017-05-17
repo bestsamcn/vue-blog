@@ -8,6 +8,7 @@ const state = {
     isMobile:false,
     token:'',
     isLogin:false,
+    clientHeight:0
 
 }
 

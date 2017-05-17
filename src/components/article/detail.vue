@@ -16,7 +16,7 @@
                 <img v-if="false" src="../../assets/img/article-1.jpg">
             </div>
             <p class="preview">
-                导读：{{article.previewText}}
+                {{article.previewText}}
             </p>
             <div class="content markdown-body" v-html="article.content">
             </div>

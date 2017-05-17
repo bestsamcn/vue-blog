@@ -18,7 +18,9 @@ Vue.use(VueSimplemde);
 Vue.config.productionTip = false
 sync(store, router, {
     moduleName: 'RouteModule'
-})
+});
+window.clientHeight = document.documentElement.clientHeight;
+store.state.common.clientHeight=clientHeight
 
 //路由动画
 store.dispatch('setMobile', Utils.isMobile());
@@ -45,7 +47,7 @@ router.beforeEach((to, from, next) => {
     }else{
         if (to.path.indexOf('signin') !== -1 && store.state.common.isLogin) {
             return next({
-                name: 'AdminHome'
+                path: '/admin/home/index'
             });
         }
     }
@@ -61,4 +63,4 @@ new Vue({
     components: {
         App
     }
-})
+});

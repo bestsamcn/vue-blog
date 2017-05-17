@@ -10,11 +10,11 @@
             <Menulist v-show="iShowMenu"></Menulist>
         </transition>
         <!-- <transition :name="$router.app.pageTransition"> -->
-        <transition :name="'fade'">
+        <!-- <transition :name="'fade'"> -->
             <keep-alive>
                 <router-view class="router-view"></router-view>
             </keep-alive>
-        </transition>
+        <!-- </transition> -->
         
     </div>
 </template>

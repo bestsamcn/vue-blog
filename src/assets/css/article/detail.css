@@ -55,9 +55,20 @@
     line-height: 22px;
     margin-top: 10px;
     background: #F6F8FA;
+    position: relative;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 2px;
+}
+.article-detail .main .preview:before{
+    width:4px;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    content:'';
+    display: block;
+    background:#ccc;
 }
 .article-detail .main .img{
     width:100%;

@@ -29,7 +29,6 @@
             <Ebutton type="danger" size="large">清空</Ebutton>
             <Ebutton type="danger" size="large" @click="getParseContent()">查看</Ebutton>
         </div>
-
     </div>
 </template>
 <script>
@@ -153,12 +152,12 @@
                     that.isUploading = false;
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
                     cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
+                    e.target.value='';
                 });
             }
         },
         mounted(){
             this.editor = this.$refs.Markdowneditor.simplemde;
-            console.log(this.editor)
         },
         created(){
         }

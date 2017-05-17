@@ -7,7 +7,7 @@
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <div v-show="!isHideSidebar" class="mask" @click="setToggleSidebar()"></div>
             </transition>
-             <div class="admin-map">
+            <div class="admin-map">
                 <i class="icon-map-marker"></i>
                 <Breadcrumb class="map-list" separator="/">
                     <BreadcrumbItem>管理</BreadcrumbItem>
@@ -15,14 +15,13 @@
                     <BreadcrumbItem v-if="routerName !== 'AdminArticle' ">{{ title }}</BreadcrumbItem>
                 </Breadcrumb>
             </div>
-            <transition name="fade">
-                <keep-alive>
-
-                     <router-view class="content-view">
-                        
-                     </router-view>
-                 </keep-alive>
-            </transition>
+            <keep-alive>
+                 <router-view class="content-view">
+                 </router-view>
+            </keep-alive>
+            <!-- <div class="content-view">
+                <slot name="component"></slot>
+            </div> -->
         </div>
     </div>
 </template>
@@ -30,6 +29,7 @@
     import Sidebar from '@/components/admin/common/sidebar';
     import Topbar from '@/components/admin/common/topbar';
     import { mapState, mapActions } from 'vuex';
+    import $$ from '@/utils/index.js';
     import { Breadcrumb, BreadcrumbItem } from 'element-ui';
     export default{
         name:'adminCommon',
@@ -52,7 +52,8 @@
             })
         },
         created(){
-            this.setToggleSidebar(true)
+            !$$.isMobile && this.setToggleSidebar(true);
+            $$.isMobile && this.setToggleSidebar(false);
         }
     }
 </script>

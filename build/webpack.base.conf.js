@@ -8,6 +8,7 @@ function resolve (dir) {
 }
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: {
     app: './src/main.js'
   },

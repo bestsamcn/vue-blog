@@ -44,7 +44,6 @@
                 pageSize:10,
                 total:0,
                 keyword:''
-
             }
         },
         components:{
