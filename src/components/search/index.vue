@@ -15,12 +15,14 @@
             </div>
             <router-link :to="{name:'Article'}"></router-link>
         </div>
+        <Footerbar class="margin-top-20"></Footerbar>
     </div>
 </template>
 <script>
     import Articlelist from '../article/articleList.vue';
     import Tags from '../home/tags.vue';
     import * as API from '@/api/index.js';
+    import Footerbar from '@/components/common/footer.vue';
     export default{
         name:'search',
         data(){
@@ -39,7 +41,8 @@
         },
         components:{
             Articlelist,
-            Tags
+            Tags,
+            Footerbar
         },
         watch:{
             // keyword:'watchkeyword'

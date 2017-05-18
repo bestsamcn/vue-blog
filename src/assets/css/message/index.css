@@ -12,3 +12,32 @@
 	width:100%;
 	margin-top:20px;
 }
+.message input{
+	padding: 10px;
+    border: none;
+    width: 100%;
+    background: #fff;
+    height: 40px;
+    font-size: 14px;
+    // text-indent: 20px;
+    text-align: left;
+}
+.message textarea{
+	width:100%;
+	height:150px;
+	resize:none;
+	background: #fff;
+	border:none;
+	outline: none;
+	padding:10px;
+}
+.message button{
+	width:100%;
+	height:40px;
+	outline: none;
+	font-family: 'Mirosoft Yahei';
+	border:none;
+	background: #1ABC9C;
+	color:#fff;
+	cursor: pointer;
+}

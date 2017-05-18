@@ -1,14 +1,14 @@
 .article-list{
     background:#fff;
     width:100%;
+    padding:0 10px;
 }
 .article-list .item{
     width:100%;
-    margin-top:30px;
-    margin-bottom:30px;
-    padding:20px;
+    padding:20px 0;
     position: relative;
-
+    overflow: hidden;
+    border-bottom:1px solid #eee;
 }
 .article-list .item.has-right{
     padding-right: 230px;
@@ -17,14 +17,14 @@
     width:100%;
 }
 .article-list .item .right{
-    width:200px;
+    width:180px;
     height:100%;
     position: absolute;
-    right:20px;
+    right:0;
     display: -webkit-flex;
     display: flex;
     align-items:center;
-    top:20px;
+    top:0;
 }
 .article-list .item:nth-of-type(1){
     margin-top:0;
@@ -50,7 +50,7 @@
 .article-list .item .title h4{
     font-size: 16px;
     text-align: left;
-    margin:10px 0;
+    // margin:10px 0;
 }
 .article-list .item .title .info{
     overflow: hidden;
@@ -82,17 +82,26 @@
     line-height: 22px;
     margin-top:10px;
 }
-.article-list .item .more{
-    width:80px;
-    height:30px;
-    line-height: 30px;
+.article-list .item .left .bottom{
+    display: -webkit-flex;
+    display: flex;
+    align-items:center;
+    margin-top:10px;
+}
+.article-list .item .left .bottom .more{
+    padding:2px 6px;
     text-align: center;
     color:#fff;
-    background:#1ABC9C;
+    border:1px solid #1ABC9C;
     display: block;
+    float: left;
     font-size: 12px;
-    margin-top:20px;
-
+    color:#1ABC9C;
+    border-radius: 2px;
+   
+}
+.article-list .item .left .bottom .more:before{
+    margin-right: 5px;
 }
 .article-list .more-btn{
     width:60%;
@@ -103,5 +112,5 @@
     color:#bdc3c7;
     border-radius: 40px;
     border:1px solid #bdc3c7;
-    margin:30px auto;
+    margin:0 auto;
 }

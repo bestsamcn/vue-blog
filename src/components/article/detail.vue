@@ -94,9 +94,9 @@
             this.getDetail();
         },
         mounted(){
-            this.$nextTick(()=>{
-                this.getDetail();
-            })
+            // this.$nextTick(()=>{
+            //     this.getDetail();
+            // })
         }
     }
 </script>

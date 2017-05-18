@@ -3,7 +3,7 @@
     <div class="admin-home">
         <div class="preview">
             <div @click="goUrl({name:'AdminCount'})" class="prev-item bg-green">
-                <h4>访客总数</h4>
+                <h4>访问总数</h4>
                 <p class="text-center color-white margin-top-20">{{accessTotal}}</p>
             </div>
             <div  class="prev-item bg-red">

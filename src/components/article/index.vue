@@ -4,12 +4,14 @@
         <div class="main">
             <Articlelist @onLoadMore="getList(false)" :article-list="articleList" :is-more="isMore"></Articlelist>
         </div>
+        <Footerbar class="margin-top-20"></Footerbar>
     </div>
 </template>
 <script>
     import Articlelist from './articleList.vue';
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js'
+    import Footerbar from '@/components/common/footer.vue';
     export default{
         name:'home',
         data:()=>{
@@ -21,7 +23,8 @@
 		    }
 		},
         components:{
-            Articlelist
+            Articlelist,
+            Footerbar:Footerbar
         },
         watch:{
             // '$route':'getList(true)'

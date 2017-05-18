@@ -13,7 +13,8 @@
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="hotList.length" v-for="item in hotList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
-                            <img src="../../assets/img/article-1.jpg">
+                            <img v-if="!!item.poster" :src="`${CONFIG.POSTER_URL}/${item.poster}`">
+                            <span v-if="!item.poster">{{item.title | textEllipsis(2,true)}}</span>
                         </div>
                     </div>
                     <div class="text">
@@ -28,7 +29,8 @@
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="latestList.length" v-for="item in latestList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
-                            <img src="../../assets/img/article-1.jpg">
+                            <img v-if="!!item.poster" :src="`${CONFIG.POSTER_URL}/${item.poster}`">
+                            <span v-if="!item.poster">{{item.title | textEllipsis(2,true)}}</span>
                         </div>
                     </div>
                     <div class="text">
@@ -58,7 +60,8 @@
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="readNumList.length" v-for="item in readNumList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
-                            <img src="../../assets/img/article-1.jpg">
+                            <img v-if="!!item.poster" :src="`${CONFIG.POSTER_URL}/${item.poster}`">
+                            <span v-if="!item.poster">{{item.title | textEllipsis(2,true)}}</span>
                         </div>
                     </div>
                     <div class="text">
@@ -73,6 +76,7 @@
 </template>
 <script>
     import * as API from '@/api/index.js';
+    import * as CONFIG from '@/api/config.js';
     export default{
         props:{
             latestList:{
@@ -90,7 +94,8 @@
                 hotList:[],
                 commentList:[],
                 likestList:[],
-                readNumList:[]
+                readNumList:[],
+                CONFIG:CONFIG
 
             }
         },

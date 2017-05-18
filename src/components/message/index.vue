@@ -3,18 +3,17 @@
 	<div class="message">
 		<h2>CONTACT</h2>
 		<div class="msg-form">
-			<h4>Your Name</h4>
-			<Einput type="text" v-model="form.name"></Einput>
-			<h4>Your Email</h4>
-			<Einput type="text" v-model="form.email"></Einput>
-			<h4>Your Message</h4>
-			<Einput type="textarea" resize="false" v-model="form.content"></Einput>
-			<Ebutton class="button" type="info" @click="postMessage()">send</Ebutton>
+			<h4>Name</h4>
+			<input type="text" v-model="form.name"></input>
+			<h4>Email</h4>
+			<input type="text" v-model="form.email"></input>
+			<h4>Message</h4>
+			<textarea type="textarea" resize="false" v-model="form.content"></textarea>
+			<button class="button con-share-alt" type="info" @click="postMessage()">发送</button>
 		</div>
 	</div>
 </template>
 <script>
-	import { Input, Button } from 'element-ui';
 	import { mapActions } from 'vuex';
 	import xss from 'xss';
 	import * as API from '@/api/index.js';
@@ -30,8 +29,7 @@
 			}
 		},
 		components:{
-			Einput:Input,
-			Ebutton:Button
+			
 		},
 		methods:{
 			...mapActions([

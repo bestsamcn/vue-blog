@@ -1,6 +1,5 @@
 .search{
     width:100%;
-    background:#fff;
 }
 .search .wrapper{
     max-width: 1000px;
@@ -8,6 +7,7 @@
     padding:20px;
     position: relative;
     text-align: center;
+    background:#fff;
 }
 .search .wrapper .search-bar{
     display: -webkit-flex;
@@ -38,8 +38,6 @@
     left:10px;
     margin-left:0;
 }
-
-
 
 .search .wrapper .tips-list{
     width:100%;

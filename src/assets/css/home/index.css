@@ -7,6 +7,7 @@
 .home .main{
     max-width:1000px;
     margin:0 auto;
+    // padding:10px;
 }
 .home .main .wrapper{
     display: -webkit-flex;
@@ -20,7 +21,7 @@
 }
 @media (max-width:768px){
     .home .main .wrapper{
-        padding-right:20px;
+        padding-right:0;
     }
 }
 .home .main .wrapper .left-cont{
@@ -35,7 +36,7 @@
     color:#bdc3c7;
     border-radius: 40px;
     border:1px solid #bdc3c7;
-    margin:30px auto;
+    margin:0 auto 20px auto;
 }
 .home .main .wrapper .right-bar{
     position: absolute;
