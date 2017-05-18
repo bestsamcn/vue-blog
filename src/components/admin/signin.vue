@@ -47,8 +47,8 @@
                 API.login({account:that.account, password:that.password}).then(res=>{
                     that.setToast(res.msg || '登录成功');
                     var token = {token:res.token, expires:res.expires};
-                    window.localStorage && (localStorage['token'] = JSON.stringify(token));
-                    window.localStorage && (localStorage['isLogin'] = true);
+                    window.localStorage && (localStorage['__bestToken__'] = JSON.stringify(token));
+                    window.localStorage && (localStorage['__bestLogin__'] = true);
                     that.setToken(res.token);
                     that.$router.push({name:'AdminHome'});
                 })

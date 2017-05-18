@@ -34,6 +34,7 @@
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
     import * as API from '@/api/index.js';
+    import $$ from '@/utils/index.js';
     export default{
         name:'home',
         data:()=>{
@@ -58,6 +59,13 @@
         },
         mounted(){
             API.getArticleList({pageSize:this.pageSize, pageIndex:this.pageIndex}).then(res=>{
+                res.data.map(item=>{
+                    if($$.getCookie(item._id)){
+                        return item.isLiked = true;
+                    }else{
+                        return item.isLiked = false;
+                    }
+                });
                 if(res.data.length < this.pageSize) this.isMore = false;
                 this.articleList = res.data;
             })

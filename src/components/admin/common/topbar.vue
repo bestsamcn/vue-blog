@@ -40,8 +40,8 @@
                 if(cmd !== 'logout') return;
                 API.logout().then(res=>{
                     that.setToast(res.msg || '退出成功');
-                    if(localStorage.token) delete localStorage.token;
-                    localStorage['isLogin'] && delete localStorage.isLogin;
+                    if(localStorage['__bestToken__']) delete localStorage['__bestToken__'];
+                    localStorage['__bestLogin__'] && delete localStorage['__bestLogin__'];
                     that.delToken();
                     this.$router.push({name:'Home'});
                 });

@@ -23,6 +23,10 @@
                 <span :class="{'icon-spinner icon-spin':isUploading}">{{isUploading?'':'上传图片'}}</span>
                 <input type="file" v-show="false" name="poster" v-on:change="posterChange" accept="image/gif, image/jpeg, image/png">
             </label>
+            <label class="upload-btn">
+                <span :class="{'icon-spinner icon-spin':isPosterUploading}">{{isPosterUploading ?'':'修改封面'}}</span>
+                <input type="file" v-show="false" name="poster" v-on:change="addPoster" accept="image/gif, image/jpeg, image/png">
+            </label>
         </div>
         <div class="btn text-right margin-top-20">
             <Ebutton type="info" size="large" @click="postArticle()">提交</Ebutton>
@@ -66,7 +70,8 @@
                 isEditorFullscreen:false,
                 editor:null,
                 poster:'',
-                isUploading:false
+                isUploading:false,
+                isPosterUploading:false
             }
         },
         components:{
@@ -124,6 +129,7 @@
                     category:that.cateChoose,
                     previewText:that.previewText,
                     codeContent:that.highlightHtml,
+                    poster:that.poster,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.editArticle(obj).then(res=>{
@@ -172,6 +178,33 @@
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
                     cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
                     e.target.value='';
+                });
+            },
+            addPoster(e){
+                this.isPosterUploading = true;
+                var file = e.target.files[0];
+                var formData = new FormData();
+                formData.append('poster',file);
+                var that = this;
+                Axios.post(`${CONFIG.ROOT_API}/article/addPoster`, formData, {
+                    headers: {
+                        'withCredentials':true,
+                        'Content-Type': false,
+                        'x-access-token':that.token
+                    },
+                    timeout:100000
+                }).then(res=>{
+                    that.isPosterUploading = false;
+                    that.poster = res.data.data.posterName;                    
+                    e.target.value='';
+                }, err=>{
+                    that.setToast('异常');
+                    e.target.value='';
+                    that.isPosterUploading = false;
+                }).catch(e=>{
+                    that.setToast('异常');
+                    e.target.value='';
+                    that.isPosterUploading = false;
                 });
             }
         },

@@ -25,7 +25,7 @@ store.state.common.clientHeight=clientHeight
 //路由动画
 store.dispatch('setMobile', Utils.isMobile());
 //全局数据初始化
-store.dispatch('setToken', localStorage['token'] && JSON.parse(localStorage['token']).token);
+store.dispatch('setToken', localStorage['__bestToken__'] && JSON.parse(localStorage['__bestToken__']).token);
 store.dispatch('getTagList');
 store.dispatch('getCategoryList');
 //title

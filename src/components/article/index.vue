@@ -9,6 +9,7 @@
 <script>
     import Articlelist from './articleList.vue';
     import * as API from '@/api/index.js';
+    import $$ from '@/utils/index.js'
     export default{
         name:'home',
         data:()=>{
@@ -33,6 +34,13 @@
                     pageSize:this.pageSize
                 }
                 API.getArticleList(obj).then(res=>{
+                    res.data.map(item=>{
+                        if($$.getCookie(item._id)){
+                            return item.isLiked = true;
+                        }else{
+                            return item.isLiked = false;
+                        }
+                    });
                     isRefresh ? (this.articleList = res.data ) : (this.articleList = this.articleList.concat(res.data));
                     if(res.data.length < this.pageSize){
                         this.isMore = false;
