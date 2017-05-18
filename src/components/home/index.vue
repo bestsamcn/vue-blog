@@ -6,6 +6,7 @@
                 <div class="left-cont">
                     <Articlelist :is-show-more="false" :is-more="false" :article-list="articleList"></Articlelist>
                     <router-link v-if="isMore" :to="{name:'Article'}" class="more-btn">更多</router-link>
+                    <p class="text-center color-gray padding-bottom-20" v-if="!isMore">没有更多了</p>
                 </div>
                 <div class="right-bar sm-hide">
                     <Category>

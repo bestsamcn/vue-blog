@@ -26,6 +26,7 @@
 }
 .home .main .wrapper .left-cont{
     width:100%;
+    min-height:700px;
 }
 .home .main .wrapper .left-cont .more-btn{
     width:60%;

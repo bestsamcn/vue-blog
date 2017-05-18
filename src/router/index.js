@@ -211,6 +211,10 @@ var routerMap = {
                     ]
                 }
             ]
+        },
+        {
+            path:'*',
+            redirect:'/'
         }
     ]
 }
