@@ -35,7 +35,6 @@
     </div>
 </template>
 <script>
-    import Page from './page.vue';
     import $$ from '@/utils/index.js';
     import * as CONFIG from '@/api/config.js';
     import { mapState } from 'vuex';
@@ -71,7 +70,6 @@
             })
         },
         components:{
-            Page
         },
         methods:{
             moreEvent(){

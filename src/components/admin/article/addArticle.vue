@@ -43,7 +43,6 @@
     import * as API from '@/api/index.js';
     import * as CONFIG from '@/api/config.js'
     import '@/assets/css/common/github-markdown.css';
-    import xss from 'xss';
     export default{
         name:'addArticle',
         data(){
@@ -137,11 +136,16 @@
                 });
             },
             posterChange(e){
-                //b为单位，1mb = 1024b*1024*1024
+                //b为单位，1mb = 1*1024*1024b;
+                var MB = 1*1024*1024;
                 this.isUploading = true;
                 var cm = this.editor.codemirror;
                 var file = e.target.files[0];
                 var size = file.size;
+                if(size > 5*MB){
+                    this.setToast('图片不能超过5MB');
+                    return;
+                }
                 var formData = new FormData();
                 formData.append('poster',file);
                 var that = this;
@@ -172,7 +176,13 @@
             },
             addPoster(e){
                 this.isPosterUploading = true;
+                var MB = 1*1024*1024;
                 var file = e.target.files[0];
+                var size = file.size;
+                if(size > 5*MB){
+                    this.setToast('图片不能超过5MB');
+                    return;
+                }
                 var formData = new FormData();
                 formData.append('poster',file);
                 var that = this;

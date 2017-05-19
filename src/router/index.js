@@ -26,27 +26,6 @@ const AdminMsgDetail = resolve=>{require(['@/components/admin/message/detail.vue
 const AdminComment = resolve=>{require(['../components/admin/article/articleComment.vue'], resolve)};
 const AdminCount = resolve=>{require(['@/components/admin/count/index.vue'], resolve)};
 
-// import Home from '@/components/home/index.vue'
-// import About from '@/components/about/index.vue'
-// import Article from '@/components/article/index.vue'
-// import ArticleDetail from '@/components/article/detail.vue'
-// import Search from '@/components/search/index.vue'
-// import Message from '@/components/message/index.vue'
-
-
-// import Admin from '@/components/admin/index.vue'
-// import AdminCommon from '@/components/admin/common/index.vue'
-// import Signin from '@/components/admin/signin.vue'
-// import AdminHome from '@/components/admin/home/index.vue'
-// import AdminArticle from '@/components/admin/article/index.vue'
-// import AdminAddArticle from '@/components/admin/article/addArticle.vue'
-// import AdminEditArticle from '@/components/admin/article/editArticle.vue'
-// import AdminTag from '@/components/admin/tag/index.vue'
-// import AdminCate from '@/components/admin/category/index.vue'
-// import AdminMsg from '@/components/admin/message/index.vue'
-// import AdminMsgDetail from '@/components/admin/message/detail.vue'
-// import AdminComment from '@/components/admin/article/articleComment.vue'
-// import AdminCount from '@/components/admin/count/index.vue'
 
 Vue.use(Router)
 
