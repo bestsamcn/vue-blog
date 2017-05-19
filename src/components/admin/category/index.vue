@@ -5,7 +5,7 @@
         <Etable v-if="!!categoryList.length" :data="categoryList" border>
             <Etableculume label="分类名" prop="name"></Etableculume>
             <Etableculume label="值" prop="_id"></Etableculume>
-            <Etableculume label="操作" fixed="right">
+            <Etableculume label="操作">
                 <template scope="scope" class="text-right">
                     <Ebutton type="info" @click="showEditModal(true, scope.row)">编辑</Ebutton>
                     <Ebutton type="danger" @click="delCategory(scope.row._id)">删除</Ebutton>
