@@ -53,7 +53,17 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+      test: /\.js$/,
+      include: [
+        path.resolve(process.cwd(), "node_modules/material-colors/")
+      ],
+      loader: 'babel-loader',
+      query: {
+        plugins: ['transform-runtime', 'transform-es2015-block-scoping'],
       }
+    },
     ]
   }
 }
