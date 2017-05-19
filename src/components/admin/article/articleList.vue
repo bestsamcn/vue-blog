@@ -1,7 +1,7 @@
 <style src="@/assets/css/admin/article/articleList.css" scoped></style>
 <template>
     <div class="admin-article-list">
-        <div class="margin-bottom-20">
+        <div class="margin-bottom-10">
             <!-- <EradioGroup v-model="type" @change="searchClick">
                 <EradioButton label="0">全部</EradioButton>
                 <EradioButton label="1">评论</EradioButton>
@@ -10,7 +10,7 @@
             <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
             <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
         </div>
-        <Tags class="margin-bottom-20" :is-disabled="false" @onTagClick="tagClick" :tag-value="tag" :is-show-reset="false" @onResetClick="reset()"></Tags>
+        <Tags class="margin-bottom-20" :is-disabled="false" @onTagClick="tagClick" :parent-tag-value="tag"  :is-show-reset="false"></Tags>
         <Etable :data="articleList" border style="width:100%;">
             <Etablecolumn prop="createTime" label="日期">
                 <template scope="scope">

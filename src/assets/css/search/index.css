@@ -4,7 +4,7 @@
 .search .wrapper{
     max-width: 1000px;
     margin:0 auto;
-    padding:20px;
+    padding:10px;
     position: relative;
     text-align: center;
     background:#fff;
@@ -65,4 +65,9 @@
 }
 .search .wrapper .tips-list li:nth-of-type(4){
     background: #ff4949;
+}
+@media screen and  (min-width:768px){
+    .search .wrapper{
+        padding:20px;
+    }
 }

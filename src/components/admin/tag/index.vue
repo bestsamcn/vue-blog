@@ -1,7 +1,7 @@
 <style src="@/assets/css/admin/tag/index.css" scoped></style>
 <template>
     <div class="admin-tag">
-        <Etable :data="tagList" border>
+        <Etable v-if="tagList" :data="tagList" border>
             <Etableculume label="标签名" prop="name"></Etableculume>
             <Etableculume label="值" prop="_id"></Etableculume>
             <Etableculume label="操作" fixed="right">

@@ -397,11 +397,11 @@
 }
 
 .markdown-body>*:first-child {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .markdown-body>*:last-child {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 .markdown-body a:not([href]) {

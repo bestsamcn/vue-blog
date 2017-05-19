@@ -1,4 +1,4 @@
-<style src="../../assets/css/article/detail.css" scoped></style>
+<style src="../../assets/css/article/detail.css"></style>
 <template>
     <div class="article-detail">
         <div class="main">

@@ -11,7 +11,7 @@
  -->            </div>
             <Tags @onTagClick="tagClick" :is-disabled="false" @onResetClick="resetTag"></Tags>
             <div class="margin-top-20">
-                <Articlelist @onLoadMore="getSearchList(false)" :is-more="isMore" :article-list="articleList"></Articlelist>
+                <Articlelist @onLoadMore="getSearchList(false)" class="padding-0 border-top-1" :is-more="isMore" :article-list="articleList"></Articlelist>
             </div>
             <router-link :to="{name:'Article'}"></router-link>
         </div>

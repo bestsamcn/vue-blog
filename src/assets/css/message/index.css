@@ -20,7 +20,9 @@
     height: 40px;
     font-size: 14px;
     // text-indent: 20px;
+    border:1px solid #1ABC9C;
     text-align: left;
+    box-shadow: none;
 }
 .message textarea{
 	width:100%;
@@ -30,6 +32,8 @@
 	border:none;
 	outline: none;
 	padding:10px;
+    border:1px solid #1ABC9C;
+    box-shadow: none;
 }
 .message button{
 	width:100%;

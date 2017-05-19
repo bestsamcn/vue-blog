@@ -6,8 +6,16 @@
     /*color: #333;*/
     box-sizing: border-box;
     font-size: 14px;
-    -webkit-overflow-scrolling:touch !important;  
+    //删除ios滑动出现覆盖的情况。。。。太多的浮夸，只为证明我来过。
+    // -webkit-overflow-scrolling:touch !important;  
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0.1) !important;
+}
+input, textarea{
+    //去除iosinput阴影
+    -webkit-appearance: none !important;
+    outline: none;
+    -webkit-appearance: none; /*去除系统默认的样式*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 点击高亮的颜色*/
 }
 html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     margin:0;
@@ -144,11 +152,17 @@ button,input,select{
 .padding-right-10{
     padding-right:10px;
 }
+.padding-0{
+    padding:0 !important;
+}
 .all-hide{
 
 }
 .no-border{
     border:none !important;
+}
+.border-top-1{
+    border-top:1px solid #eee;
 }
 @media (max-width:768px){
     .sm-show{
