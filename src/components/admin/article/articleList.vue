@@ -36,7 +36,7 @@
             </Etablecolumn>
             <Etablecolumn prop="category.name" label="归类"  width="100">
             </Etablecolumn>
-            <Etablecolumn fixed="right" label="操作" >
+            <Etablecolumn label="操作" >
                 <template scope="scope">
                     <Ebutton type="info" size="small" @click="goState('ArticleDetail', scope.row._id)">查看</Ebutton>
                     <Ebutton size="small" @click="goState('AdminEditArticle', scope.row._id)">编辑</Ebutton>

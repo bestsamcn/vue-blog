@@ -1,3 +1,4 @@
 .admin-tag{
-    
+    -webkit-overflow-scrolling:none !important; 
+    overflow-scrolling:none !important; 
 }

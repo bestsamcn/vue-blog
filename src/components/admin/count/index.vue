@@ -4,6 +4,7 @@
 		<div class="margin-bottom-20">
         <EradioGroup v-model="type" @change="getList()">
             <EradioButton label="1">全部</EradioButton>
+            <EradioButton label="3">今天</EradioButton>
             <EradioButton label="2">昨天</EradioButton>
         </EradioGroup>
         <Einput placeholder="填写地址" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
@@ -25,7 +26,7 @@
                 </template>
             </Etablecolumn>
             <Etablecolumn prop="apiName" label="地址"></Etablecolumn>
-            <Etablecolumn label="操作" fixed="right">
+            <Etablecolumn label="操作">
                 <template scope="scope">
                     <Ebutton type="danger" size="small" @click="delCount(scope.row)">删除</Ebutton>
                 </template>

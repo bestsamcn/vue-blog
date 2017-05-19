@@ -18,7 +18,7 @@
     padding-left:0;
 }
 .admin-common .content{
-    padding:20px;
+    padding:10px;
     height:100%;
     overflow-y:scroll;
     overflow-x:hidden;
@@ -36,36 +36,24 @@
     right:0;
     z-index: 100;
 }
-
-@media (min-width:768px){
-    .admin-common .content .mask{
-        display: none !important;
-    }
-    .admin-common{
-        padding-left:250px;
-        margin-left:0;
-      
-    }
-    .admin-common.show-all{
-
-    }
-}
 .admin-common .content .content-view{
-    width:calc(100% - 40px);
-    height:calc(100% - 40px);
-    left:20px;
-    top:20px;
+    width:calc(100% - 20px);
+    height:calc(100% - 20px);
+    left:10px;
+    top:10px;
     overflow-y: scroll;
     position: absolute;
     background:#fff;
     padding:10px;
     padding-top:60px;
+    z-index: 20;
+     
 }
 .admin-map{
     display: -webkit-flex;
     display: flex;
     position: relative;
-    z-index: 10;
+    z-index: 51;
     padding:15px 20px;
     background:#fff;
     border-bottom:1px solid #eee;
@@ -78,4 +66,31 @@
     position: absolute;
     left:10px;
     top:15px;
+}
+@media (min-width:768px){
+    .admin-common .content .mask{
+        display: none !important;
+    }
+    .admin-common{
+        padding-left:250px;
+        margin-left:0;
+      
+    }
+    .admin-common.show-all{
+
+    }
+    .admin-common .content{
+        padding:20px;
+    }
+    .admin-common .content .content-view{
+        width:calc(100% - 40px);
+        height:calc(100% - 40px);
+        left:20px;
+        top:20px;
+        overflow-y: scroll;
+        position: absolute;
+        background:#fff;
+        padding:20px;
+        padding-top:60px;
+    }
 }

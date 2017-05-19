@@ -4,3 +4,7 @@
 .article-comment a{
     color:#333;
 }
+.article-comment .el-button--info{
+    color:#fff !important;
+    padding:10px;
+}

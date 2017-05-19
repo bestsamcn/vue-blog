@@ -1,7 +1,8 @@
 <style src="@/assets/css/admin/tag/index.css" scoped></style>
 <template>
     <div class="admin-tag">
-        <Etable v-if="tagList" :data="tagList" border>
+        <div class="margin-top-0"></div>
+        <Etable v-if="!!tagList.length" :data="tagList" border>
             <Etableculume label="标签名" prop="name"></Etableculume>
             <Etableculume label="值" prop="_id"></Etableculume>
             <Etableculume label="操作" fixed="right">
@@ -101,6 +102,19 @@
                     this.isEditModal = false;
                 });
             }
+        },
+        created(){
+            // this.$nextTick(()=>{
+                setTimeout(()=>{
+                    this.tagList = this.tagList;
+                })
+                
+            // });
+        },
+        mounted(){
+            this.$nextTick(()=>{
+                this.tagList = this.tagList;
+            });
         }
     }
 </script>

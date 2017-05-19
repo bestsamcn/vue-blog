@@ -7,7 +7,7 @@
     background:#1ABC9C;
     display: -webkit-flex;
     display: flex;
-    z-index: 101;
+    z-index: 20;
     justify-content:space-between;
     align-items:center;
     box-shadow: 0 3px 5px rgba(0,0,0,.1);

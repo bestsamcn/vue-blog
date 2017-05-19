@@ -6,12 +6,12 @@
     /*color: #333;*/
     box-sizing: border-box;
     font-size: 14px;
-    //删除ios滑动出现覆盖的情况。。。。太多的浮夸，只为证明我来过。
-    // -webkit-overflow-scrolling:touch !important;  
+    /*删除ios滑动出现覆盖的情况。。。。太多的浮夸，只为证明我来过。*/
+    -webkit-overflow-scrolling:touch !important;  
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0.1) !important;
 }
 input, textarea{
-    //去除iosinput阴影
+    /*去除iosinput阴影*/
     -webkit-appearance: none !important;
     outline: none;
     -webkit-appearance: none; /*去除系统默认的样式*/
@@ -22,7 +22,7 @@ html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     padding:0;
 }
 ul,li{
-    // list-style: none;
+    
 }
 a {
     text-decoration: none;

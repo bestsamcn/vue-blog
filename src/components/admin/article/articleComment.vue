@@ -1,6 +1,6 @@
 <style src="@/assets/css/admin/article/articleComment.css"></style>
 <template>
-    <div class="article-commment">
+    <div class="article-comment">
         <div class="margin-bottom-20">
             <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
             <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
