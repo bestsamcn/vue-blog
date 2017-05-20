@@ -18,12 +18,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  externals:{
-    'vue':'window.Vue',
-    'vuex':'window.Vuex',
-    'vue-router':'window.VueRouter',
-    'axios':'window.Axios'
-  },
+  // externals:{
+  //   'vue':'window.Vue',
+  //   'vuex':'window.Vuex',
+  //   'vue-router':'window.VueRouter',
+  //   'axios':'window.Axios'
+  // },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
