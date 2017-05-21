@@ -49,7 +49,8 @@
                 editor:null,
                 prevID:'',
                 nextID:'',
-                isLiked:false
+                isLiked:false,
+                type:1
             }
         },
         components:{
@@ -69,7 +70,7 @@
             getDetail(){
                 if(!this.$route.params.id) return;
                 this.isLiked = false;
-                API.getArticleDetail({id:this.$route.params.id}).then(res=>{
+                API.getArticleDetail({id:this.$route.params.id, type:this.type}).then(res=>{
                     this.article = res.data.curr;
                     this.prevID = res.data.prev && res.data.prev._id || '';
                     this.nextID = res.data.next && res.data.next._id || '';

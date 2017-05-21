@@ -1,13 +1,13 @@
 <style src="../../assets/css/message/index.css"></style>
 <template>
 	<div class="message">
-		<h2>CONTACT</h2>
+		<h2 class="color-black">CONTACT</h2>
 		<div class="msg-form">
-			<h4>Name</h4>
+			<h4 class="color-black">Name</h4>
 			<input type="text" v-model="form.name"></input>
-			<h4>Email</h4>
+			<h4 class="color-black">Email</h4>
 			<input type="text" v-model="form.email"></input>
-			<h4>Message</h4>
+			<h4 class="color-black">Message</h4>
 			<textarea type="textarea" resize="false" v-model="form.content"></textarea>
 			<button class="button con-share-alt" type="info" @click="postMessage()">发送</button>
 		</div>

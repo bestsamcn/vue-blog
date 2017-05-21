@@ -16,6 +16,10 @@
 .article-list .item .left{
     width:100%;
 }
+.article-list .item .left .preview{
+    color:#3E5E77;
+}
+
 .article-list .item .right{
     width:180px;
     height:100%;

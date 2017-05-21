@@ -71,7 +71,9 @@
                 editor:null,
                 poster:'',
                 isUploading:false,
-                isPosterUploading:false
+                isPosterUploading:false,
+                type:2,
+                elScrollTop:0
             }
         },
         components:{
@@ -147,7 +149,7 @@
                     this.$router.push({name:'AdminArticle'});
                     return;
                 }
-                API.getArticleDetail({id:this.$route.params.id}).then(res=>{
+                API.getArticleDetail({id:this.$route.params.id,type:this.type}).then(res=>{
                     this.title = res.data.curr.title;
                     this.tagChoose = res.data.curr.tag._id;
                     this.cateChoose = res.data.curr.category._id;
@@ -157,6 +159,7 @@
             },
             posterChange(e){
                 //b为单位，1mb = 1024b*1024*1024
+                this.elScrollTop = this.$el.scrollTop;
                 this.isUploading = true;
                 var cm = this.editor.codemirror;
                 var file = e.target.files[0];
@@ -177,7 +180,9 @@
                     that.isUploading = false;
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
                     cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
+                    that.$el.scrollTop = that.elScrollTop;
                     e.target.value='';
+                    
                 });
             },
             addPoster(e){
