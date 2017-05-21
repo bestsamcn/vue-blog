@@ -1,30 +1,169 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store/index.js'
+
+
+
 
 //路由懒加载
 //resolve=>require(['@/components/home/index.vue'], resolve)
 //user
-const Home = resolve=>{require(['@/components/home/index.vue'], resolve)};
-const About = resolve=>{require(['@/components/about/index.vue'], resolve)};
-const Article = resolve=>{require(['@/components/article/index.vue'], resolve)};
-const ArticleDetail = resolve=>{require(['@/components/article/detail.vue'], resolve)};
-const Search = resolve=>{require(['@/components/search/index.vue'], resolve)};
-const Message = resolve=>{require(['@/components/message/index.vue'], resolve)};
+// const Home = resolve=>{require(['@/components/home/index.vue'], resolve)};
+const Home = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/home/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const About = resolve=>{require(['@/components/about/index.vue'], resolve)};
+const About = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/message/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const Article = resolve=>{require(['@/components/article/index.vue'], resolve)};
+const Article = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/article/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const ArticleDetail = resolve=>{require(['@/components/article/detail.vue'], resolve)};
+const ArticleDetail = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/article/detail.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+
+// const Search = resolve=>{require(['@/components/search/index.vue'], resolve)};
+const Search = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/search/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const Message = resolve=>{require(['@/components/message/index.vue'], resolve)};
+const Message = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/message/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
 
 //admin
-const Admin = resolve=>{require(['@/components/admin/index.vue'], resolve)};
-const AdminCommon = resolve=>{require(['@/components/admin/common/index.vue'], resolve)};
-const Signin = resolve=>{require(['@/components/admin/signin.vue'], resolve)};
-const AdminHome = resolve=>{require(['@/components/admin/home/index.vue'], resolve)};
-const AdminArticle = resolve=>{require(['@/components/admin/article/index.vue'], resolve)};
-const AdminAddArticle = resolve=>{require(['@/components/admin/article/addArticle.vue'], resolve)};
-const AdminEditArticle = resolve=>{require(['@/components/admin/article/editArticle.vue'], resolve)};
-const AdminTag = resolve=>{require(['@/components/admin/tag/index.vue'], resolve)};
-const AdminCate = resolve=>{require(['@/components/admin/category/index.vue'], resolve)};
-const AdminMsg = resolve=>{require(['@/components/admin/message/index.vue'], resolve)};
-const AdminMsgDetail = resolve=>{require(['@/components/admin/message/detail.vue'], resolve)};
-const AdminComment = resolve=>{require(['../components/admin/article/articleComment.vue'], resolve)};
-const AdminCount = resolve=>{require(['@/components/admin/count/index.vue'], resolve)};
+// const Admin = resolve=>{require(['@/components/admin/index.vue'], resolve)};
+const Admin = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminCommon = resolve=>{require(['@/components/admin/common/index.vue'], resolve)};
+const AdminCommon = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/common/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const Signin = resolve=>{require(['@/components/admin/signin.vue'], resolve)};
+const Signin = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/signin.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminHome = resolve=>{require(['@/components/admin/home/index.vue], resolve)};
+const AdminHome = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/home/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminArticle = resolve=>{require(['@/components/admin/article/index.vue'], resolve)};
+const AdminArticle = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/article/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminAddArticle = resolve=>{require(['@/components/admin/article/addArticle.vue'], resolve)};
+const AdminAddArticle = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/article/addArticle.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminEditArticle = resolve=>{require(['@/components/admin/article/editArticle.vue'], resolve)};
+const AdminEditArticle = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/article/editArticle.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminTag = resolve=>{require(['@/components/admin/tag/index.vue'], resolve)};
+const AdminTag = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/tag/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminCate = resolve=>{require(['@/components/admin/category/index.vue'], resolve)};
+const AdminCate = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/category/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+
+// const AdminMsg = resolve=>{require(['@/components/admin/message/index.vue'], resolve)};
+const AdminMsg = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/message/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminMsgDetail = resolve=>{require(['@/components/admin/message/detail.vue'], resolve)};
+const AdminMsgDetail = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/message/detail.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminComment = resolve=>{require(['@/components/admin/article/articleComment.vue'], resolve)};
+const AdminComment = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/article/articleComment.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+// const AdminCount = resolve=>{require(['@/components/admin/count/index.vue'], resolve)};
+const AdminCount = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/count/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
 
 
 Vue.use(Router)
