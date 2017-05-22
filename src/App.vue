@@ -28,7 +28,6 @@ import Navheader from './components/common/header.vue';
 import Footerbar from '@/components/common/footer.vue';
 import Menulist from './components/common/menu.vue';
 import Toast from './components/common/Toast.vue';
-import { getGameList } from '@/api/index.js';
 
 export default {
     name: 'app',

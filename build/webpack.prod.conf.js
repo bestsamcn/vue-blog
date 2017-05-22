@@ -18,18 +18,33 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  // externals:{
-  //   'vue':'window.Vue',
-  //   'vuex':'window.Vuex',
-  //   'vue-router':'window.VueRouter',
-  //   'axios':'window.Axios'
-  // },
+  // 生产环境添加
+  externals:{
+    // 'vue':{
+    //     root: 'Vue',
+    //     commonjs: 'vue',
+    //     commonjs2: 'vue',
+    //     amd: 'vue'
+    // },
+    // 'vuex':{
+    //     root: 'Vuex',
+    //     commonjs: 'vuex',
+    //     commonjs2: 'vuex',
+    //     amd: 'vuex'
+    // },
+    // 'vue-router':{
+    //     root: 'VueRouter',
+    //     commonjs: 'VueRouter',
+    //     commonjs2: 'VueRouter',
+    //     amd: 'VueRouter'
+    // }
+  },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
-    
+    libraryTarget: 'umd'
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html

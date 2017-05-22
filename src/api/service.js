@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import store from '../store/index.js';
 import Axios from 'axios';
 import * as config from './config.js';

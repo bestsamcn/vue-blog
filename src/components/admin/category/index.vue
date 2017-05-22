@@ -104,9 +104,7 @@
             }
         },
         created(){
-            setTimeout(()=>{
-                    this.tagList = this.tagList;
-                })
+            
         }
     }
 </script>

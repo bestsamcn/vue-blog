@@ -1,13 +1,10 @@
+// 生产环境注释下行代码
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import store from '@/store/index.js'
 
 
-
-
 //路由懒加载
-//resolve=>require(['@/components/home/index.vue'], resolve)
-//user
 // const Home = resolve=>{require(['@/components/home/index.vue'], resolve)};
 const Home = resolve=>{
     store.dispatch('setShowLoading');
@@ -19,7 +16,7 @@ const Home = resolve=>{
 // const About = resolve=>{require(['@/components/about/index.vue'], resolve)};
 const About = resolve=>{
     store.dispatch('setShowLoading');
-    require(['@/components/message/index.vue'], component=>{
+    require(['@/components/about/index.vue'], component=>{
         store.dispatch('setHideLoading');
         resolve(component)
     }
@@ -166,7 +163,7 @@ const AdminCount = resolve=>{
 )};
 
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 var routerMap = {
     mode: 'hash',
@@ -336,4 +333,4 @@ var routerMap = {
         }
     ]
 }
-export default new Router(routerMap);
+export default new VueRouter(routerMap);

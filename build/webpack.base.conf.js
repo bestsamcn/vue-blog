@@ -29,11 +29,16 @@ module.exports = {
             test: /\.vue$/,
             loader: 'vue-loader',
             options: vueLoaderConfig
-        }, {
+        },
+        {
             test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
-            include: [resolve('src'), resolve('test')]
-        }, {
+            query: {
+                presets: ['es2015']
+            }
+        },
+        {
             test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
             loader: 'url-loader',
             query: {
@@ -50,12 +55,13 @@ module.exports = {
         }, {
             test: /\.js$/,
             include: [
-                path.resolve(process.cwd(), "node_modules/material-colors/")
+                path.resolve(process.cwd(), "node_modules/material-colors/"),
+                resolve('src'), resolve('test')
             ],
             loader: 'babel-loader',
             query: {
-                plugins: ['transform-runtime', 'transform-es2015-block-scoping'],
+                plugins: ['transform-runtime', 'transform-es2015-block-scoping']
             }
-        }, ]
+        } ]
     }
 }

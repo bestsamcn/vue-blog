@@ -1,3 +1,4 @@
 .admin-category{
-   
+   -webkit-overflow-scrolling:auto !important; 
+    overflow-scrolling:auto !important; 
 }

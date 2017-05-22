@@ -2,7 +2,7 @@
 <template>
     <div class="admin-tag">
         <div class="margin-top-0"></div>
-        <Etable v-if="!!tagList.length" :data="tagList" border>
+        <Etable v-if="!!tagList.length" :data="tagList" border style="width:100%;">
             <Etableculume label="标签名" prop="name"></Etableculume>
             <Etableculume label="值" prop="_id"></Etableculume>
             <Etableculume label="操作">
@@ -73,7 +73,8 @@
                 'delTag',
                 'addTag',
                 'editTag',
-                'setToast'
+                'setToast',
+                'getTagList'
             ]),
             showDialog(b){
                 this.isShowDialog = !!b;
@@ -104,17 +105,9 @@
             }
         },
         created(){
-            // this.$nextTick(()=>{
-                setTimeout(()=>{
-                    this.tagList = this.tagList;
-                })
-                
-            // });
         },
         mounted(){
-            this.$nextTick(()=>{
-                this.tagList = this.tagList;
-            });
+            
         }
     }
 </script>
