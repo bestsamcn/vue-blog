@@ -166,7 +166,7 @@ const AdminCount = resolve=>{
 Vue.use(VueRouter)
 
 var routerMap = {
-    mode: 'hash',
+    mode: 'history',
     base: __dirname,
     routes: [
         {
