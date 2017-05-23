@@ -21,6 +21,7 @@
 <script>
     import Articlelist from '../article/articleList.vue';
     import Tags from '../home/tags.vue';
+    import { mapState } from 'vuex';
     import * as API from '@/api/index.js';
     import Footerbar from '@/components/common/footer.vue';
     export default{
@@ -44,8 +45,14 @@
             Tags,
             Footerbar
         },
+        computed:{
+            ...mapState({
+                searchCate:state=>state.common.searchCate,
+                searchTag:state=>state.common.searchTag
+            })
+        },
         watch:{
-            // keyword:'watchkeyword'
+            '$route':'seachList'
         },
         methods:{
             watchkeyword(){
@@ -106,6 +113,8 @@
                 this.tag = '';
                 this.keyword = '';
                 this.getSearchList(true);
+            },
+            seachList(){
             }
         },
         created(){

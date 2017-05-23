@@ -2,8 +2,12 @@
 <template>
     <div class="article-comment">
         <div class="margin-bottom-20">
-            <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
+            <EradioGroup v-model="type" @change="getList()">
+                <EradioButton label="1">今天</EradioButton>
+                <EradioButton label="0">全部</EradioButton>
+            </EradioGroup>
             <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
+            <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
         </div>
         <Etable border :data="commentList">
             <Etablecolumn prop="createLog.createTime" label="时间">
@@ -32,7 +36,7 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag, Pagination, Input } from 'element-ui';
+    import { Table, TableColumn, Button, Tag, Pagination, Input, RadioGroup, RadioButton, MessageBox } from 'element-ui';
     import { mapState } from 'vuex';
     import * as API from '@/api/index.js';
     export default{
@@ -43,7 +47,8 @@
                 pageIndex:1,
                 pageSize:10,
                 total:0,
-                keyword:''
+                keyword:'',
+                type:1
             }
         },
         components:{
@@ -52,7 +57,9 @@
             Ebutton:Button,
             Etag:Tag,
             Einput:Input,
-            Epagination:Pagination
+            Epagination:Pagination,
+            EradioGroup:RadioGroup,
+            EradioButton:RadioButton
         },
         computed:{
             ...mapState({
@@ -64,7 +71,8 @@
                 var obj = {
                     pageIndex:_pageIndex,
                     pageSize:this.pageSize,
-                    keyword:this.keyword
+                    keyword:this.keyword,
+                    type:this.type
                 }
                 API.getCommentList(obj).then(res=>{
                     this.commentList = res.data;
@@ -75,9 +83,15 @@
                 this.$router.push({name:'ArticleDetail', params:{id:_id}});
             },
             _delete(item){
-                API.delComment({id:item._id}).then(res=>{
-                    this.commentList.splice(this.commentList.indexOf(item),1);
-                });
+                MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    API.delComment({id:item._id}).then(res=>{
+                        this.commentList.splice(this.commentList.indexOf(item),1);
+                    });
+                }).catch(()=>{});
             },
             searchClick(){
                 this.pageIndex = 1;
@@ -86,6 +100,7 @@
             reset(){
                 this.pageIndex = 1;
                 this.keyword = '';
+                this.type = 1;
                 this.getList();
             },
             handleSizeChange(){

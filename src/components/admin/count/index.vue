@@ -3,8 +3,8 @@
 	<div class="count">
 		<div class="margin-bottom-20">
         <EradioGroup v-model="type" @change="getList()">
-            <EradioButton label="1">全部</EradioButton>
             <EradioButton label="3">今天</EradioButton>
+            <EradioButton label="1">全部</EradioButton>
             <EradioButton label="2">昨天</EradioButton>
         </EradioGroup>
         <Einput placeholder="填写地址" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
@@ -50,7 +50,7 @@
 				total:0,
 				keyword:'',
 				ip:'',
-				type:1,
+				type:3,
 				countList:[]
 			}
 		},

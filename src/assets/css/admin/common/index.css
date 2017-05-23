@@ -49,6 +49,12 @@
     z-index: 20;
      
 }
+.el-input{
+    vertical-align: middle;
+}
+.el-button{
+    vertical-align: middle;
+}
 .admin-map{
     display: -webkit-flex;
     display: flex;

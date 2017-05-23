@@ -51,7 +51,7 @@
     </div>
 </template>
 <script>
-    import { Table, Select, Option, TableColumn, Button, Tag, RadioGroup, RadioButton, Pagination, Input } from 'element-ui';
+    import { Table, Select, Option, TableColumn, Button, Tag, RadioGroup, RadioButton, Pagination, Input, MessageBox } from 'element-ui';
     import * as API from '@/api/index.js';
     import Tags from '@/components/home/tags.vue';
     import { mapState, mapActions } from 'vuex';
@@ -116,9 +116,15 @@
             },
             delArticle(item){
                 if(!item._id || item._id.length !== 24) return;
-                API.delArticle({id:item._id}).then(res=>{
-                    this.articleList.splice(this.articleList.indexOf(item), 1);
-                });
+                MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    API.delArticle({id:item._id}).then(res=>{
+                        this.articleList.splice(this.articleList.indexOf(item), 1);
+                    })
+                }).catch(()=>{});
             },
             goState(name, _id){
                 if(!_id) return;

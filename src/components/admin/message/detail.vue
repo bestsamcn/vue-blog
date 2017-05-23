@@ -1,12 +1,12 @@
-<style src=""></style>
+<style src="@/assets/css/admin/message/index.css"></style>
 <template>
 	<div class="admin-message">
 		<div class="info color-blue">
-			<span>昵称：{{message.name}}</span>
-			<span>邮箱：{{message.email}}</span>
-			<span>时间：{{message.postTime}}</span>
+			<div class="block">昵称：<span>{{message.name}}</span></div>
+			<div class="block">邮箱：<span>{{message.email}}</span></div>
+			<div class="block">时间：<span>{{message.postTime}}</span></div>
 		</div>
-		<p class="margin-top-20">{{message.content}}</p>
+		<p class="margin-top-20 message-content">{{message.content}}</p>
 	</div>
 </template>
 <script>

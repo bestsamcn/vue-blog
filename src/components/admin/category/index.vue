@@ -8,7 +8,7 @@
             <Etableculume label="操作">
                 <template scope="scope" class="text-right">
                     <Ebutton type="info" @click="showEditModal(true, scope.row)">编辑</Ebutton>
-                    <Ebutton type="danger" @click="delCategory(scope.row._id)">删除</Ebutton>
+                    <Ebutton type="danger" @click="__delCategory(scope.row._id)">删除</Ebutton>
                 </template>
             </Etableculume>
         </Etable>
@@ -40,7 +40,7 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Dialog, Form, FormItem, Input, Tag } from 'element-ui';
+    import { Table, TableColumn, Button, Dialog, Form, FormItem, Input, Tag, MessageBox } from 'element-ui';
     import { mapState, mapActions } from 'vuex';
     export default{
         name:'adminTag',
@@ -78,6 +78,15 @@
             showDialog(b){
                 this.isShowDialog = !!b;
             },
+            __delCategory(_id){
+                MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.delCategory(_id)
+                }).catch(()=>{});
+            },
             __addCategory(){
                 var that = this;
                 if(!this.form.categoryName){
@@ -86,7 +95,6 @@
                 }
                 this.addCategory({name:this.form.categoryName}).then((res)=>{
                     this.form.categoryName = '';
-                    this.categoryList.push(data);
                     this.isShowDialog = false;
                 });
             },

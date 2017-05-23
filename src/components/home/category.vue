@@ -3,7 +3,7 @@
     <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
-            <a href="#" v-for="item in categorylist" :key="item._id">
+            <a href="javascript:;" @click="cateClick(item._id)" v-for="item in categorylist" :key="item._id">
                 <span class="name">{{item.name}}</span>
                 <span class="number">({{item.totalArticle || 0}})</span>
             </a>
@@ -18,6 +18,11 @@
             ...mapState({
                 categorylist:state=>state.admin.categoryList
             })
+        },
+        methods:{
+            cateClick(_id){
+                this.$router.push({name:'Search'});
+            }
         }
     }
 </script>

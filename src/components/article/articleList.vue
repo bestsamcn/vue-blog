@@ -9,7 +9,7 @@
                         
                         <span class="icon-comment">{{item.commentNum || 0}} Comments</span>
                         <span class="icon-eye-open">{{item.readNum}} Views</span>
-                        <span class="icon-tag">{{item.tag && item.tag.name}}</span>
+                        <span class="icon-tag">{{item.tag ? item.tag.name : 'null'}}</span>
                         <a href="javascript:;" class="icon-heart" :class="{'active':item.isLiked}">{{item.likeNum}}</a>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     摘要: {{item.previewText | textEllipsis(50, true)}}
                 </p>
                 <div class="bottom">
-                    <a href="javascript:;" class="more">{{item.category.name}}</a>
+                    <a href="javascript:;" class="more">{{item.category ? item.category.name :'我可能被删了'}}</a>
                     <a class="icon-calendar more no-border color-gray">{{item.createTime | dateFormat('yyyy-MM-dd')}}</a>
                 </div>
             </div>

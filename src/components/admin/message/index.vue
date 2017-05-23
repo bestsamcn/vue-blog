@@ -3,8 +3,8 @@
     <div class="admin-message">
         <div class="margin-bottom-20">
         <EradioGroup v-model="type" @change="getList()">
-            <EradioButton label="3">全部</EradioButton>
             <EradioButton label="2">未读</EradioButton>
+            <EradioButton label="3">全部</EradioButton>
             <EradioButton label="1">已读</EradioButton>
         </EradioGroup>
         </div>
@@ -36,7 +36,7 @@
     </div>
 </template>
 <script>
-    import { Table, TableColumn, Button, Tag, Pagination, RadioGroup, RadioButton } from 'element-ui';
+    import { Table, TableColumn, Button, Tag, Pagination, RadioGroup, RadioButton, MessageBox } from 'element-ui';
     import { mapState } from 'vuex';
     import * as API from '@/api/index.js';
     export default{
@@ -66,14 +66,20 @@
         methods:{
             delMessage(_id){
                 var that = this;
-                API.delMessage({id:_id}).then(res=>{
-                    for(var i=0; i< that.messageList.length; i++){
-                        if(that.messageList[i]._id == _id){
-                            that.messageList.splice(i, 1);
-                            break;
+                MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    API.delMessage({id:_id}).then(res=>{
+                        for(var i=0; i< that.messageList.length; i++){
+                            if(that.messageList[i]._id == _id){
+                                that.messageList.splice(i, 1);
+                                break;
+                            }
                         }
-                    }
-                });  
+                    }); 
+                }).catch(()=>{});
             },
             getDetail(item){
                 item.isRead = true;

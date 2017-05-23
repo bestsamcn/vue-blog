@@ -1,11 +1,5 @@
 import $http from './service.js';
 
-/**
- * getGameList 获取游戏列表
- * @param  {string} channelId  隶属渠道的id
- * @return {object}       返回结果 
- */
-
 //权限
 export const login = (params)=>$http('post', '/admin/login', params, true);
 export const logout = (params)=>$http('get', '/admin/logout', params);
