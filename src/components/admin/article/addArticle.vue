@@ -138,6 +138,7 @@
             },
             posterChange(e){
                 //b为单位，1mb = 1*1024*1024b;
+                this.elScrollTop = this.$el.scrollTop;
                 var MB = 1*1024*1024;
                 this.isUploading = true;
                 var cm = this.editor.codemirror;
@@ -150,9 +151,12 @@
                 var formData = new FormData();
                 formData.append('poster',file);
                 var that = this;
-                var tempText = `![${file.name}](http://...)`;
-                var tempValue = `${cm.getValue()}${tempText}`;
-                cm.setValue(tempValue);
+                var tempText = `\n![${file.name}](http://...)`;
+                //获取光标位置
+                var pos = cm.getCursor();
+                cm.setSelection(pos, pos);
+                cm.replaceSelection(tempText);
+                // return;
                 Axios.post(`${CONFIG.ROOT_API}/article/addPoster`, formData, {
                     headers: {
                         'withCredentials':true,
@@ -163,7 +167,8 @@
                 }).then(res=>{
                     that.isUploading = false;
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
-                    cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
+                    cm.setValue(cm.getValue().replace(reg, `![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
+                    that.$el.scrollTop = that.elScrollTop;
                     e.target.value='';
                 }, err=>{
                     that.setToast('异常');
@@ -211,6 +216,7 @@
         },
         mounted(){
             this.editor = this.$refs.Markdowneditor.simplemde;
+
         },
         created(){
         }

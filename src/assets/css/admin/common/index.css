@@ -73,7 +73,7 @@
     left:10px;
     top:15px;
 }
-@media (min-width:768px){
+@media screen and (min-width:768px){
     .admin-common .content .mask{
         display: none !important;
     }
@@ -98,5 +98,10 @@
         background:#fff;
         padding:20px;
         padding-top:60px;
+    }
+}
+@media screen and (max-width:768px){
+    .el-message-box{
+        width:300px !important;
     }
 }

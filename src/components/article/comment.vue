@@ -55,6 +55,7 @@
 <script>
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js';
+    import emoji from './emoji.vue';
     import { mapActions } from 'vuex';
     export default{
         name:'comment',
@@ -63,6 +64,9 @@
                 type:String,
                 require:true
             }
+        },
+        components:{
+            Emoji:emoji
         },
         data(){
             return{

@@ -158,7 +158,7 @@
                 });
             },
             posterChange(e){
-                //b为单位，1mb = 1024b*1024*1024
+                //b为单位，1mb = 1b*1024*1024
                 this.elScrollTop = this.$el.scrollTop;
                 this.isUploading = true;
                 var cm = this.editor.codemirror;
@@ -168,8 +168,12 @@
                 formData.append('poster',file);
                 var that = this;
                 var tempText = `![${file.name}](http://...)`;
-                var tempValue = `${cm.getValue()}${tempText}`;
-                cm.setValue(tempValue);
+                // var tempValue = `${cm.getValue()}${tempText}`;
+                // cm.setValue(tempValue);
+                //获取光标位置
+                var pos = cm.getCursor();
+                cm.setSelection(pos, pos);
+                cm.replaceSelection(tempText);
                 Axios.post(`${CONFIG.ROOT_API}/article/addPoster`, formData, {
                     headers: {
                         'withCredentials':true,
@@ -179,7 +183,7 @@
                 }).then(res=>{
                     that.isUploading = false;
                     var reg = new RegExp('\\!\\['+file.name+'\\]\\(http:\\/\\/\\.\\.\\.\\)','gm');
-                    cm.setValue(tempValue.replace(reg, `\n![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
+                    cm.setValue(cm.getValue().replace(reg, `![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
                     that.$el.scrollTop = that.elScrollTop;
                     e.target.value='';
                     
