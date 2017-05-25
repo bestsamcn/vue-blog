@@ -83,7 +83,14 @@
             }
         },
         created(){
-            this.getList(false);
+            if(this.articleParams.isFromHome && (this.articleParams.tag || this.articleParams.category)){
+                this.tag = this.articleParams.tag;
+                this.category = this.articleParams.category;
+                this.isMore = true;
+                this.pageIndex = 1;
+                this.setArticleParams({isFromHome:false, tag:'', category:''})
+            }
+            this.getList(true);
         },
         mounted(){
         }

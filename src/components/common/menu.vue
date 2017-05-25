@@ -2,7 +2,7 @@
 <template>
     <div class="menu">
         <a class="icon-bold" @click="goAndHideMenu('Home')" :class="{'active':routerName==='Home'}">首页</a>
-        <a class="icon-paste" @click="goAndHideMenu('Article')" :class="{'active':routerName === 'Article' || routerName === 'ArticleDetail' }">文章</a>
+        <!-- <a class="icon-paste" @click="goAndHideMenu('Article')" :class="{'active':routerName === 'Article' || routerName === 'ArticleDetail' }">文章</a> -->
         <!-- <a class="icon-th-list" @click="goAndHideMenu('Category')" :class="{'active':routerName==='Category'}">分类</a> -->
         <a class="icon-leaf" @click="goAndHideMenu('About')" :class="{'active':routerName==='About'}">关于</a>
         <a class="icon-search" @click="goAndHideMenu('Search')" :class="{'active':routerName==='Search'}">搜索</a>
