@@ -10,7 +10,8 @@
 <script>
     import Articlelist from './articleList.vue';
     import * as API from '@/api/index.js';
-    import $$ from '@/utils/index.js'
+    import $$ from '@/utils/index.js';
+    import { mapState, mapActions } from 'vuex';
     import Footerbar from '@/components/common/footer.vue';
     export default{
         name:'home',
@@ -19,6 +20,8 @@
                 articleList:[],
                 pageIndex:1,
                 pageSize:5,
+                tag:'',
+                category:'',
                 isMore:true
 		    }
 		},
@@ -26,15 +29,25 @@
             Articlelist,
             Footerbar:Footerbar
         },
+        computed:{
+            ...mapState({
+                articleParams:state=>state.common.articleParams
+            })
+        },
         watch:{
-            // '$route':'getList(true)'
+            '$route':'getFromHome'
         },
 		methods:{
+            ...mapActions([
+                'setArticleParams'
+            ]),
 		    getList(isRefresh){
                 if(!this.isMore) return;
                 var obj = {
                     pageIndex:this.pageIndex,
-                    pageSize:this.pageSize
+                    pageSize:this.pageSize,
+                    tag:this.tag,
+                    category:this.category
                 }
                 API.getArticleList(obj).then(res=>{
                     res.data.map(item=>{
@@ -57,6 +70,16 @@
                 this.pageIndex = 1;
                 this.isMore = true;
                 this.getList(true);
+            },
+            getFromHome(){
+                if(this.articleParams.isFromHome && (this.articleParams.tag || this.articleParams.category)){
+                    this.tag = this.articleParams.tag;
+                    this.category = this.articleParams.category;
+                    this.isMore = true;
+                    this.pageIndex = 1;
+                    this.setArticleParams({isFromHome:false, tag:'', category:''})
+                    this.getList(true)
+                }
             }
         },
         created(){

@@ -3,7 +3,7 @@
     <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
-            <a href="javascript:;" @click="cateClick(item._id)" v-for="item in categorylist" :key="item._id">
+            <a href="javascript:;" @click="cateClick(item.name)" v-for="item in categorylist" :key="item._id">
                 <span class="name">{{item.name}}</span>
                 <span class="number">({{item.totalArticle || 0}})</span>
             </a>
@@ -11,7 +11,7 @@
     </div>
 </template>
 <script>
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
     export default{
         name:'home-category',
         computed:{
@@ -20,8 +20,18 @@
             })
         },
         methods:{
-            cateClick(_id){
-                this.$router.push({name:'Search'});
+            ...mapActions([
+                'setArticleParams'
+            ]),
+            cateClick(name){
+                var obj = {
+                    category:name,
+                    tag:'',
+                    isFromHome:true
+                }
+                this.setArticleParams(obj).then(()=>{
+                    this.$router.push({name:'Article'});
+                });
             }
         }
     }

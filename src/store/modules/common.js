@@ -8,8 +8,28 @@ const state = {
     isMobile:false,
     token:'',
     isLogin:false,
-    clientHeight:0
-
+    clientHeight:0,
+    hotList:[
+        {name:'vue', id:1},
+        {name:'前端', id:2},
+        {name:'服务端', id:3},
+        {name:'vue优化', id:4},
+        {name:'拉萨大', id:5},
+        {name:'框架', id:6},
+        {name:'react', id:7},
+        {name:'react native', id:8},
+        {name:'nginx', id:9},
+        {name:'linux', id:10}
+    ],
+    hotWord:{
+        isFromHotWord:false,
+        name:''
+    },
+    articleParams:{
+        category:'',
+        tag:'',
+        isFromHome:false
+    }
 }
 
 const getters = {
@@ -18,7 +38,10 @@ const getters = {
     iShowToast:state=>state.iShowToast,
     isMobile:state=>state.isMobile,
     token:state=>state.token,
-    isLogin:state=>state.isLogin
+    isLogin:state=>state.isLogin,
+    hotList:state=>state.hotList,
+    hotWord:state=>state.hotWord,
+    articleParams:state=>state.articleParams
 }
 
 const actions = {
@@ -50,6 +73,12 @@ const actions = {
     },
     setLogin({commit}, isLogin){
         commit(types.SET_LOGIN, isLogin);
+    },
+    setHotWord({commit}, hotWord){
+        commit(types.SET_HOT_WORD, hotWord);
+    },
+    setArticleParams({commit}, articleParams){
+        commit(types.SET_ARTICLE_PARAMS, articleParams);
     }
 }
 
@@ -84,6 +113,13 @@ const mutations = {
     },
     [types.SET_LOGIN](state){
         state.isLogin = isLogin;
+    },
+    [types.SET_HOT_WORD](state, hotWord){
+        state.hotWord.name = hotWord.name;
+        state.hotWord.isFromHotWord = hotWord.isFromHotWord;
+    },
+    [types.SET_ARTICLE_PARAMS](state, articleParams){
+        state.articleParams = articleParams;
     }
 }
 

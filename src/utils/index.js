@@ -54,5 +54,42 @@ Tool.getCookie = function(k){
 Tool.clearCookie = function(k){
     window.setCookie(k, '', -1);
 }
+/**
+ * 获取css样式值
+ * @param  {dom} element 
+ * @param  {string} attr    属性名
+ * @return {string}         
+ */
+Tool.getStyle = function(element,attr){
+    return getComputedStyle(element,false)[attr];
+}
 
+/**
+ * 运动函数
+ * @param  {dom}   obj  
+ * @param  {obj}   json 运动参数
+ * @param  {function} fn   回调
+ */
+Tool.moveStart = function(obj,json,fn){
+    var that = this;
+    clearInterval(obj.timer);
+    obj.timer = setInterval(function() {
+        var bStop = true;
+        for (attr in json) {
+            var icur = 0;
+            icur = parseInt(that.getStyle(obj, attr));
+            var iSpeed = (json[attr] - icur) / 8;
+            // alert('iSpeed'+iSpeed)
+            iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+            if (icur != json[attr]) {
+                bStop = false;
+            }
+            obj.style[attr] = icur + iSpeed + 'px';
+        }
+        if (bStop) {
+            clearInterval(obj.timer);
+            fn && fn();
+        }
+    }, 30);
+}
 export default Tool;

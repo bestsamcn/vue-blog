@@ -2,20 +2,19 @@
 <template>
     <div class="home">
         <div class="main">
+            <Hot v-if="isMobile"></Hot>
             <div class="wrapper">
                 <div class="left-cont">
-                    <Articlelist :is-show-more="false" :is-more="false" :article-list="articleList"></Articlelist>
-                    <router-link v-if="isMore" :to="{name:'Article'}" class="more-btn">更多</router-link>
-                    <p class="text-center color-gray padding-bottom-20" v-if="!isMore">没有更多了</p>
+                    <Articlelist :is-show-more="true" :is-more="isMore" @onLoadMore="getArticleList" :article-list="articleList"></Articlelist>
                 </div>
-                <div class="right-bar sm-hide">
+                <div class="right-bar sm-hide" v-sidebar-scroll>
                     <Category>
                         <div slot="title" class="title color-black">
                             分类
                         </div>
                     </Category>
                     <Articlerank :latest-list="articleList"></Articlerank>
-                    <Tags :is-show-reset="false" :is-disabled="true" class="margin-top-30">
+                    <Tags class="margin-top-30">
                         <div slot="title" class="title">
                             标签
                         </div>
@@ -28,12 +27,13 @@
     
 </template>
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
     import Articlelist from '../article/articleList.vue';
     import Category from './Category.vue';
     import Footerbar from '@/components/common/footer.vue';
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
+    import Hot from '@/components/search/hot.vue'
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js';
     export default{
@@ -49,27 +49,46 @@
         methods:{
             ...mapActions([
                 'setToast'
-            ])
+            ]),
+            getArticleList(isRefresh){
+                if(!this.isMore) return;
+                var obj = {
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
+                }
+                API.getArticleList(obj).then(res=>{
+                    res.data.map(item=>{
+                        if($$.getCookie(item._id)){
+                            return item.isLiked = true;
+                        }else{
+                            return item.isLiked = false;
+                        }
+                    });
+                    isRefresh ? (this.articleList = res.data ) : (this.articleList = this.articleList.concat(res.data));
+                    if(res.data.length < this.pageSize){
+                        this.isMore = false;
+                    }else{
+                        this.pageIndex++;
+                        this.isMore = true;
+                    }
+                });
+            }
         },
         components:{
             Articlelist,
             Category,
             Articlerank,
             Tags,
-            Footerbar
+            Footerbar,
+            Hot
+        },
+        computed:{
+            ...mapState({
+                isMobile:state=>state.common.isMobile
+            })
         },
         mounted(){
-            API.getArticleList({pageSize:this.pageSize, pageIndex:this.pageIndex}).then(res=>{
-                res.data.map(item=>{
-                    if($$.getCookie(item._id)){
-                        return item.isLiked = true;
-                    }else{
-                        return item.isLiked = false;
-                    }
-                });
-                if(res.data.length < this.pageSize) this.isMore = false;
-                this.articleList = res.data;
-            })
+            this.getArticleList(true);
         }
     }
 

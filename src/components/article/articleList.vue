@@ -24,7 +24,7 @@
             <!-- <div class="right" v-if="!!item.poster && isMobile"> -->
             <div class="right" v-if="!!item.poster && !isMobile">
                 <div class="img">
-                    <img :src="`${CONFIG.POSTER_URL}/${item.poster}`">
+                    <img :src="`${CONFIG.POSTER_URL}/${item.poster}`" v-auto-size>
                 </div>
             </div>
         </div>

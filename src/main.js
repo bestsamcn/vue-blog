@@ -13,9 +13,11 @@ import {
 import Filter from '@/utils/filter.js'
 import Utils from '@/utils/index.js'
 import VueSimplemde from 'vue-simplemde'
+import Directive from '@/utils/directive.js'
 
 Vue.use(Vuex);
 Vue.use(Filter);
+Vue.use(Directive);
 Vue.use(VueSimplemde);
 Vue.config.productionTip = false
 sync(store, router, {

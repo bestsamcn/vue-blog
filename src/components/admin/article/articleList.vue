@@ -10,7 +10,6 @@
             <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
             <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
         </div>
-        <Tags class="margin-bottom-20" :is-disabled="false" @onTagClick="tagClick" :parent-tag-value="tag"  :is-show-reset="false"></Tags>
         <Etable :data="articleList" border style="width:100%;">
             <Etablecolumn prop="createTime" label="日期">
                 <template scope="scope">
@@ -104,10 +103,7 @@
                 var obj = {
                     pageIndex:_pageIndex,
                     pageSize:this.pageSize,
-                    keyword:this.keyword,
-                    // type:this.type,
-                    category:this.category,
-                    tag:this.tag
+                    keyword:this.keyword
                 }
                 API.getArticleList(obj).then(res=>{
                     this.articleList = res.data;
@@ -137,17 +133,9 @@
             handleSizeChange(){
 
             },
-            tagClick(tag_id){
-                this.tag = tag_id;
-                this.pageIndex = 1;
-                this.getArticleList();
-                
-            },
             reset(){
                 this.pageIndex = 1;
                 this.keyword = '';
-                this.tag = '';
-                this.category = '';
                 this.getArticleList();
                 this.setArticleState(false);
             },
@@ -155,8 +143,6 @@
                 if(this.isAddArticle){
                     this.pageIndex = 1;
                     this.keyword = '';
-                    this.tag = '';
-                    this.category = '';
                     this.getArticleList();
                     this.setArticleState(false);
                 }

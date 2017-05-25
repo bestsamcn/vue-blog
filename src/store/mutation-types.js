@@ -9,6 +9,8 @@ export const SET_LOGIN = 'SET_LOGIN';
 export const SET_ARTICLE_STATE = 'SET_ARTICLE_STATE';
 
 export const SET_TOGGLE_SIDEBAR = 'SET_TOGGLE_SIDEBAR';
+export const SET_HOT_WORD = 'SET_HOT_WORD';
+export const SET_ARTICLE_PARAMS = 'SET_ARTICLE_PARAMS';
 
 
 //标签

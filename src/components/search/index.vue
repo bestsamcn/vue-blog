@@ -9,7 +9,7 @@
                     <li v-show="isDirty" v-for="item in list" :key="item">我是样板{{item}}</li>
                 </transition-group>
  -->            </div>
-            <Tags @onTagClick="tagClick" :is-disabled="false" @onResetClick="resetTag"></Tags>
+            <!-- <Tags @onTagClick="tagClick" :is-disabled="false" @onResetClick="resetTag"></Tags> -->
             <div class="margin-top-20">
                 <Articlelist @onLoadMore="getSearchList(false)" class="padding-0 border-top-1" :is-more="isMore" :article-list="articleList"></Articlelist>
             </div>
@@ -47,12 +47,11 @@
         },
         computed:{
             ...mapState({
-                searchCate:state=>state.common.searchCate,
-                searchTag:state=>state.common.searchTag
+                hotWord:state=>state.common.hotWord
             })
         },
         watch:{
-            '$route':'seachList'
+            '$route':'findByHotWord'
         },
         methods:{
             watchkeyword(){
@@ -114,10 +113,20 @@
                 this.keyword = '';
                 this.getSearchList(true);
             },
-            seachList(){
+            findByHotWord(){
+                if(this.$route.name !== 'Search') return;
+                if(this.hotWord.isFromHotWord && this.hotWord.name){
+                    this.keyword = this.hotWord.name;
+                    this.isMore = true;
+                    this.pageIndex= 1;
+                    this.getSearchList(true);
+                }
             }
         },
         created(){
+            if(this.hotWord && this.hotWord.isFromHotWord && this.hotWord.name){
+                this.keyword = this.hotWord.name;
+            }
             this.getSearchList(true);
         }
 
