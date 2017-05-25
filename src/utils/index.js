@@ -61,7 +61,7 @@ Tool.clearCookie = function(k){
  * @return {string}         
  */
 Tool.getStyle = function(element,attr){
-    return getComputedStyle(element,false)[attr];
+    return getComputedStyle(element, false)[attr];
 }
 
 /**
@@ -75,17 +75,15 @@ Tool.moveStart = function(obj,json,fn){
     clearInterval(obj.timer);
     obj.timer = setInterval(function() {
         var bStop = true;
-        for (attr in json) {
-            var icur = 0;
-            icur = parseInt(that.getStyle(obj, attr));
-            var iSpeed = (json[attr] - icur) / 8;
-            // alert('iSpeed'+iSpeed)
-            iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-            if (icur != json[attr]) {
-                bStop = false;
-            }
-            obj.style[attr] = icur + iSpeed + 'px';
+        var icur = 0;
+        icur = parseInt(that.getStyle(obj, 'top'));
+        var iSpeed = (json['top'] - icur) / 8;
+        // alert('iSpeed'+iSpeed)
+        iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+        if (icur != json['top']) {
+            bStop = false;
         }
+        obj.style['top'] = icur + iSpeed + 'px';
         if (bStop) {
             clearInterval(obj.timer);
             fn && fn();

@@ -14,9 +14,9 @@ const state = {
         {name:'前端', id:2},
         {name:'服务端', id:3},
         {name:'vue优化', id:4},
-        {name:'拉萨大', id:5},
+        {name:'redis操作', id:5},
         {name:'框架', id:6},
-        {name:'react', id:7},
+        {name:'闭包', id:7},
         {name:'react native', id:8},
         {name:'nginx', id:9},
         {name:'linux', id:10}

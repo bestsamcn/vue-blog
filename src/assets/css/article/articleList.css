@@ -122,6 +122,6 @@
 }
 @media screen and  (min-width:768px){
     .article-list{
-        padding:10px 20px;
+        padding:0 20px 10px 20px;
     }
 }

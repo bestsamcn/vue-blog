@@ -7,7 +7,7 @@
                 <div class="left-cont">
                     <Articlelist :is-show-more="true" :is-more="isMore" @onLoadMore="getArticleList" :article-list="articleList"></Articlelist>
                 </div>
-                <div class="right-bar sm-hide" v-sidebar-scroll>
+                <div v-if="!isMobile" class="right-bar sm-hide" v-sidebar-scroll ref="sidebar">
                     <Category>
                         <div slot="title" class="title color-black">
                             分类
@@ -24,7 +24,6 @@
         </div>
         <Footerbar class="margin-top-20"></Footerbar>
     </div>
-    
 </template>
 <script>
     import { mapActions, mapState } from 'vuex';

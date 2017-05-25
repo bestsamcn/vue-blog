@@ -41,15 +41,15 @@ obj.install = Vue=>{
 		inserted(el){
 			var _body = document.body;
 			var _pNode = el.parentNode;
-			return
-			var slideBar = ()=>{
+			// return
+			el.slideBar = ()=>{
 				//滚动的极限距离
-				var h = parseInt(_pNode.offsetHeight) - parseInt(el.offsetHeight);
+				// console.log(_pNode.offsetHeight)
+				var h = parseInt(_pNode.offsetHeight) - parseInt(el.offsetHeight)-20;
 				var mainOffsetTop = parseInt(_pNode.offseTop);
 				var mainHeight = parseInt(_pNode.offsetHeight);
-				var slideBarHeight =  parseInt(el.offsetHeight) - 2 ;
+				var slideBarHeight =  parseInt(el.offsetHeight) - 40 ;
 				var slideBarIntOffsetTop = parseInt(el.offsetTop);		
-				var timer = 300;
 				var slideFunc = function() {
 		            var	scrollTop = parseInt(_body.scrollTop);
 		            var slideBarOffsetTop = parseInt(el.offsetTop);
@@ -65,19 +65,25 @@ obj.install = Vue=>{
 						aniDistant = h
 					};
 		            // console.log(parseInt($(document).scrollTop()))
+		            // console.log(_body.scrollTop, slideBarIntOffsetTop)
 					if (parseInt(_body.scrollTop) > slideBarIntOffsetTop ) {
 						$$.moveStart(el, {'top':aniDistant});
 					} else {
-						$$.moveStart(el, {'top':0});
+						$$.moveStart(el, {'top':10});
 					}
 				}
-
 				window.addEventListener('scroll', slideFunc);
-				window.addEventListener('resize', slideFunc);
+				document.addEventListener('resize', slideFunc);
 			}
-			slideBar()
+			setTimeout(()=>{
+				el.slideBar()
+			}, 500)
+			
 		},
-		update(){
+		update(el){
+			setTimeout(()=>{
+				el.slideBar()
+			}, 500)
 		},
 		unbind(){
 
