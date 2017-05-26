@@ -30,7 +30,7 @@ npm run dev
 
 ## 预览
 - 项目总体完成，部分细节有待修改。
-- [请点击我](https://blog.bestsamcn.me/)预览
+- [请点击我](http://blog.bestsamcn.me/)预览
 
 
 
