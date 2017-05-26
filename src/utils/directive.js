@@ -26,8 +26,9 @@ obj.install = Vue=>{
 			}
 			el.setResize();
 		},
-		update(){
+		update(el){
 			el.setResize();
+			
 		},
 		unbind(){
 

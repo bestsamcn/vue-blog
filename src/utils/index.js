@@ -415,7 +415,7 @@ Tool.Clock = (function() {
             setDimensions();
 
             // ui
-            // this.ui();
+            this.ui();
 
             for (var i = 0; i < PARTICLE_NUM; i++) {
                 particles[i] = new Particle(canvas);
@@ -540,8 +540,14 @@ Tool.Clock = (function() {
             canvas.addEventListener('mousedown', function(e) {
                 press = true;
             }, false);
+            canvas.addEventListener('touchstart', function(e) {
+                press = true;
+            }, false);
 
             document.addEventListener('mouseup', function(e) {
+                press = false;
+            }, false);
+            document.addEventListener('touchend', function(e) {
                 press = false;
             }, false);
 
@@ -550,6 +556,12 @@ Tool.Clock = (function() {
                     mouse = setCoordinates(e);
                 }
             }, false);
+            // canvas.addEventListener('touchmove', function(e) {
+            //     if (press) {
+            //         mouse = setCoordinates(e);
+            //     }
+            // }, false);
+
 
             // @TODO: add touch events
 
