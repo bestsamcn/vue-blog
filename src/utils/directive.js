@@ -47,22 +47,23 @@ obj.install = Vue=>{
 			// return
 			el.slideBar = ()=>{
 				//滚动的极限距离
-				// console.log(_pNode.offsetHeight)
 				var h = parseInt(_pNode.offsetHeight) - parseInt(el.offsetHeight)-20;
 				var mainOffsetTop = parseInt(_pNode.offseTop);
 				var mainHeight = parseInt(_pNode.offsetHeight);
 				var slideBarHeight =  parseInt(el.offsetHeight) - 40 ;
-				var slideBarIntOffsetTop = parseInt(el.offsetTop);		
+				var slideBarIntOffsetTop = 20;	
 				var slideFunc = function() {
 		            var	scrollTop = parseInt(_body.scrollTop);
 		            var slideBarOffsetTop = parseInt(el.offsetTop);
 		            var slideBarTop  = parseInt(el.style.top) || 0;
 
 		            //如果侧边栏和主体只差小于侧边栏的原始offsetTop就不滚动
-		            if(parseInt(h)<slideBarIntOffsetTop){
+		            if(parseInt(h) < slideBarIntOffsetTop){
 		            	return false;
 		            }
-					var aniDistant=Math.min( ( Math.max( ( -mainOffsetTop, ( scrollTop - slideBarOffsetTop + slideBarTop)))), (mainHeight - slideBarHeight ) );
+					// var aniDistant=Math.min( ( Math.max( ( -mainOffsetTop, ( scrollTop - slideBarOffsetTop + slideBarTop)))), (mainHeight - slideBarHeight ) );
+					var aniDistant= Math.min(  scrollTop , (mainHeight - slideBarHeight ) );
+					// 
 					if (aniDistant > h) {
 						aniDistant = h
 					};
@@ -78,7 +79,6 @@ obj.install = Vue=>{
 			setTimeout(()=>{
 				el.slideBar()
 			}, 500)
-			
 		},
 		update(el){
 			setTimeout(()=>{
@@ -88,7 +88,6 @@ obj.install = Vue=>{
 		unbind(){
 
 		}
-		
 	});
 
 	/**
@@ -112,11 +111,6 @@ obj.install = Vue=>{
 			console.log($$.Clock._timer)
 		}
 	});
-	
-
-
-
-
 }
 
 export default obj;

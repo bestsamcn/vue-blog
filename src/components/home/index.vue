@@ -64,7 +64,7 @@
                         }
                     });
                     isRefresh ? (this.articleList = res.data ) : (this.articleList = this.articleList.concat(res.data));
-                    if(res.data.length < this.pageSize){
+                    if(this.pageIndex * this.pageSize >= res.total){
                         this.isMore = false;
                     }else{
                         this.pageIndex++;
