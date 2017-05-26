@@ -19,6 +19,12 @@ export const addCategory = (params)=>$http('post', '/category/add', params, true
 export const delCategory = (params)=>$http('get', '/category/delete', params, true);
 export const editCategory = (params)=>$http('post', '/category/edit', params, true);
 
+//热词
+export const getHotWordList = (params)=>$http('get', '/hot/getList', params);
+export const addHotWord = (params)=>$http('post', '/hot/add', params, true);
+export const delHotWord = (params)=>$http('get', '/hot/delete', params, true);
+export const editHotWord = (params)=>$http('post', '/hot/edit', params, true);
+
 //留言
 export const addMessage = (params)=>$http('post', '/message/add', params, true);
 export const delMessage = (params)=>$http('get', '/message/delete', params, true);

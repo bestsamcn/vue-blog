@@ -19,6 +19,7 @@
                 <div class="bottom">
                     <a href="javascript:;" class="more">{{item.category ? item.category.name :'我可能被删了'}}</a>
                     <a class="icon-calendar more no-border color-gray">{{item.createTime | dateFormat('yyyy-MM-dd')}}</a>
+                    <a class="icon-edit more no-border color-gray"   v-if="!!item.lastEditTime">{{item.lastEditTime | dateFormat('yyyy-MM-dd')}}</a>
                 </div>
             </div>
             <!-- <div class="right" v-if="!!item.poster && isMobile"> -->

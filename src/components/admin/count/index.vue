@@ -2,13 +2,14 @@
 <template>
 	<div class="count">
 		<div class="margin-bottom-20">
+
         <EradioGroup v-model="type" @change="getList()">
             <EradioButton label="3">今天</EradioButton>
             <EradioButton label="1">全部</EradioButton>
             <EradioButton label="2">昨天</EradioButton>
         </EradioGroup>
-        <Einput placeholder="填写地址" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
-        <Einput placeholder="ip地址" icon="search" style="width:initial" v-model="ip" :on-icon-click="searchClick"></Einput>
+        <Einput placeholder="关键词" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
+        <Ebutton type="info" size="small" @click="reset()" class="padding-10">重置</Ebutton>
         </div>
         <Etable :data="countList" border>
             <Etablecolumn prop="accessip" label="ip地址"></Etablecolumn>
@@ -33,7 +34,7 @@
             </Etablecolumn>
         </Etable>
         <div class="text-center margin-top-20">
-            <Epagination  @current-change="getList" :current-page.sync="pageIndex" :page-size="pageSize" layout="prev, pager, next, jumper" :total="total">
+            <Epagination @size-change="handleSizeChange"  @current-change="getList" :current-page.sync="pageIndex" :page-size="pageSize" layout="prev, pager, next, jumper" :total="total">
             </Epagination>
         </div>
 	</div>
@@ -49,7 +50,6 @@
 				pageSize:5,
 				total:0,
 				keyword:'',
-				ip:'',
 				type:3,
 				countList:[]
 			}
@@ -65,11 +65,11 @@
             Einput:Input
         },
 		methods:{
-			getList(){
+			getList(_pageIndex){
+                _pageIndex = _pageIndex || this.pageIndex;
 				var obj = {
-					pageIndex:this.pageIndex,
+					pageIndex:_pageIndex,
 					pageSize:this.pageSize,
-					ip:this.ip,
 					type:this.type,
 					keyword:this.keyword
 				}
@@ -87,7 +87,14 @@
                 API.delAccess({id:item._id}).then(res=>{
                     this.countList.splice(this.countList.indexOf(item), 1);
                 });
-			}
+			},
+            reset(){
+                this.pageIndex=1;
+                this.keyword='';
+                this.type=3;
+                this.getList();
+            },
+            handleSizeChange(){}
 		},
 		created(){
 			this.getList()

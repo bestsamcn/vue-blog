@@ -1,5 +1,8 @@
 # Vue-Blog
 
+## 注意
+由于node环境的问题，我本地打包后会导致android机和mac safari无法访问，目前只有window和iphone能够正常访问博客。
+
 ## 简介
 Vue-Blog 是一个基于``vue+express``的前后端分离的响应式web项目,
 - 前端使用了vue2全家桶完成，包括了``vue + vue-router + axios + vuex + element-ui``;
@@ -27,7 +30,7 @@ npm run dev
 
 ## 预览
 - 项目总体完成，部分细节有待修改。
-- [请点击我](https://bestsamcn.github.io/)预览
+- [请点击我](https://blog.bestsamcn.me/)预览
 
 
 

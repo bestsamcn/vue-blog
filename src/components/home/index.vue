@@ -32,7 +32,7 @@
     import Footerbar from '@/components/common/footer.vue';
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
-    import Hot from '@/components/search/hot.vue'
+    import Hot from './hot.vue'
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js';
     export default{

@@ -1,4 +1,5 @@
 import * as types from '../mutation-types.js';
+import * as API from '../../api/index.js';
 
 const state = {
     iShowLoading:false,
@@ -9,18 +10,7 @@ const state = {
     token:'',
     isLogin:false,
     clientHeight:0,
-    hotList:[
-        {name:'vue', id:1},
-        {name:'前端', id:2},
-        {name:'服务端', id:3},
-        {name:'vue优化', id:4},
-        {name:'redis操作', id:5},
-        {name:'框架', id:6},
-        {name:'闭包', id:7},
-        {name:'react native', id:8},
-        {name:'nginx', id:9},
-        {name:'linux', id:10}
-    ],
+    hotWordList:[],
     hotWord:{
         isFromHotWord:false,
         name:''
@@ -39,7 +29,7 @@ const getters = {
     isMobile:state=>state.isMobile,
     token:state=>state.token,
     isLogin:state=>state.isLogin,
-    hotList:state=>state.hotList,
+    hotWordList:state=>state.hotWordList,
     hotWord:state=>state.hotWord,
     articleParams:state=>state.articleParams
 }
@@ -79,7 +69,29 @@ const actions = {
     },
     setArticleParams({commit}, articleParams){
         commit(types.SET_ARTICLE_PARAMS, articleParams);
-    }
+    },
+    getHotWordList({commit}){
+        API.getHotWordList().then(res=>{
+            commit(types.GET_HOT_WORD_LIST, res.data);
+        });
+    },
+    addHotWord({commit}, word){
+        API.addHotWord(word).then(function(res){
+            commit(types.ADD_HOT_WORD, res);
+        });
+    },
+    delHotWord({commit}, wordid){
+        API.delHotWord({id:wordid}).then(res=>{
+            commit(types.DEL_HOT_WORD, wordid);
+        });
+    },
+    editHotWord({commit}, wordObj){
+        wordObj.id = wordObj._id;
+        delete wordObj._id;
+        API.editHotWord(wordObj).then(res=>{
+            commit(types.EDIT_HOT_WORD, wordObj);
+        });
+    },
 }
 
 const mutations = {
@@ -120,6 +132,48 @@ const mutations = {
     },
     [types.SET_ARTICLE_PARAMS](state, articleParams){
         state.articleParams = articleParams;
+    },
+    [types.GET_HOT_WORD_LIST](state, hotWordList){
+        state.hotWordList = hotWordList;
+    },
+    [types.ADD_HOT_WORD](state, res){
+        if(state.hotWordList.length < res.hotWordLength){
+            return state.hotWordList.unshift(res.data);
+        }
+        var temp = [];
+        var list = state.hotWordList;
+        var len = list.length;
+        temp = list.sort((item1, item2)=>{
+            if(item1.hotCount > item1.hotCount) return 1;
+            if(item1.hotCount < item2.hotCount) return -1;
+            if(item1.hotCount == item2.hotCount) return 0;
+        });
+        var firstItem = temp[0];
+        var temp2 = temp.filter((item,index)=>{
+            return item.hotCount == firstItem.hotCount;
+        });
+        var temp3 = temp2.sort((item1, item2)=>{
+            if(item1.createTime > item1.createTime) return 1;
+            if(item1.createTime < item2.createTime) return -1;
+            if(item1.createTime == item2.createTime) return 0;
+        });
+        state.hotWordList.splice(state.hotWordList.indexOf(temp3[temp3.length-1]), 1)
+        state.hotWordList.unshift(res.data);
+    },
+    [types.DEL_HOT_WORD](state, wordid){
+        for(var i=0; i<state.hotWordList.length; i++){
+            if(state.hotWordList[i]._id == wordid){
+                state.hotWordList.splice(i, 1);
+                break;
+            }
+        }
+    },
+    [types.EDIT_HOT_WORD](state, wordObj){
+        state.hotWordList.forEach(item=>{
+            if(item._id == wordObj.id){
+                item.name = wordObj.name;
+            }
+        });
     }
 }
 

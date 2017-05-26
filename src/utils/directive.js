@@ -8,22 +8,26 @@ obj.install = Vue=>{
 	 */
 	Vue.directive('autoSize', {
 		bind(el){
-			var src = el.src;
-			var img = new Image();
-			img.src = el.src;
-			img.onload = function(e){
-				var w = e.path[0].width;
-				var h = e.path[0].height;
-				if(w > h){
-					el.style.height = '100%';
-					el.style.width = 'initial';
-				}else{
-					el.style.height = 'initial';
-					el.style.width = '100%';
+			el.setResize = function(){
+				var src = el.src;
+				var img = new Image();
+				img.src = el.src;
+				img.onload = function(e){
+					var w = e.path[0].width;
+					var h = e.path[0].height;
+					if(w > h){
+						el.style.height = '100%';
+						el.style.width = 'initial';
+					}else{
+						el.style.height = 'initial';
+						el.style.width = '100%';
+					}
 				}
 			}
+			el.setResize();
 		},
 		update(){
+			el.setResize();
 		},
 		unbind(){
 
@@ -36,7 +40,6 @@ obj.install = Vue=>{
 	
 	Vue.directive('sidebarScroll', {
 		bind(el){
-			
 		},
 		inserted(el){
 			var _body = document.body;
@@ -60,12 +63,9 @@ obj.install = Vue=>{
 		            	return false;
 		            }
 					var aniDistant=Math.min( ( Math.max( ( -mainOffsetTop, ( scrollTop - slideBarOffsetTop + slideBarTop)))), (mainHeight - slideBarHeight ) );
-		            // console.log(-mainOffsetTop+' '+(scrollTop - slideBarOffsetTop + slideBarTop)+' '+scrollTop+' '+slideBarOffsetTop+' '+slideBarTop)                                                                                                                                                                                                                                                                                                                                                                                   
 					if (aniDistant > h) {
 						aniDistant = h
 					};
-		            // console.log(parseInt($(document).scrollTop()))
-		            // console.log(_body.scrollTop, slideBarIntOffsetTop)
 					if (parseInt(_body.scrollTop) > slideBarIntOffsetTop ) {
 						$$.moveStart(el, {'top':aniDistant});
 					} else {
@@ -89,7 +89,34 @@ obj.install = Vue=>{
 
 		}
 		
-	})
+	});
+
+	/**
+	 * 动态canvas时钟
+	 */
+	Vue.directive('clock' , {
+		inserted(el){
+			setTimeout(()=>{
+				$$.Clock.init(el);
+			},500)
+		},
+		update(el){
+			setTimeout(()=>{
+				$$.Clock.init(el);
+			},500)
+		},
+		unbind(){
+			clearInterval($$.Clock._timer);
+		},
+		componentUpdated(){
+			console.log($$.Clock._timer)
+		}
+	});
+	
+
+
+
+
 }
 
 export default obj;

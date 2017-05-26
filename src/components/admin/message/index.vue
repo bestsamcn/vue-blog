@@ -22,7 +22,7 @@
                     <Etag :type="scope.row.isRead ? 'success' :'gray'">{{scope.row.isRead ? '是' : '否'}}</Etag>
                 </template>
             </Etablecolumn>
-            <Etablecolumn label="操作" fixed="right">
+            <Etablecolumn label="操作">
                 <template scope="scope">
                     <Ebutton type="info" size="small" @click="getDetail(scope.row)">查看</Ebutton>
                     <Ebutton type="danger" size="small" @click="delMessage(scope.row._id)">删除</Ebutton>

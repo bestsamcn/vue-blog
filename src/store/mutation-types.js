@@ -19,6 +19,12 @@ export const DEL_TAG = 'DEL_TAG';
 export const ADD_TAG = 'ADD_TAG';
 export const EDIT_TAG = 'EDIT_TAG';
 
+//热词
+export const GET_HOT_WORD_LIST = 'GET_HOT_WORD_LIST';
+export const DEL_HOT_WORD = 'DEL_HOT_WORD';
+export const ADD_HOT_WORD = 'ADD_HOT_WORD';
+export const EDIT_HOT_WORD = 'EDIT_HOT_WORD';
+
 //分类
 export const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST';
 export const DEL_CATEGORY = 'DEL_CATEGORY';

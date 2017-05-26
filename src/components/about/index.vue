@@ -3,7 +3,9 @@
     <div class="about">
         <div class="main">
             <div class="info-box">
-                <div class="bg"></div>
+                <div class="bg">
+                    <Clock></Clock>
+                </div>
                 <div class="avatar">
                     <img src="../../assets/img/avatar.png">
                 </div>
@@ -23,7 +25,11 @@
     </div>
 </template>
 <script>
+    import Clock from './clock.vue';
     export default{
-        name:'about'
+        name:'about',
+        components:{
+            Clock
+        }
     }
 </script>

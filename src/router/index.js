@@ -129,6 +129,14 @@ const AdminCate = resolve=>{
     }
 )};
 
+const AdminHotWord = resolve=>{
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/hot/index.vue'], component=>{
+        store.dispatch('setHideLoading');
+        resolve(component)
+    }
+)};
+
 // const AdminMsg = resolve=>{require(['@/components/admin/message/index.vue'], resolve)};
 const AdminMsg = resolve=>{
     store.dispatch('setShowLoading');
@@ -286,6 +294,15 @@ var routerMap = {
                                 auth:true
                             },
                             component:AdminCate
+                        },
+                        {
+                            path:'adminHotWord',
+                            name:'AdminHotWord',
+                            meta:{
+                                title:'热词',
+                                auth:true
+                            },
+                            component:AdminHotWord
                         },
                         {
                             path:'adminMessage',

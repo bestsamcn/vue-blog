@@ -4,7 +4,7 @@
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
-                <a class="hot-item" v-for="item in hotList" @click="hotClick(item.name)">
+                <a class="hot-item" v-for="item in hotWordList" @click="hotClick(item.name)">
                     {{item.name}}
                 </a>
             </div>
@@ -20,7 +20,7 @@
         },
         computed:{
             ...mapState({
-                hotList:state=>state.common.hotList
+                hotWordList:state=>state.common.hotWordList
             })
         },
         methods:{

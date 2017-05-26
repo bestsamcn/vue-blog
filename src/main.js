@@ -32,6 +32,7 @@ store.dispatch('setMobile', Utils.isMobile());
 store.dispatch('setToken', localStorage['__bestToken__'] && JSON.parse(localStorage['__bestToken__']).token);
 store.dispatch('getTagList');
 store.dispatch('getCategoryList');
+store.dispatch('getHotWordList');
 //title
 // router.afterEach((to, from, next)=>{
 //     document.title = to.meta.title;

@@ -9,6 +9,7 @@
                     <span class="icon-map-marker">{{article.category && article.category.name}}</span>
                     <span class="icon-eye-open">{{article.readNum}} Views</span>
                     <span class="icon-tag">{{article.tag && article.tag.name}}</span>
+                    <span class="icon-edit" v-if="!!article.lastEditTime && !isMobile">{{article.lastEditTime | dateFormat('yyyy-MM-dd hh:mm:ss')}}</span>
                     <a href="javascript:;" @click="likeClick()" class="icon-heart" :class="{'active':isLiked}">{{article.likeNum}}</a>
                 </div>
             </div>
@@ -39,7 +40,7 @@
     import '@/assets/css/common/github-markdown.css';
     import '@/assets/css/common/atom-one-dark.css';
     import $$ from '@/utils/index.js';
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
     export default{
         name:'article-detail',
         data(){
@@ -56,6 +57,11 @@
         components:{
             Comment,
             Tags
+        },
+        computed:{
+            ...mapState({
+                isMobile:state=>state.common.isMobile
+            })
         },
         watch:{
             '$route':'getDetail'

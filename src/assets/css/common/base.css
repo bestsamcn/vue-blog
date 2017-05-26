@@ -155,6 +155,9 @@ button,input,select{
 .padding-0{
     padding:0 !important;
 }
+.padding-10{
+    padding:10px !important;
+}
 .all-hide{
 
 }

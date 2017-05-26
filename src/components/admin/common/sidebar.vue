@@ -28,6 +28,9 @@
                     <Navmenuitem index="adminCategory" :route="{name:'AdminCategory'}" @click="menuItemClick('AdminCategory')">
                         <i class="icon-paste"></i>分类列表
                     </Navmenuitem>
+                    <Navmenuitem index="adminHotWord" :route="{name:'AdminHotWord'}" @click="menuItemClick('AdminHotWord')">
+                        <i class="icon-fire"></i>热词列表
+                    </Navmenuitem>
                 </Navmenuitemgroup>
             </Navsubmenu>
             <Navmenuitem index="adminMessage" :route="{name:'AdminMessage'}" @click="menuItemClick('AdminMessage')">留言列表</Navmenuitem>

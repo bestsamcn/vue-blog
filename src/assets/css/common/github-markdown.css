@@ -189,7 +189,26 @@
   font-family: monospace, monospace;
   font-size: 1em;
 }
+.markdown-body code{
+    color: #017E66;
+    background-color: rgba(1,126,102,0.08);
+}
 
+
+.markdown-body code:hover{
+    color: #fff;
+    background-color: rgba(26,188,156,1);
+    cursor: pointer;
+}
+.markdown-body pre code{
+    color: #132431;
+    background-color: rgba(1,126,102,0.08);
+}
+.markdown-body pre code:hover{
+    color: #132431;
+    background-color: transparent;
+    cursor: initial;
+}
 .markdown-body hr {
   box-sizing: content-box;
   height: 0;
