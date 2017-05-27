@@ -5,6 +5,7 @@
         <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <Toast :msg="toastMsg" v-show="iShowToast"></Toast>
         </transition>
+        
         <Navheader v-show="routerName && routerName.indexOf('Admin') == -1" @logoClick="onLogoClick($event)"></Navheader>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu"></Menulist>
@@ -27,7 +28,8 @@ import Loading from './components/common/loading.vue';
 import Navheader from './components/common/header.vue';
 import Footerbar from '@/components/common/footer.vue';
 import Menulist from './components/common/menu.vue';
-import Toast from './components/common/Toast.vue';
+import Toast from './components/common/toast.vue';
+
 
 export default {
     name: 'app',

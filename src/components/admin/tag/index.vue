@@ -4,7 +4,7 @@
         <div class="margin-top-0"></div>
         <Etable v-if="!!tagList.length" :data="tagList" border style="width:100%;">
             <Etableculume label="标签名" prop="name"></Etableculume>
-            <Etableculume label="值" prop="_id"></Etableculume>
+            <Etableculume label="文章数" prop="totalArticle"></Etableculume>
             <Etableculume label="操作">
                 <template scope="scope" class="text-right">
                     <Ebutton type="info" @click="showEditModal(true, scope.row)">编辑</Ebutton>
@@ -115,7 +115,7 @@
         created(){
         },
         mounted(){
-            
+
         }
     }
 </script>

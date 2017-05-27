@@ -1,6 +1,7 @@
 <style src="../../assets/css/search/index.css" scoped></style>
 <template>
     <div class="search">
+        <Backtop></Backtop>
         <div class="wrapper">
             <div class="moveup search-bar sm-100">
                 <form style="width:100%" novalidate action="javascript:;">
@@ -24,6 +25,7 @@
     import Articlelist from '../article/articleList.vue';
     import Tags from '../home/tags.vue';
     import { mapState } from 'vuex';
+    import Backtop from '@/components/common/backTop.vue';
     import * as API from '@/api/index.js';
     import Footerbar from '@/components/common/footer.vue';
     export default{
@@ -45,7 +47,8 @@
         components:{
             Articlelist,
             Tags,
-            Footerbar
+            Footerbar,
+            Backtop
         },
         computed:{
             ...mapState({

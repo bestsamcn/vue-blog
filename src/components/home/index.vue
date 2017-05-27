@@ -1,6 +1,7 @@
 <style src="../../assets/css/home/index.css" scoped></style>
 <template>
     <div class="home">
+        <Backtop></Backtop>
         <div class="main">
             <Hot v-if="isMobile"></Hot>
             <div class="wrapper">
@@ -32,6 +33,7 @@
     import Footerbar from '@/components/common/footer.vue';
     import Articlerank from './articleRank.vue';
     import Tags from './tags.vue';
+    import Backtop from '@/components/common/backTop.vue';
     import Hot from './hot.vue'
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js';
@@ -79,7 +81,8 @@
             Articlerank,
             Tags,
             Footerbar,
-            Hot
+            Hot,
+            Backtop
         },
         computed:{
             ...mapState({

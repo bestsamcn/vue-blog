@@ -6,169 +6,169 @@ import store from '@/store/index.js'
 
 //路由懒加载
 // const Home = resolve=>{require(['@/components/home/index.vue'], resolve)};
-const Home = resolve=>{
+const Home = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/home/index.vue'], component=>{
+    require(['@/components/home/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const About = resolve=>{require(['@/components/about/index.vue'], resolve)};
-const About = resolve=>{
+const About = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/about/index.vue'], component=>{
+    require(['@/components/about/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const Article = resolve=>{require(['@/components/article/index.vue'], resolve)};
-const Article = resolve=>{
+const Article = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/article/index.vue'], component=>{
+    require(['@/components/article/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const ArticleDetail = resolve=>{require(['@/components/article/detail.vue'], resolve)};
-const ArticleDetail = resolve=>{
+const ArticleDetail = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/article/detail.vue'], component=>{
+    require(['@/components/article/detail.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 
 // const Search = resolve=>{require(['@/components/search/index.vue'], resolve)};
-const Search = resolve=>{
+const Search = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/search/index.vue'], component=>{
+    require(['@/components/search/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const Message = resolve=>{require(['@/components/message/index.vue'], resolve)};
-const Message = resolve=>{
+const Message = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/message/index.vue'], component=>{
+    require(['@/components/message/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 
 //admin
 // const Admin = resolve=>{require(['@/components/admin/index.vue'], resolve)};
-const Admin = resolve=>{
+const Admin = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/index.vue'], component=>{
+    require(['@/components/admin/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminCommon = resolve=>{require(['@/components/admin/common/index.vue'], resolve)};
-const AdminCommon = resolve=>{
+const AdminCommon = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/common/index.vue'], component=>{
+    require(['@/components/admin/common/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const Signin = resolve=>{require(['@/components/admin/signin.vue'], resolve)};
-const Signin = resolve=>{
+const Signin = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/signin.vue'], component=>{
+    require(['@/components/admin/signin.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminHome = resolve=>{require(['@/components/admin/home/index.vue], resolve)};
-const AdminHome = resolve=>{
+const AdminHome = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/home/index.vue'], component=>{
+    require(['@/components/admin/home/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminArticle = resolve=>{require(['@/components/admin/article/index.vue'], resolve)};
-const AdminArticle = resolve=>{
+const AdminArticle = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/article/index.vue'], component=>{
+    require(['@/components/admin/article/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminAddArticle = resolve=>{require(['@/components/admin/article/addArticle.vue'], resolve)};
-const AdminAddArticle = resolve=>{
+const AdminAddArticle = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/article/addArticle.vue'], component=>{
+    require(['@/components/admin/article/addArticle.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminEditArticle = resolve=>{require(['@/components/admin/article/editArticle.vue'], resolve)};
-const AdminEditArticle = resolve=>{
+const AdminEditArticle = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/article/editArticle.vue'], component=>{
+    require(['@/components/admin/article/editArticle.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminTag = resolve=>{require(['@/components/admin/tag/index.vue'], resolve)};
-const AdminTag = resolve=>{
+const AdminTag = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/tag/index.vue'], component=>{
+    require(['@/components/admin/tag/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminCate = resolve=>{require(['@/components/admin/category/index.vue'], resolve)};
-const AdminCate = resolve=>{
+const AdminCate = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/category/index.vue'], component=>{
+    require(['@/components/admin/category/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 
-const AdminHotWord = resolve=>{
+const AdminHotWord = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/hot/index.vue'], component=>{
+    require(['@/components/admin/hot/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 
 // const AdminMsg = resolve=>{require(['@/components/admin/message/index.vue'], resolve)};
-const AdminMsg = resolve=>{
+const AdminMsg = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/message/index.vue'], component=>{
+    require(['@/components/admin/message/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminMsgDetail = resolve=>{require(['@/components/admin/message/detail.vue'], resolve)};
-const AdminMsgDetail = resolve=>{
+const AdminMsgDetail = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/message/detail.vue'], component=>{
+    require(['@/components/admin/message/detail.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminComment = resolve=>{require(['@/components/admin/article/articleComment.vue'], resolve)};
-const AdminComment = resolve=>{
+const AdminComment = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/article/articleComment.vue'], component=>{
+    require(['@/components/admin/article/articleComment.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 // const AdminCount = resolve=>{require(['@/components/admin/count/index.vue'], resolve)};
-const AdminCount = resolve=>{
+const AdminCount = resolve => {
     store.dispatch('setShowLoading');
-    require(['@/components/admin/count/index.vue'], component=>{
+    require(['@/components/admin/count/index.vue'], component => {
         store.dispatch('setHideLoading');
         resolve(component)
-    }
-)};
+    })
+};
 
 
 Vue.use(VueRouter)
@@ -176,178 +176,164 @@ Vue.use(VueRouter)
 var routerMap = {
     mode: 'history',
     base: __dirname,
-    routes: [
-        {
-            path: '/',
-            name: 'Home',
-            meta:{
-                title:'首页'
-            },
-            component: Home
+    routes: [{
+        path: '/',
+        name: 'Home',
+        meta: {
+            title: '首页'
         },
-        {
-            path: '/search',
-            name: 'Search',
-            meta:{
-                title:'搜索'
-            },
-            component: Search
+        component: Home
+    }, {
+        path: '/search',
+        name: 'Search',
+        meta: {
+            title: '搜索'
         },
-        {
-            path: '/about',
-            name: 'About',
-            meta:{
-               title:'关于' 
-            },
-            component: About
+        component: Search
+    }, {
+        path: '/about',
+        name: 'About',
+        meta: {
+            title: '关于'
         },
-        {
-            path:'/article',
-            name:'Article',
-            meta:{
-                title:'文章'
-            },
-            component:Article
+        component: About
+    }, {
+        path: '/article',
+        name: 'Article',
+        meta: {
+            title: '文章'
         },
-        {
-            path:'/article/detail/:id',
-            name:'ArticleDetail',
-            meta:{
-                title:'文章详情'
-            },
-            component:ArticleDetail
+        component: Article
+    }, {
+        path: '/article/detail/:id',
+        name: 'ArticleDetail',
+        meta: {
+            title: '文章详情'
         },
-        {
-            path:'/message',
-            name:'Message',
-            meta:{
-                title:'留言'
-            },
-            component:Message
+        component: ArticleDetail
+    }, {
+        path: '/message',
+        name: 'Message',
+        meta: {
+            title: '留言'
         },
-        {
-            path:'/admin',
-            component:Admin,
-            children:[
-                {
-                    path:'signin',
-                    name:'AdminSignin',
-                    meta:{
-                        title:'登录'
-                    },
-                    component:Signin
+        component: Message
+    }, {
+        path: '/admin',
+        component: Admin,
+        children: [{
+            path: 'signin',
+            name: 'AdminSignin',
+            meta: {
+                title: '登录'
+            },
+            component: Signin
+        }, {
+            path: 'home',
+            component: AdminCommon,
+            children: [{
+                path: 'index',
+                name: 'AdminHome',
+                meta: {
+                    title: '预览',
+                    auth: true
                 },
-                {
-                    path:'home',
-                    component:AdminCommon,
-                    children:[
-                        {
-                            path:'index',
-                            name:'AdminHome',
-                            meta:{
-                                title:'预览',
-                                auth:true
-                            },
-                            component:AdminHome
-                        },
-                        {
-                            path:'article',
-                            name:'AdminArticle',
-                            meta:{
-                               title:'文章',
-                               auth:true
-                            },
-                            component:AdminArticle
-                        },
-                        {
-                            path:'addArticle',
-                            name:'AdminAddArticle',
-                            meta:{
-                                title:'添加文章',
-                                auth:true
-                            },
-                            component:AdminAddArticle
-                        },
-                        {
-                            path:'editArticle/:id',
-                            name:'AdminEditArticle',
-                            meta:{
-                                title:'编辑文章',
-                                auth:true
-                            },
-                            component:AdminEditArticle
-                        },
-                        {
-                            path:'adminTag',
-                            name:'AdminTag',
-                            meta:{
-                                title:'标签',
-                                auth:true
-                            },
-                            component:AdminTag
-                        },
-                        {
-                            path:'adminCategory',
-                            name:'AdminCategory',
-                            meta:{
-                                title:'分类',
-                                auth:true
-                            },
-                            component:AdminCate
-                        },
-                        {
-                            path:'adminHotWord',
-                            name:'AdminHotWord',
-                            meta:{
-                                title:'热词',
-                                auth:true
-                            },
-                            component:AdminHotWord
-                        },
-                        {
-                            path:'adminMessage',
-                            name:'AdminMessage',
-                            meta:{
-                               title:'留言',
-                               auth:true
-                            },
-                            component:AdminMsg
-                        },
-                        {
-                            path:'adminMessageDetail/:id',
-                            name:'AdminMessageDetail',
-                            meta:{
-                               title:'留言详情',
-                               auth:true
-                            },
-                            component:AdminMsgDetail
-                        },
-                        {
-                            path:'adminCount',
-                            name:'AdminCount',
-                            meta:{
-                               title:'访问记录',
-                               auth:true
-                            },
-                            component:AdminCount
-                        },
-                        {
-                            path:'adminComment',
-                            name:'AdminArticleComment',
-                            meta:{
-                               title:'评论',
-                               auth:true
-                            },
-                            component:AdminComment
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            path:'*',
-            redirect:'/'
+                component: AdminHome
+            }, {
+                path: 'article',
+                name: 'AdminArticle',
+                meta: {
+                    title: '文章',
+                    auth: true
+                },
+                component: AdminArticle
+            }, {
+                path: 'addArticle',
+                name: 'AdminAddArticle',
+                meta: {
+                    title: '添加文章',
+                    auth: true
+                },
+                component: AdminAddArticle
+            }, {
+                path: 'editArticle/:id',
+                name: 'AdminEditArticle',
+                meta: {
+                    title: '编辑文章',
+                    auth: true
+                },
+                component: AdminEditArticle
+            }, {
+                path: 'adminTag',
+                name: 'AdminTag',
+                meta: {
+                    title: '标签',
+                    auth: true
+                },
+                component: AdminTag
+            }, {
+                path: 'adminCategory',
+                name: 'AdminCategory',
+                meta: {
+                    title: '分类',
+                    auth: true
+                },
+                component: AdminCate
+            }, {
+                path: 'adminHotWord',
+                name: 'AdminHotWord',
+                meta: {
+                    title: '热词',
+                    auth: true
+                },
+                component: AdminHotWord
+            }, {
+                path: 'adminMessage',
+                name: 'AdminMessage',
+                meta: {
+                    title: '留言',
+                    auth: true
+                },
+                component: AdminMsg
+            }, {
+                path: 'adminMessageDetail/:id',
+                name: 'AdminMessageDetail',
+                meta: {
+                    title: '留言详情',
+                    auth: true
+                },
+                component: AdminMsgDetail
+            }, {
+                path: 'adminCount',
+                name: 'AdminCount',
+                meta: {
+                    title: '访问记录',
+                    auth: true
+                },
+                component: AdminCount
+            }, {
+                path: 'adminComment',
+                name: 'AdminArticleComment',
+                meta: {
+                    title: '评论',
+                    auth: true
+                },
+                component: AdminComment
+            }]
+        }]
+    }, {
+        path: '*',
+        redirect: '/'
+    }],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return {
+                x: 0,
+                y: 0
+            }
         }
-    ]
+    }
 }
 export default new VueRouter(routerMap);

@@ -40,6 +40,7 @@ obj.install = Vue=>{
 	 */
 	
 	Vue.directive('sidebarScroll', {
+
 		bind(el){
 		},
 		inserted(el){
@@ -112,6 +113,48 @@ obj.install = Vue=>{
 			console.log($$.Clock._timer)
 		}
 	});
+
+	/**
+	 * 返回顶部指令
+	 */
+	Vue.directive('goTop', {
+		inserted(el){
+			setTimeout(()=>{
+				$$.toScrollHeight(0, el);
+			}, 500)
+		},
+		update(el){
+			setTimeout(()=>{
+				$$.toScrollHeight(0, el);
+			}, 500)
+		}
+	});
+
+	/**
+	 * 是否显示返回顶部
+	 */
+	Vue.directive('shouldShowTop', {
+		bind(el, binding){
+			var nScrollTop, nClientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			var elClass=el.class;
+	        el.temp = ()=>{
+	        	nScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		        if (nScrollTop > binding.value) {
+		        	el.className="go-top-btn show";
+		        } else {
+		        	el.className="go-top-btn"
+		        }
+	        }
+		},
+		inserted(el){
+	        el.temp();
+	        window.addEventListener('scroll',el.temp);
+		},
+		update(el){
+			el.temp();
+	        window.addEventListener('scroll',el.temp);
+		}
+	})
 }
 
 export default obj;

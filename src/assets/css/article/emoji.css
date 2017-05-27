@@ -1,0 +1,25 @@
+.emoji{
+	position: absolute;
+	width:100%;
+	padding:10px 0;
+	background: #fff;
+	let:0;
+	bottom:30px;
+    border-radius: 5px;
+	display: -webkit-flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	z-index: 20;
+	box-shadow: 0 1px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.emoji a{
+	margin:4px;
+	display: block;
+	cursor: pointer;
+	width:32px;
+	height:32px;
+	box-sizing: border-box;
+}
+.emoji a:hover{
+	border:1px solid #eee;
+}

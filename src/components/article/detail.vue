@@ -1,6 +1,7 @@
 <style src="../../assets/css/article/detail.css"></style>
 <template>
     <div class="article-detail">
+        <Backtop></Backtop>
         <div class="main">
             <div class="title">
                 <h4 class="color-black">{{ article.title }}</h4>
@@ -30,6 +31,7 @@
             <Comment class="margin-top-30" :article="$route.params.id">
             </Comment>
         </div>
+        <Footerbar class="margin-top-20"></Footerbar>
     </div>
 </template>
 <script>
@@ -40,6 +42,8 @@
     import '@/assets/css/common/github-markdown.css';
     import '@/assets/css/common/atom-one-dark.css';
     import $$ from '@/utils/index.js';
+    import Footerbar from '@/components/common/footer.vue';
+    import Backtop from '@/components/common/backTop.vue';
     import { mapActions, mapState } from 'vuex';
     export default{
         name:'article-detail',
@@ -56,7 +60,9 @@
         },
         components:{
             Comment,
-            Tags
+            Tags,
+            Footerbar,
+            Backtop
         },
         computed:{
             ...mapState({

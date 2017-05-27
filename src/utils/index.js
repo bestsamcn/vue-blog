@@ -637,4 +637,45 @@ var FPS = {
         this.updateFrames = 0; // reset frames
     }
 };
+
+/**
+*@function toScrollHeight 跳到指定滚动条高度
+*@param iTarget {number} 指定滚动条高度 例如:300
+*@param obj {object} 触发该方法的对象 
+*@example toScrollHeight(300,document.getElementId('obj'))
+*/
+Tool.toScrollHeight = function(iTarget,obj){
+    var that =this;
+    var iTimer = null;
+    var b = 0;
+    //不能放在scroll时间里，否则无滚动，不能点击
+    if(obj !== 'undefined'){
+        obj.addEventListener('click',function(){
+            clearInterval(iTimer);
+            runFn(iTarget);
+        });
+    }
+    window.addEventListener('scroll',function(){
+        if (b != 1) {
+            clearInterval(iTimer);
+        }
+        b = 2;
+    });
+    function runFn(iTarget,iCur) {
+        clearInterval(iTimer);
+        var iSpeed = 0,iCur = 0;
+        iTimer = setInterval(function() {
+            iCur = document.documentElement.scrollTop || document.body.scrollTop;
+            //一直没想到会是这步的原因,由于放向的不同,取值会不同,ceil是为了向下滚动,为正数,floor是为了向上滚动,为负数
+            iSpeed = iSpeed > 0 ?  Math.ceil((iTarget - iCur) / 7) : Math.floor((iTarget -iCur)/7);
+            if (iCur != iTarget) {
+                document.documentElement.scrollTop = document.body.scrollTop = iCur + iSpeed;
+            } else {
+                clearInterval(iTimer);
+            }
+            b = 1;
+        }, 30);
+    }
+}
+
 export default Tool;

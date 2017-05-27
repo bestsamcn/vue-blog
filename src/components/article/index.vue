@@ -1,6 +1,7 @@
 <style src="../../assets/css/article/index.css" scoped></style>
 <template>
     <div class="article">
+        <Backtop></Backtop>
         <div class="main">
             <Articlelist @onLoadMore="getList(false)" :article-list="articleList" :is-more="isMore"></Articlelist>
         </div>
@@ -12,6 +13,7 @@
     import * as API from '@/api/index.js';
     import $$ from '@/utils/index.js';
     import { mapState, mapActions } from 'vuex';
+    import Backtop from '@/components/common/backTop.vue';
     import Footerbar from '@/components/common/footer.vue';
     export default{
         name:'home',
@@ -27,7 +29,8 @@
 		},
         components:{
             Articlelist,
-            Footerbar:Footerbar
+            Footerbar:Footerbar,
+            Backtop:Backtop
         },
         computed:{
             ...mapState({

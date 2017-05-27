@@ -1,25 +1,30 @@
-<style src=""></style>
+<style src="@/assets/css/article/emoji.css"></style>
 <template>
 	<div class="emoji">
-		<span v-for="item in emojiList">
-			{{item}}
-		</span>
+		<a class="javascript:;" @click="selectFace(item)" v-for="item in emojiList">
+			<img :src="`${FACE_URL}/${item}.png`">
+		</a>
 	</div>
 </template>
 <script>
-	import Emoji from '@/assets/emoji/index.js';
+	import { FACE_URL } from '@/api/config.js';
 	export default{
 		name:'emoji',
-		id:'emoji',
 		data(){
 			return{
-				emojiList:['\ud83d\ude04', '\ud83d\ude03']
+				emojiList:[],
+				FACE_URL:FACE_URL
 			}
 		},
 		methods:{
 			init(){
-				Emoji.emoji(this.$el.firstElementChild)
-			}
+				for(var i=1; i<=48; i++){
+					this.emojiList.push(i);
+				}
+			},
+            selectFace(item){
+                this.$emit('onFaceClick', item);
+            }
 		},
 		create(){
 			this.init()

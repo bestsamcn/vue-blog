@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-size: 14px;
     /*删除ios滑动出现覆盖的情况。。。。太多的浮夸，只为证明我来过。*/
-    -webkit-overflow-scrolling:touch !important;  
+    -webkit-overflow-scrolling:touch !important;
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0.1) !important;
 }
 input, textarea{
@@ -22,7 +22,7 @@ html,body,ul,img,p,h1,h2,h3,h4,h5,h6,li{
     padding:0;
 }
 ul,li{
-    
+
 }
 a {
     text-decoration: none;
@@ -224,11 +224,16 @@ button,input,select{
     -webkit-transform: translateX(0%);
 }
 .fadeInLeft-leave-active{
-    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 300ms;
-    transform: translateX(100%);
-    opacity: .9;
-    -webkit-transform: translateX(100%);
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 200ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 200ms;
+    transform: translateX(-100%);
+    opacity: .0;
+    -webkit-transform: translateX(-100%);
+}
+@media screen and (max-width:768px){
+    .fadeInLeft-leave-active{
+        opacity: .5
+    }
 }
 
 /* 前进时的初始值状态，从右开始 */
@@ -277,7 +282,7 @@ html, body, #app{
     background:#f6f6f6;
 }
 
- 
+
 .router-view {
     position: relative;
     // top: 0;
@@ -286,7 +291,7 @@ html, body, #app{
     // left: 0;
     // bottom:0;
     // right: 0;
-    
+
     // overflow-y: scroll;
     overflow-x: hidden;
 }

@@ -11,19 +11,24 @@
                 </li>
                 <li style="position:relative">
                     <span v-if="reply" id="reply-name">@{{reply.createLog.createName+': '}}</span>
-                    <textarea :placeholder="replyOffsetWidth ? '' : '回复内容'" @keyup.8="backSpace()" id="message-content" :style="{textIndent:replyOffsetWidth+'px'}" @keydown.enter="postClick()" v-model="content" cols="30" rows="10">
+                    <textarea @mouseup="getTextFocus($event)" @mousedown="getTextFocus($event)" @keyup="getTextFocus($event)" @keydown="getTextFocus($event)" @focus="getTextFocus($event)" @blur="getTextFocus($event)" :placeholder="replyOffsetWidth ? '' : '回复内容'" @keyup.8="backSpace()" id="message-content" :style="{textIndent:replyOffsetWidth+'px'}" @keydown.enter="postClick()" v-model="content" cols="30" rows="10">
                     </textarea>
                 </li>
-                <li>
+                <li class="others-bar">
                     <label>
                         <input type="checkbox" v-model="isSaveInfo">
                         <span class="icon-check-empty">记住评论信息</span>
                     </label>
-                    <a href="javascript:;" class="face icon-github-alt">表情</a>
+                    <a href="javascript:;" class="face icon-github-alt" @click="showFace()">表情</a>
                     <button @click.stop="postClick()" class="sub-btn">提交</button>
+                    <transition name="fadeInLeft">
+                        <Emoji @onFaceClick="onFaceClick" v-show="shouldShowFace"></Emoji>
+                    </transition>
                 </li>
             </ul>
+
         </div>
+
         <div class="comment-list">
             <div class="comment-item" v-for="item in commentList" :key="item._id">
                 <a :name="item._id"></a>
@@ -37,9 +42,9 @@
                         {{item.createLog.createName}}：
                     </h4>
 
-                    <p v-if="!!item.parentComment" class="quote">@{{item.parentComment.createLog.createName}}：{{item.parentComment.content}}</p>
-                    <p class="text text-left color-black margin-top-5">
-                        {{item.content}}
+                    <p v-if="!!item.parentComment" class="quote">@{{item.parentComment.createLog.createName}}：<span v-html="filterHtml(item.parentComment.content)"></span></p>
+                    <p class="text text-left color-black margin-top-5 curr-text" v-html="filterHtml(item.content)">
+                        <!-- {{item.content}} -->
                     </p>
                     <div class="operate text-left margin-top-10">
                         <a class="color-gray font-12 icon-time">{{item.createLog.createTime | dateDesc}}</a>
@@ -57,6 +62,7 @@
     import $$ from '@/utils/index.js';
     import emoji from './emoji.vue';
     import { mapActions } from 'vuex';
+    import { FACE_URL } from '@/api/config.js';
     export default{
         name:'comment',
         props:{
@@ -81,7 +87,13 @@
                 reply:null,
                 isMore:true,
                 replyOffsetWidth:0,
-                backSpaceTimes:0
+                backSpaceTimes:0,
+                shouldShowFace:false,
+                textFocusStart:0,
+                textFocusEnd:0,
+                preText:'',
+                nexText:'',
+                isPressingCtrl:false
             }
         },
         watch:{
@@ -105,11 +117,13 @@
                     this.content = '';
                     return;
                 }
+                var reg = /(<|\$lt)fa(>|\$gt)([\d]*)(\1\/fa\2)/gi;
+                var __content = this.content.replace(reg, function($1, $2, $3, $4){ return $1 = '<img src="'+FACE_URL+'/'+$4+'.png">' })
                 var obj = {
                     article:this.article,
                     name:this.name,
                     email:this.email,
-                    content:this.content,
+                    content:__content,
                     parentComment:this.parentComment
                 }
                 if(!!this.reply){
@@ -120,6 +134,7 @@
                     this.content = '';
                     this.parentComment = '';
                     this.reply = null;
+                    // res.data.content =res.data.content.replace('/$gt/g','>').replace(/$lt/g,'<');
                     this.commentList.unshift(res.data);
                     this.replyOffsetWidth = 0;
                 });
@@ -197,6 +212,30 @@
                     this.backSpaceTimes = 0;
                     this.replyOffsetWidth = 0;
                 }
+            },
+            getTextFocus(e){
+                var el = e.target;
+                this.textFocusStart = el.selectionStart;
+                this.textFocusEnd = el.selectionEnd;
+                this.preText = this.content.substring(0, this.textFocusStart);
+                this.nexText = this.content.substring(this.textFocusEnd);
+            },
+            showFace(){
+                this.shouldShowFace = !this.shouldShowFace;
+            },
+            onFaceClick(item){
+                var faceText = `<fa>${item}</fa>`;
+                this.content = this.preText+faceText+this.nexText;
+                this.preText = this.preText+faceText;
+                if(this.isPressingCtrl) return;
+                this.shouldShowFace = false;
+            },
+            handleCtrl(flag){
+                //vue2 keyup.ctrl没有触发，蛋疼多选表情砍了吧。
+                this.isPressingCtrl = flag;
+            },
+            filterHtml(str){
+                return str.replace(/<(?!img)[^>]*>/,"");
             }
         },
         created(){
@@ -209,6 +248,6 @@
             this.name = window.localStorage['__postName__'] || '';
             this.email = window.localStorage['__email__'] || '';
             this.isSaveInfo = window.localStorage['__isSaveInfo__'] || false;
-        }   
+        }
     }
 </script>
