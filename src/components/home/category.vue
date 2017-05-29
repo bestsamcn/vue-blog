@@ -3,17 +3,23 @@
     <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
-            <a href="javascript:;" @click="cateClick(item.name)" v-for="item in categorylist" :key="item._id">
-                <span class="name">{{item.name}}</span>
-                <span class="number">({{item.totalArticle || 0}})</span>
+            <a href="javascript:;" @click="cateClick(item._id.name)" v-for="item in categoryArticleGroup" :key="item._id._id">
+                <span class="name">{{item._id.name}}</span>
+                <span class="number">({{item.total || 0}})</span>
             </a>
         </div>
     </div>
 </template>
 <script>
     import { mapState, mapActions } from 'vuex';
+    import * as API from '@/api/index.js';
     export default{
         name:'home-category',
+        data(){
+            return{
+                categoryArticleGroup:[]
+            }
+        },
         computed:{
             ...mapState({
                 categorylist:state=>state.admin.categoryList
@@ -33,6 +39,11 @@
                     this.$router.push({name:'Article'});
                 });
             }
+        },
+        created(){
+            API.getCategoryArticle().then(res=>{
+                this.categoryArticleGroup = res.data;
+            });
         }
     }
 </script>
