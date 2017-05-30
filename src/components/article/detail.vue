@@ -8,10 +8,10 @@
                 <div class="info margin-top-10">
                     <span class="icon-calendar">{{article.createTime | dateFormat('yyyy-MM-dd')}}</span>
                     <span class="icon-map-marker">{{article.category && article.category.name}}</span>
-                    <span class="icon-eye-open">{{article.readNum}} Views</span>
+                    <span class="icon-eye-open">{{article.readNum | transNum}} Views</span>
                     <span class="icon-tag">{{article.tag && article.tag.name}}</span>
                     <span class="icon-edit" v-if="!!article.lastEditTime && !isMobile">{{article.lastEditTime | dateFormat('yyyy-MM-dd hh:mm:ss')}}</span>
-                    <a href="javascript:;" @click="likeClick()" class="icon-heart" :class="{'active':isLiked}">{{article.likeNum}}</a>
+                    <a href="javascript:;" @click="likeClick()" class="icon-heart" :class="{'active':isLiked}">{{article.likeNum | transNum}}</a>
                 </div>
             </div>
             <div class="img">

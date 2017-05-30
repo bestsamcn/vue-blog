@@ -4,8 +4,8 @@
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
-                <a href="javascript:;" class="tag-item" @click="tagClick(item.name)" v-for="item in tagList">
-                    <span>{{item.name}}</span>
+                <a href="javascript:;" class="tag-item" @click="tagClick(item._id.name)" v-for="item in tagArticleGroup">
+                    <span>{{item._id.name}}</span>
                 </a>
             </div>
         </div>
@@ -13,10 +13,12 @@
 </template>
 <script>
     import { mapState, mapActions } from 'vuex';
+    import * as API from '@/api/index.js'
     export default{
         name:'tags',
         data(){
             return{
+                tagArticleGroup:[]
             }
         },
         computed:{
@@ -38,6 +40,11 @@
                     this.$router.push({name:'Article'});
                 });
             }
+        },
+        created(){
+            API.getDiffArticle({type:2}).then(res=>{
+                this.tagArticleGroup = res.data;
+            });
         }
     }
 </script>

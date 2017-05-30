@@ -41,7 +41,7 @@
             }
         },
         created(){
-            API.getCategoryArticle().then(res=>{
+            API.getDiffArticle({type:1}).then(res=>{
                 this.categoryArticleGroup = res.data;
             });
         }

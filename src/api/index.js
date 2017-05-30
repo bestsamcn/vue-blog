@@ -40,7 +40,7 @@ export const editArticle = (params)=>$http('post', '/article/edit', params, true
 export const getArticleList = (params)=>$http('get', '/article/getList', params, true);
 export const getArticleDetail = (params)=>$http('get', '/article/getDetail', params, true);
 export const likeArticle = (params)=>$http('post', '/article/like', params);
-export const getCategoryArticle = (params)=>$http('get', '/article/getCategoryArticle', params, true);
+export const getDiffArticle = (params)=>$http('get', '/article/getDiffArticle', params, true);
 
 //评论
 export const addComment = (params)=>$http('post', '/comment/add', params, true);

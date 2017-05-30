@@ -7,10 +7,10 @@
                     <h4 class="color-black">{{item.title}}</h4>
                     <div class="info margin-top-10">
                         
-                        <span class="icon-comment">{{item.commentNum || 0}} Comments</span>
-                        <span class="icon-eye-open">{{item.readNum}} Views</span>
+                        <span class="icon-comment">{{item.commentNum | transNum }} Comments</span>
+                        <span class="icon-eye-open">{{item.readNum | transNum}} Views</span>
                         <span class="icon-tag">{{item.tag ? item.tag.name : 'null'}}</span>
-                        <a href="javascript:;" class="icon-heart" :class="{'active':item.isLiked}">{{item.likeNum}}</a>
+                        <a href="javascript:;" class="icon-heart" :class="{'active':item.isLiked}">{{item.likeNum | transNum}}</a>
                     </div>
                 </div>
                 <p class="preview">

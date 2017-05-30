@@ -85,6 +85,21 @@ Filter.install = Vue=>{
         if(str.length <= len) return str;
         return (isPoint ? str.substring(0, len)+'...' : str.substring(0, len));
     });
+
+    /**
+     * 数字转换
+     */
+    Vue.filter('transNum', (num)=>{
+        if(!num) return 0;
+        if (num >= 10000) {
+            num = round(num / 10000 * 100) / 100 +' W';
+        } else if(num>= 1000) {
+            num = round(num / 1000 * 100) / 100 +' K';
+        } else {
+            num = num;
+        }
+        return num;
+    })
 }
 
 export default Filter;
