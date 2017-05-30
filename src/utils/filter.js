@@ -92,9 +92,9 @@ Filter.install = Vue=>{
     Vue.filter('transNum', (num)=>{
         if(!num) return 0;
         if (num >= 10000) {
-            num = round(num / 10000 * 100) / 100 +' W';
+            num = Math.round(num / 10000 * 100) / 100 +' W';
         } else if(num>= 1000) {
-            num = round(num / 1000 * 100) / 100 +' K';
+            num = Math.round(num / 1000 * 100) / 100 +' K';
         } else {
             num = num;
         }
