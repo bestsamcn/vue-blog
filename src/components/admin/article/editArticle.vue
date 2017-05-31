@@ -59,7 +59,7 @@
                     },
                     renderingConfig: {
                         codeSyntaxHighlighting: true, // 开启代码高亮
-                        highlightingTheme: 'atom-one-dark' 
+                        highlightingTheme: 'atom-one-dark'
                     },
                     toolbar: ["bold", "italic", "heading", "|", "code", "quote", "unordered-list", "ordered-list", "|", "link", "image", "preview", "|", "side-by-side", "fullscreen", "guide"]
                 },
@@ -139,7 +139,7 @@
                     this.tagChoose = '';
                     this.cateChoose = '';
                     this.previewText = '';
-                    this.highlightHtml = ''; 
+                    this.highlightHtml = '';
                     this.$router.push({name:'AdminArticle'});
                 });
             },
@@ -152,6 +152,7 @@
                 API.getArticleDetail({id:this.$route.params.id,type:this.type}).then(res=>{
                     this.title = res.data.curr.title;
                     this.tagChoose = res.data.curr.tag._id;
+                    this.poster = res.data.curr.poster;
                     this.cateChoose = res.data.curr.category._id;
                     this.previewText = res.data.curr.previewText;
                     this.highlightHtml = res.data.curr.codeContent;
@@ -186,7 +187,7 @@
                     cm.setValue(cm.getValue().replace(reg, `![default](${CONFIG.POSTER_URL}/${res.data.data.posterName})`));
                     that.$el.scrollTop = that.elScrollTop;
                     e.target.value='';
-                    
+
                 });
             },
             addPoster(e){
@@ -204,7 +205,7 @@
                     timeout:100000
                 }).then(res=>{
                     that.isPosterUploading = false;
-                    that.poster = res.data.data.posterName;                    
+                    that.poster = res.data.data.posterName;
                     e.target.value='';
                 }, err=>{
                     that.setToast('异常');
