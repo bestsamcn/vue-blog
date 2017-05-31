@@ -2,7 +2,7 @@
 	<div class="">
 		<canvas width="300" height="180" id="canvas" v-clock><p class="nope">No canvas, no particles</p></canvas>
 		<div id="about">
-	        <a href="#" id="toggle-options"></a>
+	        <a href="#" style="visibility:hidden;opacity:0" id="toggle-options"></a>
 	        <ul id="options" style="visibility:hidden;opacity:0">
 	            <li><a href="#" id="quivers" class="">Quiver</a></li>
 	            <li><a href="#" id="gradient" class="on">Gradient</a></li>
