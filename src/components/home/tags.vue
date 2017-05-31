@@ -4,8 +4,8 @@
         <slot name="title"></slot>
         <div class="cont">
             <div class="wrapper">
-                <a href="javascript:;" class="tag-item" @click="tagClick(item._id.name)" v-for="item in tagArticleGroup">
-                    <span>{{item._id.name}}</span>
+                <a href="javascript:;" class="tag-item" @click="tagClick(item._id && item._id.name)" v-for="item in tagArticleGroup" :key="item._id && item._id._id">
+                    <span>{{item._id && item._id.name}}</span>
                 </a>
             </div>
         </div>

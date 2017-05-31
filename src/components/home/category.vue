@@ -3,8 +3,8 @@
     <div class="moveup home-category">
         <slot name="title"></slot>
         <div class="cont">
-            <a href="javascript:;" @click="cateClick(item._id.name)" v-for="item in categoryArticleGroup" :key="item._id._id">
-                <span class="name">{{item._id.name}}</span>
+            <a href="javascript:;" @click="cateClick(item._id.name)" v-for="item in categoryArticleGroup" :key="item._id && item._id._id">
+                <span class="name">{{item._id && item._id.name}}</span>
                 <span class="number">({{item.total || 0}})</span>
             </a>
         </div>

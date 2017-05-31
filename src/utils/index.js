@@ -22,7 +22,7 @@ Tool.isMobile = function() {
     }
     /**
      * 设置cookie
-     * @param {string} k 键名 
+     * @param {string} k 键名
      * @param {string} v 值
      * @param {number} d 天数
      */
@@ -39,7 +39,7 @@ Tool.setCookie = function(k, v, d) {
 /**
  * 获取cookie
  * @param {string} k 键名
- * @return {v} 键值 
+ * @return {v} 键值
  */
 Tool.getCookie = function(k) {
     //一旦检测到分号，即停止
@@ -56,9 +56,9 @@ Tool.clearCookie = function(k) {
     }
     /**
      * 获取css样式值
-     * @param  {dom} element 
+     * @param  {dom} element
      * @param  {string} attr    属性名
-     * @return {string}         
+     * @return {string}
      */
 Tool.getStyle = function(element, attr) {
     return getComputedStyle(element, false)[attr];
@@ -66,7 +66,7 @@ Tool.getStyle = function(element, attr) {
 
 /**
  * 运动函数
- * @param  {dom}   obj  
+ * @param  {dom}   obj
  * @param  {obj}   json 运动参数
  * @param  {function} fn   回调
  */
@@ -396,7 +396,7 @@ Tool.Clock = (function() {
         setGradient(gradientStops);
     };
 
-    /** 
+    /**
      * Public Methods
      */
     return {
@@ -428,7 +428,7 @@ Tool.Clock = (function() {
             defaultStyles();
 
             // let's do this
-            
+
             Tool.Clock._timer && clearInterval(Tool.Clock._timer);
             Tool.Clock._timer = setInterval(loop, FRAME_RATE);
         },
@@ -641,7 +641,7 @@ var FPS = {
 /**
 *@function toScrollHeight 跳到指定滚动条高度
 *@param iTarget {number} 指定滚动条高度 例如:300
-*@param obj {object} 触发该方法的对象 
+*@param obj {object} 触发该方法的对象
 *@example toScrollHeight(300,document.getElementId('obj'))
 */
 Tool.toScrollHeight = function(iTarget,obj){

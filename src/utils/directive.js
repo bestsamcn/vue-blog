@@ -28,7 +28,7 @@ obj.install = Vue=>{
 		},
 		update(el){
 			el.setResize();
-			
+
 		},
 		unbind(){
 
@@ -38,7 +38,7 @@ obj.install = Vue=>{
 	/**
 	 * 右边侧栏滚动
 	 */
-	
+
 	Vue.directive('sidebarScroll', {
 
 		bind(el){
@@ -53,7 +53,7 @@ obj.install = Vue=>{
 				var mainOffsetTop = parseInt(_pNode.offseTop);
 				var mainHeight = parseInt(_pNode.offsetHeight);
 				var slideBarHeight =  parseInt(el.offsetHeight) - 40 ;
-				var slideBarIntOffsetTop = 20;	
+				var slideBarIntOffsetTop = 20;
 				var slideFunc = function() {
 		            var	scrollTop = parseInt(_body.scrollTop);
 		            var slideBarOffsetTop = parseInt(el.offsetTop);
@@ -65,7 +65,7 @@ obj.install = Vue=>{
 		            }
 					// var aniDistant=Math.min( ( Math.max( ( -mainOffsetTop, ( scrollTop - slideBarOffsetTop + slideBarTop)))), (mainHeight - slideBarHeight ) );
 					var aniDistant= Math.min(  scrollTop , (mainHeight - slideBarHeight ) );
-					// 
+					//
 					if (aniDistant > h) {
 						aniDistant = h
 					};
