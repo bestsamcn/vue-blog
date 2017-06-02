@@ -8,7 +8,7 @@
             <a href="javascript:;" :class="{'active':(activeIndex === 4)}" @click="navClick(4)">阅读</a>
         </div>
         <div class="tab-cont">
-            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">  
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===1">
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="hotList.length" v-for="item in hotList" :key="item._id">
                     <div class="img">
@@ -23,8 +23,8 @@
                     </div>
                 </router-link>
             </div>
-            </transition> 
-            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
+            </transition>
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===2">
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="latestList.length" v-for="item in latestList" :key="item._id">
                     <div class="img">
@@ -40,9 +40,9 @@
                 </router-link>
             </div>
             </transition>
-            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===3">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="commentList.length" v-for="item in commentList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item.article._id}}" v-if="commentList.length" v-for="item in commentList" :key="item._id">
                     <div class="img">
                         <div class="img-box name">
                             <span>{{item.createLog.createName | textEllipsis(3,true)}}</span>
@@ -54,8 +54,8 @@
                     </div>
                 </router-link>
             </div>
-            </transition>  
-            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"> 
+            </transition>
+            <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===4">
                 <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="readNumList.length" v-for="item in readNumList" :key="item._id">
                     <div class="img">
@@ -70,7 +70,7 @@
                     </div>
                 </router-link>
             </div>
-            </transition>  
+            </transition>
         </div>
     </div>
 </template>
@@ -111,7 +111,7 @@
                 }
                 API.getArticleList(obj).then(res=>{
                     this.hotList = res.data;
-                }); 
+                });
             },
             getLatestComent(){
                 var obj = {
