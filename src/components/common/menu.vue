@@ -29,6 +29,5 @@
                 this.$router.push({name:routerName})
             }
         }
-
     }
 </script>

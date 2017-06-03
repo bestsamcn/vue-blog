@@ -8,7 +8,7 @@
         
         <Navheader v-show="routerName && routerName.indexOf('Admin') == -1" @logoClick="onLogoClick($event)"></Navheader>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
-            <Menulist v-show="iShowMenu"></Menulist>
+            <Menulist v-show="iShowMenu && isResizeToMobile"></Menulist>
         </transition>
         <!-- <transition :name="$router.app.pageTransition"> -->
         <!-- <transition :name="'fade'"> -->
@@ -16,7 +16,6 @@
                 <router-view class="router-view"></router-view>
             </keep-alive>
         <!-- </transition> -->
-        
     </div>
 </template>
 
@@ -35,6 +34,7 @@ export default {
     name: 'app',
     data(){
         return{
+            isResizeToMobile:false
         }
     },
     components:{
@@ -59,7 +59,19 @@ export default {
         ]),
         onLogoClick(e){
             this.setToast(e);
+        },
+        onresizeWindow(){
+            var cw = document.documentElement.clientWidth || document.body.clientWidth;
+            if(cw >= 768){
+                this.isResizeToMobile = false;
+            }else{
+                this.isResizeToMobile = true;
+            }
         }
+    },
+    created(){
+        window.addEventListener('resize', this.onresizeWindow);
+        window.addEventListener('load', this.onresizeWindow);
     }
     
    

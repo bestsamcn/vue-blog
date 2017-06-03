@@ -154,7 +154,8 @@ obj.install = Vue=>{
 			el.temp();
 	        window.addEventListener('scroll',el.temp);
 		}
-	})
+	});
+
 }
 
 export default obj;
