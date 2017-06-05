@@ -7,7 +7,7 @@
                     <input type="text" v-model="name" placeholder="你的昵称">
                 </li>
                 <li>
-                    <input type="text" v-model="email" placeholder="你的邮箱">
+                    <input type="text" v-model="email" placeholder="请填写有效邮箱，否则无法收到回复通知">
                 </li>
                 <li style="position:relative">
                     <span v-if="reply" id="reply-name">@{{reply.createLog.createName+': '}}</span>
