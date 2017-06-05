@@ -17,6 +17,7 @@
             </Etablecolumn>
             <Etablecolumn prop="article.title" label="文章"></Etablecolumn>
             <Etablecolumn prop="createLog.createName" label="来自"></Etablecolumn>
+            <Etablecolumn prop="createLog.createEmail" label="邮箱"></Etablecolumn>
             <Etablecolumn prop="content" label="内容">
                 <template scope="scope">
                     {{ scope.row.content | textEllipsis(50, true)}}
@@ -108,7 +109,7 @@
             }
         },
         created(){
-            
+
         },
         mounted(){
             this.getList();
