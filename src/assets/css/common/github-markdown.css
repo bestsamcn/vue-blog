@@ -154,6 +154,7 @@
 
 .markdown-body a {
   background-color: transparent;
+  font-size: 16px;
   -webkit-text-decoration-skip: objects;
 }
 
