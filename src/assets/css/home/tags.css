@@ -29,6 +29,7 @@
     align-items:center;
     width:100% + 10px;
     margin-left:-10px;
+    padding-right: 0;
     justify-content:flex-start;
 }
 .tags .cont .tag-item{
