@@ -32,7 +32,7 @@ npm run build
 
 ## 预览
 - 项目总体完成，部分细节有待修改。
-- [请点击我](http://reac.bestsamcn.me/)预览react版本
+- [请点击我](http://react.bestsamcn.me/)预览react版本
 - [请点击我](http://blog.bestsamcn.me/)预览vue版本
 
 
