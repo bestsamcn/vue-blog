@@ -15,6 +15,25 @@
         <div class="margin-top-20">
             <Einput v-model="previewText" placeholder="请输入导读"></Einput>
         </div>
+         <div class="margin-top-20">
+            <label class="upload-btn">
+                <span :class="{'icon-spinner icon-spin':isUploading}">{{isUploading?'':'上传图片'}}</span>
+                <input type="file" v-show="false" name="poster" v-on:change="posterChange" accept="image/gif, image/jpeg, image/png">
+            </label>
+            <label class="upload-btn">
+                <span :class="{'icon-spinner icon-spin':isPosterUploading}">{{isPosterUploading ?'':'上传封面'}}</span>
+                <input type="file" v-show="false" name="poster" v-on:change="addPoster" accept="image/gif, image/jpeg, image/png">
+            </label>
+            <label class="upload-btn" @click="postArticle()">
+                <span>提交</span>
+            </label>
+            <label class="upload-btn" @click="getParseContent()">
+                <span>查看</span>
+            </label>
+        </div>
+        <div class="btn text-right margin-top-20">
+            
+        </div>
         <div class="highlight">
             <Markdowneditor :class="{'editor': 1}" ref="Markdowneditor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
         </div>

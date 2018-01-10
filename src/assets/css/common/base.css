@@ -84,13 +84,13 @@ button,input,select{
     color:#999 !important;
 }
 .bg-green{
-    background:#1ABC9C;
+    background:#1ABC9C !important;
 }
 .bg-blue{
-    background:#3599DD;
+    background:#3599DD !important;
 }
 .bg-red{
-    background:#E24C3C;
+    background:#E24C3C !important;
 }
 .text-center{
     text-align: center;
