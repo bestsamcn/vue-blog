@@ -1,6 +1,6 @@
 <style src="@/assets/css/admin/article/addArticle.css"></style>
 <template>
-    <div class="add-article">
+    <div class="add-article" ref="addArticleRef">
         <div class="info">
             <Eselect v-model="tagChooseList"  size="large"  placeholder="标签列表">
                 <Eoption v-for="tag in tagList" :label="tag.name" :value="tag._id" :key="tag._id"></Eoption>
@@ -15,7 +15,7 @@
         <div class="margin-top-20">
             <Einput v-model="previewText" placeholder="请输入导读"></Einput>
         </div>
-         <div class="margin-top-20">
+         <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
                 <span :class="{'icon-spinner icon-spin':isUploading}">{{isUploading?'':'上传图片'}}</span>
                 <input type="file" v-show="false" name="poster" v-on:change="posterChange" accept="image/gif, image/jpeg, image/png">
@@ -231,10 +231,29 @@
                     e.target.value='';
                     that.isPosterUploading = false;
                 });
+            },
+            //scroll view
+            scrollView(){
+                let that = this;
+                let toolbarOffsetTop = this.articleToolbarRef.offsetTop;
+                let _scroll = function(){
+                    if(this.scrollTop >= toolbarOffsetTop){
+                        let cssText = `position:fixed;z-index:100;left:290px;top:100px`;
+                        that.articleToolbarRef.style.cssText = cssText;
+
+                    }else{
+                        that.articleToolbarRef.style.cssText = '';
+                    }
+                }
+                this.addArticleRef.addEventListener('scroll', _scroll);
+                this.addArticleRef.addEventListener('resize', _scroll);
             }
         },
         mounted(){
             this.editor = this.$refs.Markdowneditor.simplemde;
+            this.addArticleRef = this.$refs.addArticleRef;
+            this.articleToolbarRef = this.$refs.articleToolbarRef;
+            this.scrollView();
 
         },
         created(){

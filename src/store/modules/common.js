@@ -120,8 +120,11 @@ const mutations = {
         !!state.token && (state.isLogin = true);
     },
     [types.DEL_TOKEN](state){
+        delete localStorage.token;
+        delete localStorage.isLogin;
         state.token = '';
         state.isLogin = false;
+        window.location.href='/';
     },
     [types.SET_LOGIN](state){
         state.isLogin = isLogin;
