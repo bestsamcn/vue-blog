@@ -219,20 +219,20 @@ var routerMap = {
         },
         component: Message
     }, {
-        path: '/admin',
+        path: '',
         component: Admin,
         children: [{
-            path: 'signin',
+            path: '/admin/signin',
             name: 'AdminSignin',
             meta: {
                 title: '登录'
             },
             component: Signin
         }, {
-            path: 'home',
+            path: '',
             component: AdminCommon,
             children: [{
-                path: 'index',
+                path: '/admin',
                 name: 'AdminHome',
                 meta: {
                     title: '预览',
@@ -240,7 +240,7 @@ var routerMap = {
                 },
                 component: AdminHome
             }, {
-                path: 'article',
+                path: '/admin/article',
                 name: 'AdminArticle',
                 meta: {
                     title: '文章',
@@ -248,7 +248,7 @@ var routerMap = {
                 },
                 component: AdminArticle
             }, {
-                path: 'addArticle',
+                path: '/admin/addArticle',
                 name: 'AdminAddArticle',
                 meta: {
                     title: '添加文章',
@@ -256,7 +256,7 @@ var routerMap = {
                 },
                 component: AdminAddArticle
             }, {
-                path: 'editArticle/:id',
+                path: '/admin/editArticle/:id',
                 name: 'AdminEditArticle',
                 meta: {
                     title: '编辑文章',
@@ -264,7 +264,7 @@ var routerMap = {
                 },
                 component: AdminEditArticle
             }, {
-                path: 'adminTag',
+                path: '/admin/adminTag',
                 name: 'AdminTag',
                 meta: {
                     title: '标签',
@@ -272,7 +272,7 @@ var routerMap = {
                 },
                 component: AdminTag
             }, {
-                path: 'adminCategory',
+                path: '/admin/adminCategory',
                 name: 'AdminCategory',
                 meta: {
                     title: '分类',
@@ -280,7 +280,7 @@ var routerMap = {
                 },
                 component: AdminCate
             }, {
-                path: 'adminHotWord',
+                path: '/admin/adminHotWord',
                 name: 'AdminHotWord',
                 meta: {
                     title: '热词',
@@ -288,7 +288,7 @@ var routerMap = {
                 },
                 component: AdminHotWord
             }, {
-                path: 'adminMessage',
+                path: '/admin/adminMessage',
                 name: 'AdminMessage',
                 meta: {
                     title: '留言',
@@ -296,7 +296,7 @@ var routerMap = {
                 },
                 component: AdminMsg
             }, {
-                path: 'adminMessageDetail/:id',
+                path: '/admin/adminMessageDetail/:id',
                 name: 'AdminMessageDetail',
                 meta: {
                     title: '留言详情',
@@ -304,7 +304,7 @@ var routerMap = {
                 },
                 component: AdminMsgDetail
             }, {
-                path: 'adminCount',
+                path: '/admin/adminCount',
                 name: 'AdminCount',
                 meta: {
                     title: '访问记录',
@@ -312,7 +312,7 @@ var routerMap = {
                 },
                 component: AdminCount
             }, {
-                path: 'adminComment',
+                path: '/admin/adminComment',
                 name: 'AdminArticleComment',
                 meta: {
                     title: '评论',
