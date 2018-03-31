@@ -26,6 +26,9 @@
             ]),
             goAndHideMenu(routerName){
                 this.setToggleMenu();
+                if(this.isLogin && routerName == 'AdminSignin'){
+                    return this.$router.push({name:'AdminHome'});
+                }
                 this.$router.push({name:routerName})
             }
         }

@@ -20,6 +20,7 @@
 </template>
 <script>
     import * as API from '@/api/index.js';
+    import { mapActions, mapState } from 'vuex';
     export default{
         name:'adminHome',
         data(){
@@ -31,9 +32,20 @@
         },
         components:{
         },
+        computed:{
+            ...mapState({
+                isLogin:state=>state.common.isLogin,
+                token:state=>state.common.token
+            })
+        },
         methods:{
             goUrl(obj){
                 this.$router.push(obj)
+            }
+        },
+        mounted(){
+            if(!this.token || !this.isLogin){
+                this.goUrl({name:'AdminSignin'});
             }
         },
         created(){

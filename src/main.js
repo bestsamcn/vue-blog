@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.auth)) {
         if (!store.state.common.isLogin) {
             return next({
-                path: '/admin/sigin',
+                path: '/admin/signin',
                 query: {
                     redirect: to.fullPath
                 }
@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
     }else{
         if (to.path.indexOf('signin') !== -1 && store.state.common.isLogin) {
             return next({
-                path: '/admin/home/index'
+                path: '/admin'
             });
         }
     }

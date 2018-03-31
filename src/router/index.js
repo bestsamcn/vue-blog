@@ -219,17 +219,17 @@ var routerMap = {
         },
         component: Message
     }, {
-        path: '',
+        path: '/admin',
         component: Admin,
         children: [{
-            path: '/admin/signin',
+            path: 'signin',
             name: 'AdminSignin',
             meta: {
                 title: '登录'
             },
             component: Signin
         }, {
-            path: '',
+            path: '/admin',
             component: AdminCommon,
             children: [{
                 path: '/admin',
