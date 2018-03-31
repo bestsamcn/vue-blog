@@ -2,15 +2,15 @@
 <template>
     <div class="moveup article-rank margin-top-30">
         <div class="tab-list">
-            <a href="javascript:;" :class="{'active':(activeIndex === 1)}" @click="navClick(1)">最火</a>
-            <a href="javascript:;" :class="{'active':(activeIndex === 2)}" @click="navClick(2)">最新</a>
+            <a href="javascript:;" :class="{'active':(activeIndex === 1)}" @click="navClick(1)">最新</a>
+            <a href="javascript:;" :class="{'active':(activeIndex === 2)}" @click="navClick(2)">最火</a>
             <a href="javascript:;" :class="{'active':(activeIndex === 3)}" @click="navClick(3)">评论</a>
             <a href="javascript:;" :class="{'active':(activeIndex === 4)}" @click="navClick(4)">阅读</a>
         </div>
         <div class="tab-cont">
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===1">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="hotList.length" v-for="item in hotList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="latestList.length" v-for="item in latestList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img v-if="!!item.poster" :src="`${CONFIG.POSTER_URL}/${item.poster}`">
@@ -26,7 +26,7 @@
             </transition>
             <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft">
             <div class="popular" v-show="activeIndex===2">
-                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="latestList.length" v-for="item in latestList" :key="item._id">
+                <router-link :to="{name:'ArticleDetail', params:{id:item._id}}" v-if="hotList.length" v-for="item in hotList" :key="item._id">
                     <div class="img">
                         <div class="img-box">
                             <img v-if="!!item.poster" :src="`${CONFIG.POSTER_URL}/${item.poster}`">
@@ -78,13 +78,13 @@
     import * as API from '@/api/index.js';
     import * as CONFIG from '@/api/config.js';
     export default{
-        props:{
-            latestList:{
-                type:Array,
-                require:false,
-                default:[]
-            }
-        },
+        // props:{
+        //     latestList:{
+        //         type:Array,
+        //         require:false,
+        //         default:[]
+        //     }
+        // },
         name:'article-rank',
         data(){
             return {
@@ -95,6 +95,7 @@
                 commentList:[],
                 likestList:[],
                 readNumList:[],
+                latestList:[],
                 CONFIG:CONFIG
 
             }
@@ -131,12 +132,23 @@
                 API.getArticleList(obj).then(res=>{
                     this.readNumList = res.data;
                 });
+            },
+            getLatestEditAritlce(){
+                var obj = {
+                    type:3,
+                    pageIndex:this.pageIndex,
+                    pageSize:this.pageSize
+                }
+                API.getArticleList(obj).then(res=>{
+                    this.latestList = res.data;
+                });
             }
         },
         created(){
             this.getHotList();
             this.getLatestComent();
             this.getReadNumAritlce();
+            this.getLatestEditAritlce();
         }
     }
 </script>
