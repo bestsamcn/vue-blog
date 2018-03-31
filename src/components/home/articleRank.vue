@@ -19,7 +19,7 @@
                     </div>
                     <div class="text">
                         <h4>{{item.title}}</h4>
-                        <p><i class="icon-calendar"></i>{{item.createTime | dateFormat('yyyy-MM-dd')}}</p>
+                        <p><i class="icon-edit"></i>{{(item.lastEditTime ? item.lastEditTime : item.createTime) | dateFormat('yyyy-MM-dd')}}</p>
                     </div>
                 </router-link>
             </div>
