@@ -8,6 +8,7 @@ const state = {
     toastMsg:'未知错误',
     isMobile:false,
     token:'',
+    notify:null,
     isLogin:false,
     clientHeight:0,
     hotWordList:[],
@@ -32,9 +33,15 @@ const getters = {
     hotWordList:state=>state.hotWordList,
     hotWord:state=>state.hotWord,
     articleParams:state=>state.articleParams
+
 }
 
 const actions = {
+    getLatestNotify({commit}){
+        API.getLatestNotify().then(res=>{
+            commit('getLatestNotify', res.data);
+        });
+    },
     setShowLoading({commit}){
         commit(types.SET_SHOW_LOADING);
     },
@@ -95,6 +102,12 @@ const actions = {
 }
 
 const mutations = {
+    ['getLatestNotify'](state, notify){
+        state.notify = notify;
+    },
+    ['removeNotify'](state){
+        state.notify = null;
+    },
     [types.SET_SHOW_LOADING](state){
         state.iShowLoading = true;
     },

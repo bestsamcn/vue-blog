@@ -7,13 +7,14 @@
         </transition>
         
         <Navheader v-show="routerName && routerName.indexOf('Admin') == -1" @logoClick="onLogoClick($event)"></Navheader>
+        <Notify v-if="routerName && !routerName.includes('Admin') && !!notify && !$$().getCookie(notify._id)"></Notify>
         <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">
             <Menulist v-show="iShowMenu && isResizeToMobile"></Menulist>
         </transition>
         <!-- <transition :name="$router.app.pageTransition"> -->
         <!-- <transition :name="'fade'"> -->
             <keep-alive>
-                <router-view class="router-view"></router-view>
+                <router-view :class="!!notify && !$$().getCookie(notify._id) ? 'router-view has-notify' : 'router-view'"></router-view>
             </keep-alive>
         <!-- </transition> -->
     </div>
@@ -28,6 +29,8 @@ import Navheader from './components/common/header.vue';
 import Footerbar from '@/components/common/footer.vue';
 import Menulist from './components/common/menu.vue';
 import Toast from './components/common/toast.vue';
+import Notify from './components/common/notify.vue';
+import $$ from '@/utils/index.js';
 
 
 export default {
@@ -42,13 +45,15 @@ export default {
         Menulist,
         Navheader,
         Toast,
-        Footerbar
+        Footerbar,
+        Notify
     },
     computed:{
         ...mapState({
             iShowLoading:state=>state.common.iShowLoading,
             iShowMenu:state=>state.common.iShowMenu,
             iShowToast:state=>state.common.iShowToast,
+            notify:state=>state.common.notify,
             toastMsg:state=>state.common.toastMsg,
             routerName:state=>state.RouteModule.name
         })
@@ -57,6 +62,9 @@ export default {
         ...mapActions([
             'setToast'
         ]),
+        $$(){
+            return $$;
+        },
         onLogoClick(e){
             this.setToast(e);
         },

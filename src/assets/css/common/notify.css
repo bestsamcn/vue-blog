@@ -1,0 +1,48 @@
+.notify{
+	position: fixed;
+	top:56px;
+	left:0;
+	height:30px;
+	width:100%;
+	text-align: center;
+	background: #ebeef2;
+	z-index: 1000;
+}
+.notify p{
+	max-width:1000px;
+	margin:0 auto;
+	line-height: 30px;
+	font-size: 14px;
+	color:#2B4356;
+	position: relative;
+	text-align: left;
+}
+.notify p i{
+	font-size: 14px;
+	margin-right: 10px;
+}
+.notify p a{
+	position: absolute;
+	right:0;
+	top:0;
+	cursor: pointer;
+	width:30px;
+	text-align: center;
+	display: block;
+	height: 30px;
+	color:#2B4356;
+	line-height: 30px;
+	font-size: 16px;
+}
+.notify p a i{
+	margin:0;
+}
+
+
+@media screen and (max-width:768px){
+	.notify{
+		padding:0 10px;
+	}
+	.notify p a{
+	}
+}

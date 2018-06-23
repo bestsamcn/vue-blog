@@ -294,8 +294,12 @@ html, body, #app{
 
     // overflow-y: scroll;
     overflow-x: hidden;
+     transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 200ms;
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 200ms;
 }
-
+.router-view.has-notify{
+    padding-top:100px;
+}
 .moveup{
     animation:moveup 1s ease-in-out ;
     -webkit-animation:moveup 1s ease-in-out;

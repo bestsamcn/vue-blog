@@ -2,3 +2,7 @@
     -webkit-overflow-scrolling:auto !important; 
     overflow-scrolling:auto !important; 
 }
+.admin-tag .el-button--info{
+	padding:10px;
+	color:#fff !important;
+}

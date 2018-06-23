@@ -161,6 +161,15 @@ const AdminComment = resolve => {
         resolve(component)
     })
 };
+
+const AdminNotify = resolve => {
+    store.dispatch('setShowLoading');
+    require(['@/components/admin/notify/index.vue'], component => {
+        store.dispatch('setHideLoading');
+        resolve(component)
+    })
+};
+
 // const AdminCount = resolve=>{require(['@/components/admin/count/index.vue'], resolve)};
 const AdminCount = resolve => {
     store.dispatch('setShowLoading');
@@ -296,6 +305,14 @@ var routerMap = {
                 },
                 component: AdminMsg
             }, {
+                path: '/admin/notify',
+                name: 'AdminNotify',
+                meta: {
+                    title: '通告',
+                    auth: true
+                },
+                component: AdminNotify
+            },{
                 path: '/admin/adminMessageDetail/:id',
                 name: 'AdminMessageDetail',
                 meta: {

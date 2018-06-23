@@ -34,6 +34,7 @@
                 </Navmenuitemgroup>
             </Navsubmenu>
             <Navmenuitem index="adminMessage" :route="{name:'AdminMessage'}" @click="menuItemClick('AdminMessage')">留言列表</Navmenuitem>
+            <Navmenuitem index="adminNotify" :route="{name:'AdminNotify'}" @click="menuItemClick('AdminNotify')">公告列表</Navmenuitem>
             <Navmenuitem index="adminCount" :route="{name:'AdminCount'}" @click="menuItemClick('AdminCount')">访问记录</Navmenuitem>
         </Navmenu>
         <a class="bottom-btn" @click="$router.push({name:'Home'});isMobile && setToggleSidebar(false)"><i class="icon-bold"><span>返回首页</span></i></a>

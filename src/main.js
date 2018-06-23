@@ -33,6 +33,7 @@ store.dispatch('setToken', localStorage['__bestToken__'] && JSON.parse(localStor
 store.dispatch('getTagList');
 store.dispatch('getCategoryList');
 store.dispatch('getHotWordList');
+store.dispatch('getLatestNotify');
 //title
 // router.afterEach((to, from, next)=>{
 //     document.title = to.meta.title;

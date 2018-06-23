@@ -26,6 +26,13 @@ export const addHotWord = (params)=>$http('post', '/hot/add', params, true);
 export const delHotWord = (params)=>$http('get', '/hot/delete', params, true);
 export const editHotWord = (params)=>$http('post', '/hot/edit', params, true);
 
+//通告
+export const getNotifyList = (params)=>$http('get', '/notify/getList', params);
+export const getLatestNotify = (params)=>$http('get', '/notify/getLatestActive', params);
+export const addNotify = (params)=>$http('post', '/notify/add', params, true);
+export const delNotify = (params)=>$http('get', '/notify/delete', params, true);
+export const editNotify = (params)=>$http('post', '/notify/edit', params, true);
+
 //留言
 export const addMessage = (params)=>$http('post', '/message/add', params, true);
 export const delMessage = (params)=>$http('get', '/message/delete', params, true);
