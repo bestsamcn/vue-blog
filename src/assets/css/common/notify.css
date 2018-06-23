@@ -16,10 +16,17 @@
 	color:#2B4356;
 	position: relative;
 	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding:0 30px;
 }
-.notify p i{
+.notify p .icon-bullhorn{
 	font-size: 14px;
-	margin-right: 10px;
+	position: absolute;
+	left:0;
+	top:0;
+	line-height: 30px;
 }
 .notify p a{
 	position: absolute;
