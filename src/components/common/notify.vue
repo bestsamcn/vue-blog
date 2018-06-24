@@ -29,13 +29,9 @@
 				'removeNotify'
 			]),
 			close(_id){
-				console.log(_id, 'dddddddddd')
 				$$.setCookie(_id, 1, 10);
 				this.removeNotify();
 			}
-		},
-		created(){
-
 		}
 	}
 </script>

@@ -44,7 +44,7 @@ obj.install = Vue=>{
 		bind(el){
 		},
 		inserted(el){
-			var _body = document.body;
+			var _body = document.documentElement;
 			var _pNode = el.parentNode;
 			// return
 			el.slideBar = ()=>{
