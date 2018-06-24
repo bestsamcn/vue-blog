@@ -4,7 +4,7 @@
 由于node环境的问题，我本地打包后会导致android机和mac safari无法访问，目前只有window和iphone能够正常访问博客。
 
 ## 简介
-Best-Blog 是一个基于``vue+express``的前后端分离的响应式web项目，另有[React版本](https://github.com/bestsamcn/react-blog)和[Angular版本](https://github.com/bestsamcn/angular-blog)。
+Best-Blog 是一个基于``vue+express``的前后端分离的响应式web项目，另有[Gulp版本](https://github.com/bestsamcn/gulp-blog), [React版本](https://github.com/bestsamcn/react-blog)和[Angular版本](https://github.com/bestsamcn/angular-blog)。
 - 前端使用了vue2全家桶完成，包括了``vue + vue-router + axios + vuex + element-ui``;
 - 后端接口利用 ``express + mongodb + redis`` 开发，后端地址[请点我](https://github.com/bestsamcn/node-blog)
 
