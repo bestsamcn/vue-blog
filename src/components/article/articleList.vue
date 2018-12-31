@@ -6,7 +6,6 @@
                 <div class="title">
                     <h4 class="color-black">{{item.title}}</h4>
                     <div class="info margin-top-10">
-                        
                         <span class="icon-comment">{{item.commentNum | transNum }} Comments</span>
                         <span class="icon-eye-open">{{item.readNum | transNum}} Views</span>
                         <span class="icon-tag">{{item.tag ? item.tag.name : 'null'}}</span>
@@ -17,6 +16,7 @@
                     摘要: {{item.previewText | textEllipsis(50, true)}}
                 </p>
                 <div class="bottom">
+                    <a href="javascript:;" v-if="!!item.isTop && $route.path=='/'" class="more border-red color-red margin-right-5">置顶</a>
                     <a href="javascript:;" class="more">{{item.category ? item.category.name :'我可能被删了'}}</a>
                     <a class="icon-calendar more no-border color-gray">{{item.createTime | dateFormat('yyyy-MM-dd')}}</a>
                     <a class="icon-edit more no-border color-gray"   v-if="!!item.lastEditTime">{{item.lastEditTime | dateFormat('yyyy-MM-dd')}}</a>

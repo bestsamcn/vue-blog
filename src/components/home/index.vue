@@ -55,7 +55,8 @@
                 if(!this.isMore) return;
                 var obj = {
                     pageIndex:this.pageIndex,
-                    pageSize:this.pageSize
+                    pageSize:this.pageSize,
+                    type:4
                 }
                 API.getArticleList(obj).then(res=>{
                     res.data.map(item=>{

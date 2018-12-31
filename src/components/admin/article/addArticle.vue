@@ -15,6 +15,10 @@
         <div class="margin-top-20">
             <Einput v-model="previewText" placeholder="请输入导读"></Einput>
         </div>
+        <div class="margin-top-20">
+            <span>是否置顶：</span>
+            <Echeckbox v-model="isTop" autoComplete="off"></Echeckbox>
+        </div>
          <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
                 <span :class="{'icon-spinner icon-spin':isUploading}">{{isUploading?'':'上传图片'}}</span>
@@ -56,7 +60,7 @@
 </template>
 <script>
     import { markdownEditor } from 'vue-simplemde'
-    import { Select, Option, Button, Input } from 'element-ui';
+    import { Table, TableColumn, Select, Option, Button, Input, Checkbox, Tag } from 'element-ui';
     import { mapState, mapActions } from 'vuex';
     import Axios from 'axios';
     import * as API from '@/api/index.js';
@@ -89,16 +93,21 @@
                 isEditorFullscreen:false,
                 editor:null,
                 poster:'',
+                isTop:false,
                 isUploading:false,
                 isPosterUploading:false
             }
         },
         components:{
+            Etable:Table,
+            Etableculume:TableColumn,
             Markdowneditor:markdownEditor,
             Eselect:Select,
             Eoption:Option,
             Ebutton:Button,
-            Einput:Input
+            Einput:Input,
+            Echeckbox:Checkbox,
+            Etag:Tag,
         },
         computed:{
             ...mapState({
@@ -144,6 +153,7 @@
                     previewText:that.previewText,
                     codeContent:that.highlightHtml,
                     poster:that.poster,
+                    isTop:that.isTop,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.addArticle(obj).then(res=>{

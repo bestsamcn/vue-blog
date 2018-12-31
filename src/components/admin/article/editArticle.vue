@@ -15,6 +15,10 @@
         <div class="margin-top-20">
             <Einput v-model="previewText" placeholder="请输入导读"></Einput>
         </div>
+        <div class="margin-top-20">
+            <span>是否置顶：</span>
+            <Echeckbox v-model="isTop" autoComplete="off"></Echeckbox>
+        </div>
         <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
                 <span :class="{'icon-spinner icon-spin':isUploading}">{{isUploading?'':'上传图片'}}</span>
@@ -53,7 +57,7 @@
 </template>
 <script>
     import { markdownEditor } from 'vue-simplemde'
-    import { Select, Option, Button, Input } from 'element-ui';
+    import { Select, Option, Button, Input, Checkbox, Tag } from 'element-ui';
     import { mapState, mapActions } from 'vuex';
     import Axios from 'axios';
     import * as API from '@/api/index.js';
@@ -89,6 +93,7 @@
                 isUploading:false,
                 isPosterUploading:false,
                 type:2,
+                isTop:false,
                 elScrollTop:0
             }
         },
@@ -97,7 +102,9 @@
             Eselect:Select,
             Eoption:Option,
             Ebutton:Button,
-            Einput:Input
+            Einput:Input,
+            Echeckbox:Checkbox,
+            Etag:Tag
         },
         computed:{
             ...mapState({
@@ -148,6 +155,7 @@
                     previewText:that.previewText,
                     codeContent:that.highlightHtml,
                     poster:that.poster,
+                    isTop:that.isTop,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.editArticle(obj).then(res=>{
@@ -172,6 +180,7 @@
                     this.cateChoose = res.data.curr.category._id;
                     this.previewText = res.data.curr.previewText;
                     this.highlightHtml = res.data.curr.codeContent;
+                    this.isTop = res.data.curr.isTop;
                 });
             },
             posterChange(e){
