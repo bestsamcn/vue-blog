@@ -19,7 +19,7 @@
             <span>是否置顶：</span>
             <Echeckbox v-model="isTop" autoComplete="off"></Echeckbox>
             <span class="margin-left-10">是否隐藏：</span>
-            <Echeckbox v-model="isPrivate" autoComplete="off"></Echeckbox>
+            <Echeckbox v-model="private" autoComplete="off"></Echeckbox>
         </div>
          <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
@@ -93,7 +93,7 @@
                 editor:null,
                 poster:'',
                 isTop:false,
-                isPrivate:false,
+                private:false,
                 isUploading:false,
                 isPosterUploading:false
             }
@@ -155,7 +155,7 @@
                     codeContent:that.highlightHtml,
                     poster:that.poster,
                     isTop:that.isTop,
-                    isPrivate:that.isPrivate,
+                    private:that.private,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.addArticle(obj).then(res=>{

@@ -114,7 +114,7 @@
                     this.hotList = res.data;
                 });
             },
-            getLatestComent(){
+            getLatestComment(){
                 var obj = {
                     pageIndex:this.pageIndex,
                     pageSize:this.pageSize
@@ -146,7 +146,7 @@
         },
         created(){
             this.getHotList();
-            this.getLatestComent();
+            this.getLatestComment();
             this.getReadNumAritlce();
             this.getLatestEditAritlce();
         }
