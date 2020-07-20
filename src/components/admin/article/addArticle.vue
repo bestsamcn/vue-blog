@@ -18,6 +18,8 @@
         <div class="margin-top-20">
             <span>是否置顶：</span>
             <Echeckbox v-model="isTop" autoComplete="off"></Echeckbox>
+            <span class="margin-left-10">是否隐藏：</span>
+            <Echeckbox v-model="isPrivate" autoComplete="off"></Echeckbox>
         </div>
          <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
@@ -31,12 +33,9 @@
             <label class="upload-btn" @click="postArticle()">
                 <span>提交</span>
             </label>
-            <label class="upload-btn" @click="getParseContent()">
-                <span>查看</span>
-            </label>
         </div>
         <div class="btn text-right margin-top-20">
-            
+
         </div>
         <div class="highlight">
             <Markdowneditor :class="{'editor': 1}" ref="Markdowneditor" preview-class="markdown-body" :configs="configs" v-model="highlightHtml"></Markdowneditor>
@@ -81,7 +80,7 @@
                     },
                     renderingConfig: {
                         codeSyntaxHighlighting: true, // 开启代码高亮
-                        highlightingTheme: 'atom-one-dark' 
+                        highlightingTheme: 'atom-one-dark'
                     },
                     toolbar: ["bold", "italic", "heading", "|", "code", "quote", "unordered-list", "ordered-list", "|", "link", "image", "preview", "|", "side-by-side", "fullscreen", "guide"],
                     inputStyle:'contenteditable'
@@ -94,6 +93,7 @@
                 editor:null,
                 poster:'',
                 isTop:false,
+                isPrivate:false,
                 isUploading:false,
                 isPosterUploading:false
             }
@@ -122,7 +122,8 @@
         methods:{
             ...mapActions([
                 'setToast',
-                'setArticleState'
+                'setArticleState',
+                'setState'
             ]),
             getParseContent(){
                 console.log(this.highlightHtml)
@@ -154,6 +155,7 @@
                     codeContent:that.highlightHtml,
                     poster:that.poster,
                     isTop:that.isTop,
+                    isPrivate:that.isPrivate,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.addArticle(obj).then(res=>{
@@ -162,7 +164,7 @@
                     this.cateChooseList = [];
                     this.previewText = '';
                     this.highlightHtml = '';
-                    this.setArticleState(true); 
+                    this.setArticleState(true);
                 });
             },
             posterChange(e){
@@ -230,7 +232,7 @@
                     timeout:100000
                 }).then(res=>{
                     that.isPosterUploading = false;
-                    that.poster = res.data.data.posterName;                    
+                    that.poster = res.data.data.posterName;
                     e.target.value='';
                 }, err=>{
                     that.setToast('异常');
@@ -264,7 +266,19 @@
             this.addArticleRef = this.$refs.addArticleRef;
             this.articleToolbarRef = this.$refs.articleToolbarRef;
             this.scrollView();
-
+            const side2 = document.querySelector('.no-mobile');
+            if(side2){
+                side2.addEventListener('click', (e)=>{
+                    console.log(e.target.className);
+                    if(e.target.className.includes('active')){
+                        this.setToggleSidebar(false);
+                        this.setState({showNav:false});
+                    }else{
+                        this.setToggleSidebar(true);
+                        this.setState({showNav:true});
+                    }
+                });
+            }
         },
         created(){
         }

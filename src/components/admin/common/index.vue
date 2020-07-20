@@ -7,7 +7,7 @@
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <div v-show="!isHideSidebar" class="mask" @click="setToggleSidebar()"></div>
             </transition>
-            <div class="admin-map">
+            <div class="admin-map" v-show="showNav">
                 <i class="icon-map-marker"></i>
                 <Breadcrumb class="map-list" separator="/">
                     <BreadcrumbItem>管理</BreadcrumbItem>
@@ -48,7 +48,8 @@
             ...mapState({
                 isHideSidebar:state=>state.admin.isHideSidebar,
                 title:state=>state.RouteModule.meta.title,
-                routerName:state=>state.RouteModule.name
+                routerName:state=>state.RouteModule.name,
+                showNav:state=>state.admin.showNav
             })
         },
         created(){

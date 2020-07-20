@@ -5,6 +5,7 @@ const state={
     isHideSidebar:true,
     categoryList:[],
     tagList:[],
+    showNav:true,
     isAddArticle:false
 }
 
@@ -12,11 +13,16 @@ const getters={
     isHideSidebar:state=>state.isHideSidebar,
     categoryList:state=>state.categoryList,
     tagList:state=>state.tagList,
+    showNav:state=>state.showNav,
     categoryList:state=>state.categoryList,
     isAddArticle:state=>state.isAddArticle
 }
 
 const actions={
+
+    setState({commit}, payload){
+        commit('setState', payload);
+    },
     setToggleSidebar({commit}){
         commit(type.SET_TOGGLE_SIDEBAR);
     },
@@ -70,6 +76,13 @@ const actions={
 }
 
 const mutations={
+    setState(state, payload){
+        for(const k in payload){
+            if(k in state){
+                state[k] = payload[k];
+            }
+        }
+    },
     [type.SET_TOGGLE_SIDEBAR](state, flag){
         if(arguments.length ===2 && typeof arguments[1] !== 'undefined'){
             state.isHideSidebar = flag;

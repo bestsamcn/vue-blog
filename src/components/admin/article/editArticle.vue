@@ -18,6 +18,8 @@
         <div class="margin-top-20">
             <span>是否置顶：</span>
             <Echeckbox v-model="isTop" autoComplete="off"></Echeckbox>
+            <span class="margin-left-10">是否隐藏：</span>
+            <Echeckbox v-model="isPrivate" autoComplete="off"></Echeckbox>
         </div>
         <div class="margin-top-20" ref="articleToolbarRef">
             <label class="upload-btn">
@@ -31,7 +33,7 @@
             <label class="upload-btn" @click="postArticle()">
                 <span>提交</span>
             </label>
-            <label class="upload-btn" @click="getParseContent()">
+            <label class="upload-btn" @click="goState()">
                 <span>查看</span>
             </label>
         </div>
@@ -94,6 +96,7 @@
                 isPosterUploading:false,
                 type:2,
                 isTop:false,
+                isPrivate:false,
                 elScrollTop:0
             }
         },
@@ -124,11 +127,15 @@
         },
         methods:{
             ...mapActions([
-                'setToast'
+                'setToast',
+                'setState',
             ]),
             getParseContent(){
                 console.log(this.highlightHtml)
                 console.log(this.editor.markdown(this.highlightHtml))
+            },
+            goState(){
+                this.$router.push({name:'ArticleDetail', params:{id:this.$route.params.id}});
             },
             postArticle(){
                 if(!this.title){
@@ -156,6 +163,7 @@
                     codeContent:that.highlightHtml,
                     poster:that.poster,
                     isTop:that.isTop,
+                    isPrivate:that.isPrivate,
                     content:that.editor.markdown(that.highlightHtml)
                 }
                 API.editArticle(obj).then(res=>{
@@ -164,6 +172,7 @@
                     this.cateChoose = '';
                     this.previewText = '';
                     this.highlightHtml = '';
+                    this.isPrivate = false;
                     this.$router.push({name:'AdminArticle'});
                 });
             },
@@ -181,6 +190,7 @@
                     this.previewText = res.data.curr.previewText;
                     this.highlightHtml = res.data.curr.codeContent;
                     this.isTop = res.data.curr.isTop;
+                    this.isPrivate = res.data.curr.isPrivate;
                 });
             },
             posterChange(e){
@@ -265,6 +275,19 @@
             this.addArticleRef = this.$refs.addArticleRef;
             this.articleToolbarRef = this.$refs.articleToolbarRef;
             this.scrollView();
+            const side2 = document.querySelector('.no-mobile');
+            if(side2){
+                side2.addEventListener('click', (e)=>{
+                    console.log(e.target.className);
+                    if(e.target.className.includes('active')){
+                        this.setToggleSidebar(false);
+                        this.setState({showNav:false});
+                    }else{
+                        this.setToggleSidebar(true);
+                        this.setState({showNav:true});
+                    }
+                });
+            }
 
         }
     }
