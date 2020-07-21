@@ -52,5 +52,6 @@ export const getDiffArticle = (params)=>$http('get', '/article/getDiffArticle', 
 //评论
 export const addComment = (params)=>$http('post', '/comment/add', params, true);
 export const getCommentList = (params)=>$http('get', '/comment/getList', params, true);
+export const getLatestCommentList = (params)=>$http('get', '/comment/getLatest', params, true);
 export const setCommentLike = (params)=>$http('post', '/comment/like', params, true);
 export const delComment = (params)=>$http('get', '/comment/delete', params, true);

@@ -119,7 +119,7 @@
                     pageIndex:this.pageIndex,
                     pageSize:this.pageSize
                 }
-                API.getCommentList(obj).then(res=>{
+                API.getLatestCommentList(obj).then(res=>{
                     this.commentList = res.data;
                 });
             },

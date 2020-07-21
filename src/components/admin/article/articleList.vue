@@ -8,7 +8,7 @@
                 <EradioButton label="2">浏览</EradioButton>
             </EradioGroup> -->
             <Ebutton type="info" size="small" @click="reset()">重置</Ebutton>
-            <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" :on-icon-click="searchClick"></Einput>
+            <Einput placeholder="关键字" icon="search" style="width:initial" v-model="keyword" @keyup.enter.native="searchClick" :on-icon-click="searchClick"></Einput>
         </div>
         <Etable :data="articleList" border style="width:100%;">
             <Etablecolumn prop="createTime" label="日期">
@@ -23,7 +23,7 @@
             </Etablecolumn>
             <Etablecolumn prop="creator" label="作者" width="80">
                 <template scope="scope">
-                    {{scope.row.creator || 'Best'}} 
+                    {{scope.row.creator || 'Best'}}
                 </template>
             </Etablecolumn>
             <Etablecolumn prop="previewText" label="摘要">
