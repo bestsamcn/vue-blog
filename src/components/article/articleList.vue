@@ -9,6 +9,7 @@
                         <span class="icon-comment">{{item.commentNum | transNum }} Comments</span>
                         <span class="icon-eye-open">{{item.readNum | transNum}} Views</span>
                         <span class="icon-tag">{{item.tag ? item.tag.name : 'null'}}</span>
+                        <span v-if="item.private" class="icon-lock">Private</span>
                         <a href="javascript:;" class="icon-heart" :class="{'active':item.isLiked}">{{item.likeNum | transNum}}</a>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
             articleList:{
                 type:Array,
                 default:[],
-                require:false 
+                require:false
             },
             isMore:{
                 type:Boolean,

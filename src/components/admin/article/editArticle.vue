@@ -129,6 +129,7 @@
             ...mapActions([
                 'setToast',
                 'setState',
+                "setArticleState"
             ]),
             getParseContent(){
                 console.log(this.highlightHtml)
@@ -173,6 +174,7 @@
                     this.previewText = '';
                     this.highlightHtml = '';
                     this.$router.push({name:'AdminArticle'});
+                    this.setArticleState(true);
                 });
             },
             getArticle(){

@@ -12,28 +12,28 @@
             <Ebutton type="info" size="large" @click="showDialog(true)">添加</Ebutton>
         </div>
         <Etable v-if="!!notifyList.length" :data="notifyList" border style="width:100%;">
-            <Etableculume label="通告内容" prop="content"></Etableculume>
-            <Etableculume label="是否激活" prop="isActive">
+            <Etablecolumn label="通告内容" prop="content"></Etablecolumn>
+            <Etablecolumn label="是否激活" prop="isActive">
                 <template scope= "scope">
                     <Etag :type="scope.row.isActive ? 'success' : ''">{{scope.row.isActive ? '是' : '否'}}</Etag>
                 </template>
-            </Etableculume>
-            <Etableculume label="创建时间" prop="createTime">
+            </Etablecolumn>
+            <Etablecolumn label="创建时间" prop="createTime">
             	<template scope="scope">
             		{{ scope.row.createTime | dateFormat('yy-MM-dd hh:mm:ss')}}
             	</template>
-            </Etableculume>
-            <Etableculume label="超时时间" prop="expireTime">
+            </Etablecolumn>
+            <Etablecolumn label="超时时间" prop="expireTime">
                 <template scope="scope">
                     {{ scope.row.expireTime | dateFormat('yy-MM-dd hh:mm:ss')}}
                 </template>
-            </Etableculume>
-            <Etableculume label="操作">
+            </Etablecolumn>
+            <Etablecolumn label="操作">
                 <template scope="scope" class="text-right">
                     <Ebutton type="info" @click="showEditModal(true, scope.row)">编辑</Ebutton>
                     <Ebutton type="danger" @click="__delNotify(scope.row)">删除</Ebutton>
                 </template>
-            </Etableculume>
+            </Etablecolumn>
         </Etable>
         <div class="text-center margin-top-20">
             <Epagination @size-change="handleSizeChange" @current-change="getNotifyList" :current-page.sync="pageIndex" :page-size="pageSize" layout="prev, pager, next, jumper" :total="total">
@@ -83,7 +83,7 @@
         name:'adminNotify',
         components:{
             Etable:Table,
-            Etableculume:TableColumn,
+            Etablecolumn:TableColumn,
             Ebutton:Button,
             Edialog:Dialog,
             Eform:Form,
@@ -206,7 +206,7 @@
                     let _index = -1;
                     this.notifyList.map((item, index)=>{
                         if(item._id == this.form.id) _index = index;
-                        
+
                     });
                     if(_index != -1){
                         let obj = this.notifyList[_index];
@@ -214,7 +214,7 @@
                         obj.isActive = this.form.isActive;
                         obj.expireTime = this.form.expireTime;
                         this.notifyList.splice(_index, 1, obj);
-                    } 
+                    }
                     this.isEditModal = false;
                 });
             }

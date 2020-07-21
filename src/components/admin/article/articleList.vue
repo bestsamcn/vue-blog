@@ -35,6 +35,16 @@
             </Etablecolumn>
             <Etablecolumn prop="category.name" label="归类"  width="100">
             </Etablecolumn>
+            <Etablecolumn label="置顶" prop="isTop" width="80">
+                <template scope= "scope">
+                    <Etag :type="scope.row.isTop ? 'success' : ''">{{scope.row.isTop ? '是' : '否'}}</Etag>
+                </template>
+            </Etablecolumn>
+            <Etablecolumn label="隐私" prop="private" width="80">
+                <template scope= "scope">
+                    <Etag :type="scope.row.private ? 'success' : ''">{{scope.row.private ? '是' : '否'}}</Etag>
+                </template>
+            </Etablecolumn>
             <Etablecolumn label="操作" >
                 <template scope="scope">
                     <Ebutton type="info" size="small" @click="goState('ArticleDetail', scope.row._id)">查看</Ebutton>
