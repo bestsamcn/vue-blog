@@ -14,7 +14,7 @@
     "github-markdown-css": "^2.4.1",
     "highlight": "^0.2.4",
     "highlight.js": "^9.10.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "marked": "^0.3.6",
     "vue": "^2.2.1",
     "vue-lazyload": "^1.0.0-rc12",
