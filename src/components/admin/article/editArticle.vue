@@ -174,7 +174,7 @@
                     this.previewText = '';
                     this.highlightHtml = '';
                     this.$router.push({name:'AdminArticle'});
-                    this.setArticleState(true);
+                    this.setArticleState(false);
                 });
             },
             getArticle(){
@@ -191,7 +191,6 @@
                     this.previewText = res.data.curr.previewText;
                     this.highlightHtml = res.data.curr.codeContent;
                     this.isTop = res.data.curr.isTop;
-                    console.log(res, 'res')
                     this.private = !!res.data.curr.private;
                 });
             },
