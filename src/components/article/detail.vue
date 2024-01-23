@@ -84,6 +84,10 @@
                 this.isLiked = false;
                 API.getArticleDetail({id:this.$route.params.id, type:this.type}).then(res=>{
                     this.article = res.data.curr;
+                    //api.bestsamcn.me/public -> notes.bestsamcn.me/public
+                    if(window.location.protocol === 'https:'){
+                        this.article.content = this.article.content.replace(/http:\/\/api\.bestsamcn\.me/g, '//notes.bestsamcn.me');
+                    }
                     this.prevID = res.data.prev && res.data.prev._id || '';
                     this.nextID = res.data.next && res.data.next._id || '';
                     if($$.getCookie(this.article._id)){
